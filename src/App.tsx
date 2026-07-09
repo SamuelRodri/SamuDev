@@ -118,6 +118,24 @@ function Hub({ locale, navigate }: { locale: Locale; navigate: (path: string) =>
         <ModeCard locale={locale} mode="dotnet" onSelect={() => navigate("/dotnet")} cta={t.hero.dotnetCta} />
         <ModeCard locale={locale} mode="game" onSelect={() => navigate("/game")} cta={t.hero.gameCta} />
       </div>
+
+      <section className="hub-contact" aria-label={t.hero.contactLabel}>
+        <span>{t.hero.contactLabel}</span>
+        <div>
+          <a href={profileLinks.github} target="_blank" rel="noreferrer">
+            <Github size={17} />
+            GitHub
+          </a>
+          <a href={profileLinks.linkedin} target="_blank" rel="noreferrer">
+            <Linkedin size={17} />
+            LinkedIn
+          </a>
+          <a href={profileLinks.email}>
+            <Mail size={17} />
+            Email
+          </a>
+        </div>
+      </section>
     </section>
   );
 }

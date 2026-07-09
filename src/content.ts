@@ -36,6 +36,7 @@ export const content = {
       body: "Backend systems, game development and interactive experiences. Choose the area you want to explore.",
       dotnetCta: "Enter .NET mode",
       gameCta: "Enter game mode",
+      contactLabel: "Profiles and contact",
     },
     modes: {
       dotnet: {
@@ -69,7 +70,7 @@ export const content = {
     shared: {
       aboutTitle: "About Samuel",
       aboutBody:
-        "Developer profile in progress. The structure is ready to evolve as real projects, links, media and case studies are added.",
+        "I build software from two complementary angles: backend systems with .NET and interactive experiences with game engines. This portfolio is organized so each area can grow with its own projects, notes and media.",
       contactBody:
         "You can reach me by email or follow my work through GitHub and LinkedIn while the project showcase grows.",
     },
@@ -87,6 +88,7 @@ export const content = {
       body: "Sistemas backend, videojuegos y experiencias interactivas. Elige el área que quieres explorar.",
       dotnetCta: "Entrar en modo .NET",
       gameCta: "Entrar en modo juegos",
+      contactLabel: "Perfiles y contacto",
     },
     modes: {
       dotnet: {
@@ -120,7 +122,7 @@ export const content = {
     shared: {
       aboutTitle: "Sobre Samuel",
       aboutBody:
-        "Perfil de desarrollador en construcción. La estructura está lista para crecer con proyectos reales, enlaces, media y casos de estudio.",
+        "Construyo software desde dos enfoques complementarios: sistemas backend con .NET y experiencias interactivas con motores de videojuegos. Este portfolio está organizado para que cada área pueda crecer con sus propios proyectos, notas y media.",
       contactBody:
         "Puedes contactarme por email o seguir mi trabajo en GitHub y LinkedIn mientras el portfolio crece con proyectos reales.",
     },
