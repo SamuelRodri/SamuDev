@@ -210,14 +210,26 @@ function ModePage({ locale, mode, navigate }: { locale: Locale; mode: Mode; navi
         </div>
       </section>
 
+      <section className="content-band focus-band">
+        <h2>{t.modePage.focus}</h2>
+        <div className="focus-grid">
+          {details.focus.map((focusItem) => (
+            <div className="focus-item" key={focusItem}>
+              <span />
+              {focusItem}
+            </div>
+          ))}
+        </div>
+      </section>
+
       <section className="content-band">
         <h2>{t.modePage.projects}</h2>
         <div className="project-grid">
-          {[1, 2, 3].map((item) => (
-            <article className="project-card" key={item}>
-              <span>0{item}</span>
-              <h3>{t.modePage.placeholders.project}</h3>
-              <p>{mode === "dotnet" ? "API, service, architecture or data project." : "Prototype, gameplay system, VR scene or interactive demo."}</p>
+          {t.projectSlots[mode].map((project, index) => (
+            <article className="project-card" key={project.title}>
+              <span>0{index + 1}</span>
+              <h3>{project.title}</h3>
+              <p>{project.body}</p>
               <button>
                 {t.modePage.placeholders.links}
                 <ExternalLink size={16} />

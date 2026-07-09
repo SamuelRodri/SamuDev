@@ -5,12 +5,15 @@ import {
   Cpu,
   Database,
   Gamepad2,
+  GitBranch,
   Globe2,
   Headset,
   Layers3,
   MonitorPlay,
   ServerCog,
+  ShieldCheck,
   Sparkles,
+  Workflow,
 } from "lucide-react";
 
 export type Locale = "en" | "es";
@@ -55,6 +58,7 @@ export const content = {
     modePage: {
       overview: "Overview",
       skills: "Core stack",
+      focus: "Technical focus",
       projects: "Project slots",
       experience: "Experience",
       education: "Education",
@@ -73,6 +77,36 @@ export const content = {
         "I build software from two complementary angles: backend systems with .NET and interactive experiences with game engines. This portfolio is organized so each area can grow with its own projects, notes and media.",
       contactBody:
         "You can reach me by email or follow my work through GitHub and LinkedIn while the project showcase grows.",
+    },
+    projectSlots: {
+      dotnet: [
+        {
+          title: "Backend API",
+          body: "Space reserved for a C#/.NET API project with endpoints, persistence, validation and deployment notes.",
+        },
+        {
+          title: "Data-driven service",
+          body: "A future case study for SQL Server, data modelling, business rules and maintainable service design.",
+        },
+        {
+          title: "Cloud-ready system",
+          body: "A slot for an architecture-oriented project: authentication, configuration, monitoring or CI/CD.",
+        },
+      ],
+      game: [
+        {
+          title: "Gameplay prototype",
+          body: "Space reserved for a Unity or Unreal prototype with mechanics, iteration notes and media.",
+        },
+        {
+          title: "Interactive experience",
+          body: "A future case study for real-time interaction, UI, input systems, XR or experimental controls.",
+        },
+        {
+          title: "Technical breakdown",
+          body: "A slot for systems, tooling, performance notes, shaders, AI behaviour or engine-side work.",
+        },
+      ],
     },
   },
   es: {
@@ -107,6 +141,7 @@ export const content = {
     modePage: {
       overview: "Resumen",
       skills: "Stack principal",
+      focus: "Foco técnico",
       projects: "Espacios de proyectos",
       experience: "Experiencia",
       education: "Formación",
@@ -126,6 +161,36 @@ export const content = {
       contactBody:
         "Puedes contactarme por email o seguir mi trabajo en GitHub y LinkedIn mientras el portfolio crece con proyectos reales.",
     },
+    projectSlots: {
+      dotnet: [
+        {
+          title: "API backend",
+          body: "Espacio reservado para un proyecto de API en C#/.NET con endpoints, persistencia, validación y notas de despliegue.",
+        },
+        {
+          title: "Servicio orientado a datos",
+          body: "Futuro caso de estudio para SQL Server, modelado de datos, reglas de negocio y diseño mantenible.",
+        },
+        {
+          title: "Sistema preparado para cloud",
+          body: "Un espacio para un proyecto de arquitectura: autenticación, configuración, monitorización o CI/CD.",
+        },
+      ],
+      game: [
+        {
+          title: "Prototipo jugable",
+          body: "Espacio reservado para un prototipo en Unity o Unreal con mecánicas, notas de iteración y media.",
+        },
+        {
+          title: "Experiencia interactiva",
+          body: "Futuro caso de estudio sobre interacción en tiempo real, UI, sistemas de input, XR o controles experimentales.",
+        },
+        {
+          title: "Desglose técnico",
+          body: "Un espacio para sistemas, tooling, rendimiento, shaders, comportamiento de IA o trabajo dentro del motor.",
+        },
+      ],
+    },
   },
 } as const;
 
@@ -137,9 +202,17 @@ export const modeDetails = {
     route: "/dotnet",
     skills: [
       { icon: Code2, label: "C# / .NET" },
-      { icon: Braces, label: "REST APIs" },
+      { icon: Braces, label: "ASP.NET Core APIs" },
       { icon: Database, label: "SQL Server" },
-      { icon: Boxes, label: "Architecture" },
+      { icon: GitBranch, label: "Git / CI" },
+      { icon: ShieldCheck, label: "Auth basics" },
+      { icon: Workflow, label: "Service design" },
+    ],
+    focus: [
+      "API design and backend workflows",
+      "Relational data modelling",
+      "Maintainable C# codebases",
+      "Deployment-ready project structure",
     ],
   },
   game: {
@@ -152,6 +225,14 @@ export const modeDetails = {
       { icon: Cpu, label: "Unreal" },
       { icon: Headset, label: "VR / XR" },
       { icon: MonitorPlay, label: "Realtime UX" },
+      { icon: Boxes, label: "Gameplay systems" },
+      { icon: Workflow, label: "Prototyping" },
+    ],
+    focus: [
+      "Playable prototypes and mechanics",
+      "Realtime interaction and input",
+      "XR-ready experience design",
+      "Technical breakdowns and media",
     ],
   },
 } as const;
