@@ -65,7 +65,7 @@ export const content = {
       experienceSection: {
         dotnet: {
           title: "Experience",
-          intro: "A first version of this section, ready to be replaced with exact roles, companies and dates.",
+          intro: "Professional progression at Inerza, part of Grupo Inetel, from internship to .NET Developer.",
         },
         game: {
           title: "Practice and projects",
@@ -153,16 +153,22 @@ export const content = {
     experienceItems: {
       dotnet: [
         {
-          title: ".NET backend development",
-          meta: "Professional profile area",
-          body: "Work oriented to C#/.NET backend logic, APIs, Oracle-backed data flows and maintainable application structure.",
-          tags: ["C#", ".NET", "Oracle", "APIs"],
+          title: ".NET Developer",
+          meta: "Inerza / Grupo Inetel · 2025 - Present",
+          body: "Current role focused on .NET development, backend logic, application maintenance and collaboration on production software.",
+          tags: ["C#", ".NET", "Oracle", "Backend"],
         },
         {
-          title: "Codebase maintenance and delivery",
-          meta: "Engineering workflow",
-          body: "Focus on readable code, version control, incremental improvements and deployment-ready project organization.",
-          tags: ["Git", "Clean code", "CI", "Debugging"],
+          title: "Junior .NET Developer",
+          meta: "Inerza / Grupo Inetel · 2023 - 2025",
+          body: "Progressed from the internship stage into a junior developer role, working on .NET codebases, data flows, issue resolution and incremental improvements.",
+          tags: ["C#", ".NET", "Git", "Debugging"],
+        },
+        {
+          title: "Software Development Intern",
+          meta: "Inerza / Grupo Inetel · Jan 2023 - Aug 2023",
+          body: "Internship period focused on learning the company's development workflow, supporting .NET projects and gaining practical experience in a professional environment.",
+          tags: ["Internship", ".NET", "Learning", "Teamwork"],
         },
       ],
       game: [
@@ -247,7 +253,7 @@ export const content = {
       experienceSection: {
         dotnet: {
           title: "Experiencia",
-          intro: "Primera versión de esta sección, preparada para sustituirse por cargos, empresas y fechas exactas.",
+          intro: "Progresión profesional en Inerza, empresa del Grupo Inetel, desde prácticas hasta Programador .NET.",
         },
         game: {
           title: "Práctica y proyectos",
@@ -335,16 +341,22 @@ export const content = {
     experienceItems: {
       dotnet: [
         {
-          title: "Desarrollo backend .NET",
-          meta: "Área profesional",
-          body: "Trabajo orientado a lógica backend con C#/.NET, APIs, flujos de datos con Oracle y estructura de aplicación mantenible.",
-          tags: ["C#", ".NET", "Oracle", "APIs"],
+          title: "Programador .NET",
+          meta: "Inerza / Grupo Inetel · 2025 - Actualidad",
+          body: "Rol actual centrado en desarrollo .NET, lógica backend, mantenimiento de aplicaciones y colaboración sobre software en producción.",
+          tags: ["C#", ".NET", "Oracle", "Backend"],
         },
         {
-          title: "Mantenimiento y entrega de código",
-          meta: "Flujo de ingeniería",
-          body: "Foco en código legible, control de versiones, mejoras incrementales y organización de proyectos preparada para despliegue.",
-          tags: ["Git", "Código limpio", "CI", "Debugging"],
+          title: "Programador .NET Junior",
+          meta: "Inerza / Grupo Inetel · 2023 - 2025",
+          body: "Evolución desde la etapa de prácticas a un rol junior, trabajando en bases de código .NET, flujos de datos, resolución de incidencias y mejoras incrementales.",
+          tags: ["C#", ".NET", "Git", "Debugging"],
+        },
+        {
+          title: "Empleado en prácticas",
+          meta: "Inerza / Grupo Inetel · Ene 2023 - Ago 2023",
+          body: "Periodo de prácticas centrado en aprender el flujo de trabajo de la empresa, dar soporte a proyectos .NET y ganar experiencia práctica en un entorno profesional.",
+          tags: ["Prácticas", ".NET", "Aprendizaje", "Equipo"],
         },
       ],
       game: [
