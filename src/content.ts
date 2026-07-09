@@ -86,7 +86,7 @@ export const content = {
         },
         {
           title: "Data-driven service",
-          body: "A future case study for SQL Server, data modelling, business rules and maintainable service design.",
+          body: "A future case study for Oracle, data modelling, business rules and maintainable backend logic.",
         },
         {
           title: "Cloud-ready system",
@@ -169,7 +169,7 @@ export const content = {
         },
         {
           title: "Servicio orientado a datos",
-          body: "Futuro caso de estudio para SQL Server, modelado de datos, reglas de negocio y diseño mantenible.",
+          body: "Futuro caso de estudio para Oracle, modelado de datos, reglas de negocio y lógica backend mantenible.",
         },
         {
           title: "Sistema preparado para cloud",
@@ -203,14 +203,14 @@ export const modeDetails = {
     skills: [
       { icon: Code2, label: "C# / .NET" },
       { icon: Braces, label: "ASP.NET Core APIs" },
-      { icon: Database, label: "SQL Server" },
+      { icon: Database, label: "Oracle" },
       { icon: GitBranch, label: "Git / CI" },
-      { icon: ShieldCheck, label: "Auth basics" },
-      { icon: Workflow, label: "Service design" },
+      { icon: ShieldCheck, label: "Clean code" },
+      { icon: Workflow, label: "Backend logic" },
     ],
     focus: [
       "API design and backend workflows",
-      "Relational data modelling",
+      "Oracle and relational data modelling",
       "Maintainable C# codebases",
       "Deployment-ready project structure",
     ],
