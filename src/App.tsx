@@ -195,6 +195,23 @@ function ModePage({ locale, mode, navigate }: { locale: Locale; mode: Mode; navi
         </div>
       </div>
 
+      <section className="content-band about-band">
+        <div className="portrait-slot" aria-label={t.aboutSection.photoLabel}>
+          <span>SR</span>
+          <small>{t.aboutSection.photoLabel}</small>
+        </div>
+        <div className="about-copy">
+          <p className="eyebrow">{t.modePage.about}</p>
+          <h2>{t.aboutSection[mode].title}</h2>
+          <p>{t.aboutSection[mode].body}</p>
+          <div className="about-highlights">
+            {t.aboutSection[mode].highlights.map((highlight) => (
+              <span key={highlight}>{highlight}</span>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="content-band">
         <h2>{t.modePage.skills}</h2>
         <div className="skill-grid" key={`${mode}-${locale}-skills`}>

@@ -59,6 +59,7 @@ export const content = {
       projects: "Project slots",
       experience: "Experience",
       education: "Education",
+      about: "About me",
       experienceIntro: "A first version of this section, ready to be replaced with exact roles, companies and dates.",
       educationIntro: "Training and learning paths related to this profile area.",
       experienceSection: {
@@ -90,6 +91,19 @@ export const content = {
         "I build software from two complementary angles: backend systems with .NET and interactive experiences with game engines. This portfolio is organized so each area can grow with its own projects, notes and media.",
       contactBody:
         "You can reach me by email or follow my work through GitHub and LinkedIn while the project showcase grows.",
+    },
+    aboutSection: {
+      photoLabel: "Photo slot",
+      dotnet: {
+        title: "Backend profile with an interactive side.",
+        body: "I approach software development with a practical mindset: understand the problem, keep the codebase maintainable and build solutions that can evolve. In the .NET path, the focus is backend logic, APIs, Oracle-backed data flows and clean project structure.",
+        highlights: ["Pragmatic backend development", "Readable and maintainable code", "Interest in tools, workflows and systems"],
+      },
+      game: {
+        title: "Technical curiosity applied to play and interaction.",
+        body: "My game development profile is currently built through training, prototypes and portfolio work. I am especially interested in how mechanics, input, feedback and spatial interaction come together in Unity, Unreal and VR/XR experiences.",
+        highlights: ["Gameplay and interaction focus", "Prototype-driven learning", "Interest in VR/XR and real-time experiences"],
+      },
     },
     projectSlots: {
       dotnet: [
@@ -226,6 +240,7 @@ export const content = {
       projects: "Espacios de proyectos",
       experience: "Experiencia",
       education: "Formación",
+      about: "Sobre mí",
       experienceIntro: "Primera versión de esta sección, preparada para sustituirse por cargos, empresas y fechas exactas.",
       educationIntro: "Formación y líneas de aprendizaje relacionadas con esta área del perfil.",
       experienceSection: {
@@ -257,6 +272,19 @@ export const content = {
         "Construyo software desde dos enfoques complementarios: sistemas backend con .NET y experiencias interactivas con motores de videojuegos. Este portfolio está organizado para que cada área pueda crecer con sus propios proyectos, notas y media.",
       contactBody:
         "Puedes contactarme por email o seguir mi trabajo en GitHub y LinkedIn mientras el portfolio crece con proyectos reales.",
+    },
+    aboutSection: {
+      photoLabel: "Espacio para foto",
+      dotnet: {
+        title: "Perfil backend con una parte interactiva.",
+        body: "Enfoco el desarrollo de software de forma práctica: entender el problema, mantener el código claro y construir soluciones que puedan evolucionar. En la rama .NET, el foco está en lógica backend, APIs, flujos de datos con Oracle y estructura de proyecto limpia.",
+        highlights: ["Desarrollo backend pragmático", "Código legible y mantenible", "Interés por herramientas, flujos y sistemas"],
+      },
+      game: {
+        title: "Curiosidad técnica aplicada al juego y la interacción.",
+        body: "Mi perfil de desarrollo de videojuegos se está construyendo a través de formación, prototipos y portfolio. Me interesa especialmente cómo se combinan mecánicas, input, feedback e interacción espacial en experiencias con Unity, Unreal y VR/XR.",
+        highlights: ["Foco en gameplay e interacción", "Aprendizaje mediante prototipos", "Interés en VR/XR y tiempo real"],
+      },
     },
     projectSlots: {
       dotnet: [
