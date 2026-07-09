@@ -158,30 +158,18 @@ export const content = {
     educationItems: {
       dotnet: [
         {
-          title: ".NET and backend development",
-          meta: "Technical training",
-          body: "Learning path focused on C#, .NET fundamentals, backend architecture, APIs and relational databases.",
-          tags: ["C#", ".NET", "APIs", "Oracle"],
-        },
-        {
-          title: "Software engineering foundations",
-          meta: "Core knowledge",
-          body: "Programming, debugging, version control, data modelling and maintainable development practices.",
-          tags: ["Programming", "Git", "Data", "Debugging"],
+          title: "Degree in Computer Engineering",
+          meta: "ULPGC / 2019-2023",
+          body: "University training in software engineering, programming, databases, systems and computer science fundamentals.",
+          tags: ["Software engineering", "Programming", "Databases", "Systems"],
         },
       ],
       game: [
         {
-          title: "Game engines and real-time development",
-          meta: "Technical training",
-          body: "Learning path focused on Unity, Unreal Engine, gameplay logic, input systems and real-time iteration.",
-          tags: ["Unity", "Unreal", "Gameplay", "Input"],
-        },
-        {
-          title: "Interactive and immersive experiences",
-          meta: "Specialized interest",
-          body: "Training and exploration around VR/XR, interaction design, spatial interfaces and playable prototypes.",
-          tags: ["VR", "XR", "UX", "Prototypes"],
+          title: "Degree in Computer Engineering",
+          meta: "ULPGC / 2019-2023",
+          body: "University training in software engineering, programming, systems, computer graphics foundations and interactive technology fundamentals.",
+          tags: ["Software engineering", "Programming", "Systems", "Interactive tech"],
         },
       ],
     },
@@ -321,30 +309,18 @@ export const content = {
     educationItems: {
       dotnet: [
         {
-          title: "Desarrollo .NET y backend",
-          meta: "Formación técnica",
-          body: "Línea de aprendizaje centrada en C#, fundamentos de .NET, arquitectura backend, APIs y bases de datos relacionales.",
-          tags: ["C#", ".NET", "APIs", "Oracle"],
-        },
-        {
-          title: "Bases de ingeniería de software",
-          meta: "Conocimiento base",
-          body: "Programación, depuración, control de versiones, modelado de datos y prácticas de desarrollo mantenible.",
-          tags: ["Programación", "Git", "Datos", "Debugging"],
+          title: "Grado en Ingeniería Informática",
+          meta: "ULPGC / 2019-2023",
+          body: "Formación universitaria en ingeniería del software, programación, bases de datos, sistemas y fundamentos de informática.",
+          tags: ["Ingeniería software", "Programación", "Bases de datos", "Sistemas"],
         },
       ],
       game: [
         {
-          title: "Motores de videojuegos y desarrollo en tiempo real",
-          meta: "Formación técnica",
-          body: "Línea de aprendizaje centrada en Unity, Unreal Engine, lógica de gameplay, sistemas de input e iteración en tiempo real.",
-          tags: ["Unity", "Unreal", "Gameplay", "Input"],
-        },
-        {
-          title: "Experiencias interactivas e inmersivas",
-          meta: "Interés especializado",
-          body: "Formación y exploración en VR/XR, diseño de interacción, interfaces espaciales y prototipos jugables.",
-          tags: ["VR", "XR", "UX", "Prototipos"],
+          title: "Grado en Ingeniería Informática",
+          meta: "ULPGC / 2019-2023",
+          body: "Formación universitaria en ingeniería del software, programación, sistemas, bases de gráficos por computador y fundamentos de tecnología interactiva.",
+          tags: ["Ingeniería software", "Programación", "Sistemas", "Tecnología interactiva"],
         },
       ],
     },
