@@ -60,6 +60,7 @@ export const content = {
       experience: "Experience",
       education: "Education",
       experienceIntro: "A first version of this section, ready to be replaced with exact roles, companies and dates.",
+      educationIntro: "Training and learning paths related to this profile area.",
       reel: "Media / demo reel",
       cv: "CV",
       contact: "Contact",
@@ -154,6 +155,36 @@ export const content = {
         },
       ],
     },
+    educationItems: {
+      dotnet: [
+        {
+          title: ".NET and backend development",
+          meta: "Technical training",
+          body: "Learning path focused on C#, .NET fundamentals, backend architecture, APIs and relational databases.",
+          tags: ["C#", ".NET", "APIs", "Oracle"],
+        },
+        {
+          title: "Software engineering foundations",
+          meta: "Core knowledge",
+          body: "Programming, debugging, version control, data modelling and maintainable development practices.",
+          tags: ["Programming", "Git", "Data", "Debugging"],
+        },
+      ],
+      game: [
+        {
+          title: "Game engines and real-time development",
+          meta: "Technical training",
+          body: "Learning path focused on Unity, Unreal Engine, gameplay logic, input systems and real-time iteration.",
+          tags: ["Unity", "Unreal", "Gameplay", "Input"],
+        },
+        {
+          title: "Interactive and immersive experiences",
+          meta: "Specialized interest",
+          body: "Training and exploration around VR/XR, interaction design, spatial interfaces and playable prototypes.",
+          tags: ["VR", "XR", "UX", "Prototypes"],
+        },
+      ],
+    },
   },
   es: {
     nav: {
@@ -192,6 +223,7 @@ export const content = {
       experience: "Experiencia",
       education: "Formación",
       experienceIntro: "Primera versión de esta sección, preparada para sustituirse por cargos, empresas y fechas exactas.",
+      educationIntro: "Formación y líneas de aprendizaje relacionadas con esta área del perfil.",
       reel: "Media / demo reel",
       cv: "CV",
       contact: "Contacto",
@@ -283,6 +315,36 @@ export const content = {
           meta: "Experiencias interactivas",
           body: "Interés en interfaces inmersivas, interacción espacial, guía de usuario y diseño de experiencias en tiempo real.",
           tags: ["VR", "XR", "UX", "Tiempo real"],
+        },
+      ],
+    },
+    educationItems: {
+      dotnet: [
+        {
+          title: "Desarrollo .NET y backend",
+          meta: "Formación técnica",
+          body: "Línea de aprendizaje centrada en C#, fundamentos de .NET, arquitectura backend, APIs y bases de datos relacionales.",
+          tags: ["C#", ".NET", "APIs", "Oracle"],
+        },
+        {
+          title: "Bases de ingeniería de software",
+          meta: "Conocimiento base",
+          body: "Programación, depuración, control de versiones, modelado de datos y prácticas de desarrollo mantenible.",
+          tags: ["Programación", "Git", "Datos", "Debugging"],
+        },
+      ],
+      game: [
+        {
+          title: "Motores de videojuegos y desarrollo en tiempo real",
+          meta: "Formación técnica",
+          body: "Línea de aprendizaje centrada en Unity, Unreal Engine, lógica de gameplay, sistemas de input e iteración en tiempo real.",
+          tags: ["Unity", "Unreal", "Gameplay", "Input"],
+        },
+        {
+          title: "Experiencias interactivas e inmersivas",
+          meta: "Interés especializado",
+          body: "Formación y exploración en VR/XR, diseño de interacción, interfaces espaciales y prototipos jugables.",
+          tags: ["VR", "XR", "UX", "Prototipos"],
         },
       ],
     },

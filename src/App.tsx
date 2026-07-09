@@ -260,6 +260,27 @@ function ModePage({ locale, mode, navigate }: { locale: Locale; mode: Mode; navi
         </div>
       </section>
 
+      <section className="content-band experience-band">
+        <div>
+          <h2>{t.modePage.education}</h2>
+          <p>{t.modePage.educationIntro}</p>
+        </div>
+        <div className="experience-list">
+          {t.educationItems[mode].map((item) => (
+            <article className="experience-item" key={item.title}>
+              <span>{item.meta}</span>
+              <h3>{item.title}</h3>
+              <p>{item.body}</p>
+              <div className="tag-row">
+                {item.tags.map((tag) => (
+                  <span key={tag}>{tag}</span>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
       <section className="contact-band" id="contact">
         <div>
           <h2>{t.modePage.contact}</h2>
