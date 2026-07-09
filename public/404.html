@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redirecting...</title>
+    <script>
+      const base = "/SamuDev";
+      const path = window.location.pathname.replace(base, "") || "/";
+      const target = base + "/?path=" + encodeURIComponent(path + window.location.search + window.location.hash);
+      window.location.replace(target);
+    </script>
+  </head>
+  <body></body>
+</html>
