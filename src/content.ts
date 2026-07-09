@@ -6,13 +6,10 @@ import {
   Database,
   Gamepad2,
   GitBranch,
-  Globe2,
   Headset,
-  Layers3,
   MonitorPlay,
   ServerCog,
   ShieldCheck,
-  Sparkles,
   Workflow,
 } from "lucide-react";
 
@@ -62,6 +59,7 @@ export const content = {
       projects: "Project slots",
       experience: "Experience",
       education: "Education",
+      experienceIntro: "A first version of this section, ready to be replaced with exact roles, companies and dates.",
       reel: "Media / demo reel",
       cv: "CV",
       contact: "Contact",
@@ -126,6 +124,36 @@ export const content = {
         "Technical notes, clips and demos",
       ],
     },
+    experienceItems: {
+      dotnet: [
+        {
+          title: ".NET backend development",
+          meta: "Professional profile area",
+          body: "Work oriented to C#/.NET backend logic, APIs, Oracle-backed data flows and maintainable application structure.",
+          tags: ["C#", ".NET", "Oracle", "APIs"],
+        },
+        {
+          title: "Codebase maintenance and delivery",
+          meta: "Engineering workflow",
+          body: "Focus on readable code, version control, incremental improvements and deployment-ready project organization.",
+          tags: ["Git", "Clean code", "CI", "Debugging"],
+        },
+      ],
+      game: [
+        {
+          title: "Game and interactive prototyping",
+          meta: "Portfolio area",
+          body: "Work focused on mechanics, player input, quick iteration and playable ideas built with Unity or Unreal Engine.",
+          tags: ["Unity", "Unreal", "Gameplay", "Prototyping"],
+        },
+        {
+          title: "VR / XR interaction",
+          meta: "Interactive experiences",
+          body: "Interest in immersive interfaces, spatial interaction, user guidance and real-time experience design.",
+          tags: ["VR", "XR", "UX", "Realtime"],
+        },
+      ],
+    },
   },
   es: {
     nav: {
@@ -163,6 +191,7 @@ export const content = {
       projects: "Espacios de proyectos",
       experience: "Experiencia",
       education: "Formación",
+      experienceIntro: "Primera versión de esta sección, preparada para sustituirse por cargos, empresas y fechas exactas.",
       reel: "Media / demo reel",
       cv: "CV",
       contact: "Contacto",
@@ -227,6 +256,36 @@ export const content = {
         "Notas técnicas, clips y demos",
       ],
     },
+    experienceItems: {
+      dotnet: [
+        {
+          title: "Desarrollo backend .NET",
+          meta: "Área profesional",
+          body: "Trabajo orientado a lógica backend con C#/.NET, APIs, flujos de datos con Oracle y estructura de aplicación mantenible.",
+          tags: ["C#", ".NET", "Oracle", "APIs"],
+        },
+        {
+          title: "Mantenimiento y entrega de código",
+          meta: "Flujo de ingeniería",
+          body: "Foco en código legible, control de versiones, mejoras incrementales y organización de proyectos preparada para despliegue.",
+          tags: ["Git", "Código limpio", "CI", "Debugging"],
+        },
+      ],
+      game: [
+        {
+          title: "Prototipado de videojuegos e interacción",
+          meta: "Área de portfolio",
+          body: "Trabajo centrado en mecánicas, input del jugador, iteración rápida e ideas jugables construidas con Unity o Unreal Engine.",
+          tags: ["Unity", "Unreal", "Gameplay", "Prototipado"],
+        },
+        {
+          title: "Interacción VR / XR",
+          meta: "Experiencias interactivas",
+          body: "Interés en interfaces inmersivas, interacción espacial, guía de usuario y diseño de experiencias en tiempo real.",
+          tags: ["VR", "XR", "UX", "Tiempo real"],
+        },
+      ],
+    },
   },
 } as const;
 
@@ -260,9 +319,3 @@ export const modeDetails = {
     ],
   },
 } as const;
-
-export const foundationSections = [
-  { icon: Sparkles, key: "overview" },
-  { icon: Layers3, key: "experience" },
-  { icon: Globe2, key: "education" },
-] as const;

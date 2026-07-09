@@ -1,6 +1,6 @@
 import { ArrowLeft, ArrowRight, Download, ExternalLink, Github, Languages, Linkedin, Mail } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
-import { content, foundationSections, Locale, Mode, modeDetails, profileLinks } from "./content";
+import { content, Locale, Mode, modeDetails, profileLinks } from "./content";
 
 const basePath = "/SamuDev";
 
@@ -239,21 +239,24 @@ function ModePage({ locale, mode, navigate }: { locale: Locale; mode: Mode; navi
         </div>
       </section>
 
-      <section className="content-band split-band">
+      <section className="content-band experience-band">
         <div>
-          <h2>{t.shared.aboutTitle}</h2>
-          <p>{t.shared.aboutBody}</p>
+          <h2>{t.modePage.experience}</h2>
+          <p>{t.modePage.experienceIntro}</p>
         </div>
-        <div className="timeline">
-          {foundationSections.map((section) => {
-            const SectionIcon = section.icon;
-            return (
-              <div className="timeline-row" key={section.key}>
-                <SectionIcon size={18} />
-                <span>{t.modePage[section.key]}</span>
+        <div className="experience-list">
+          {t.experienceItems[mode].map((item) => (
+            <article className="experience-item" key={item.title}>
+              <span>{item.meta}</span>
+              <h3>{item.title}</h3>
+              <p>{item.body}</p>
+              <div className="tag-row">
+                {item.tags.map((tag) => (
+                  <span key={tag}>{tag}</span>
+                ))}
               </div>
-            );
-          })}
+            </article>
+          ))}
         </div>
       </section>
 

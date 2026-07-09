@@ -483,6 +483,7 @@ p {
 }
 
 .split-band,
+.experience-band,
 .contact-band {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
@@ -490,7 +491,8 @@ p {
   align-items: start;
 }
 
-.timeline {
+.timeline,
+.experience-list {
   display: grid;
   gap: 10px;
 }
@@ -506,6 +508,43 @@ p {
 
 .timeline-row svg {
   color: var(--line);
+}
+
+.experience-item {
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.experience-item > span {
+  display: inline-block;
+  margin-bottom: 0.65rem;
+  color: var(--line);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.experience-item p {
+  margin-bottom: 1rem;
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.tag-row span {
+  padding: 0.34rem 0.56rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(238, 247, 255, 0.76);
+  font-size: 0.8rem;
+  font-weight: 700;
 }
 
 .contact-actions {
@@ -530,6 +569,7 @@ p {
   .mode-grid,
   .mode-hero,
   .split-band,
+  .experience-band,
   .contact-band {
     grid-template-columns: 1fr;
   }
