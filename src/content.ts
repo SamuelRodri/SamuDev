@@ -27,7 +27,7 @@ export const content = {
     hero: {
       eyebrow: "Samuel Rodriguez / SamuDev",
       title: "Developer portfolio.",
-      body: "A bilingual space for backend systems, game development and interactive experiences. Choose the area you want to explore.",
+      body: "Backend systems, game development and interactive experiences. Choose the area you want to explore.",
       dotnetCta: "Enter .NET mode",
       gameCta: "Enter game mode",
     },
@@ -78,7 +78,7 @@ export const content = {
     hero: {
       eyebrow: "Samuel Rodriguez / SamuDev",
       title: "Portfolio de desarrollador.",
-      body: "Un espacio bilingüe para sistemas backend, videojuegos y experiencias interactivas. Elige el área que quieres explorar.",
+      body: "Sistemas backend, videojuegos y experiencias interactivas. Elige el área que quieres explorar.",
       dotnetCta: "Entrar en modo .NET",
       gameCta: "Entrar en modo juegos",
     },
