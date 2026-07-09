@@ -26,8 +26,8 @@ export const content = {
     },
     hero: {
       eyebrow: "Samuel Rodriguez / SamuDev",
-      title: "Two paths, one engineering mindset.",
-      body: "A bilingual portfolio for backend systems, game development and interactive experiences. Choose a mode to explore a focused profile.",
+      title: "Developer portfolio.",
+      body: "A bilingual space for backend systems, game development and interactive experiences. Choose the area you want to explore.",
       dotnetCta: "Enter .NET mode",
       gameCta: "Enter game mode",
     },
@@ -77,8 +77,8 @@ export const content = {
     },
     hero: {
       eyebrow: "Samuel Rodriguez / SamuDev",
-      title: "Dos rutas, una misma mentalidad técnica.",
-      body: "Portfolio bilingüe para sistemas backend, desarrollo de videojuegos y experiencias interactivas. Elige un modo para explorar un perfil enfocado.",
+      title: "Portfolio de desarrollador.",
+      body: "Un espacio bilingüe para sistemas backend, videojuegos y experiencias interactivas. Elige el área que quieres explorar.",
       dotnetCta: "Entrar en modo .NET",
       gameCta: "Entrar en modo juegos",
     },
