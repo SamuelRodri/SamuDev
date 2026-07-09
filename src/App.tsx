@@ -197,7 +197,7 @@ function ModePage({ locale, mode, navigate }: { locale: Locale; mode: Mode; navi
 
       <section className="content-band">
         <h2>{t.modePage.skills}</h2>
-        <div className="skill-grid">
+        <div className="skill-grid" key={`${mode}-${locale}-skills`}>
           {details.skills.map((skill) => {
             const SkillIcon = skill.icon;
             return (
