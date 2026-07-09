@@ -130,6 +130,15 @@ button {
   max-width: 760px;
 }
 
+.hero-copy h1 {
+  margin-bottom: 1.65rem;
+}
+
+.hero-copy p {
+  max-width: 720px;
+  line-height: 1.65;
+}
+
 .eyebrow {
   margin: 0 0 0.9rem;
   color: #7ee9ff;
