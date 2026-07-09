@@ -572,10 +572,23 @@ p {
   align-items: start;
 }
 
+.experience-band {
+  grid-template-columns: 1fr;
+}
+
+.experience-band > div:first-child {
+  max-width: 760px;
+}
+
 .timeline,
 .experience-list {
   display: grid;
   gap: 10px;
+}
+
+.experience-list {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 12px;
 }
 
 .timeline-row {
