@@ -97,7 +97,7 @@ function Header({ locale, path, setLocale, navigate, labels }: HeaderProps) {
       </nav>
       <button className="locale-toggle" onClick={() => setLocale(locale === "en" ? "es" : "en")}>
         <Languages size={18} />
-        {locale === "en" ? "ES" : "EN"}
+        {locale.toUpperCase()}
       </button>
     </header>
   );

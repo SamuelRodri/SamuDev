@@ -45,7 +45,7 @@ export const content = {
       dotnet: {
         label: ".NET Developer",
         title: "Reliable systems, clean APIs and pragmatic architecture.",
-        body: "Backend-focused work with C#, .NET, SQL and cloud-ready services. This mode will collect projects, case studies and engineering notes.",
+        body: "Backend-focused work with C#, .NET, Oracle and cloud-ready services. This mode will collect projects, case studies and engineering notes.",
         stats: ["C# / .NET", "APIs", "Databases"],
       },
       game: {
@@ -146,7 +146,7 @@ export const content = {
       dotnet: {
         label: ".NET Developer",
         title: "Sistemas fiables, APIs limpias y arquitectura pragmática.",
-        body: "Trabajo orientado a backend con C#, .NET, SQL y servicios preparados para cloud. Este modo reunirá proyectos, casos de estudio y notas técnicas.",
+        body: "Trabajo orientado a backend con C#, .NET, Oracle y servicios preparados para cloud. Este modo reunirá proyectos, casos de estudio y notas técnicas.",
         stats: ["C# / .NET", "APIs", "Bases de datos"],
       },
       game: {
