@@ -166,6 +166,12 @@ export const content = {
       ],
       game: [
         {
+          title: "Master's Degree in Video Game Design and Development",
+          meta: "UNIR / 2024-2026",
+          body: "Specialized training in video game design, production, gameplay systems, real-time development and interactive experiences.",
+          tags: ["Game design", "Game development", "Gameplay", "Production"],
+        },
+        {
           title: "Degree in Computer Engineering",
           meta: "ULPGC / 2019-2023",
           body: "University training in software engineering, programming, systems, computer graphics foundations and interactive technology fundamentals.",
@@ -316,6 +322,12 @@ export const content = {
         },
       ],
       game: [
+        {
+          title: "Máster en Diseño y Desarrollo de Videojuegos",
+          meta: "UNIR / 2024-2026",
+          body: "Formación especializada en diseño de videojuegos, producción, sistemas de gameplay, desarrollo en tiempo real y experiencias interactivas.",
+          tags: ["Game design", "Desarrollo", "Gameplay", "Producción"],
+        },
         {
           title: "Grado en Ingeniería Informática",
           meta: "ULPGC / 2019-2023",
