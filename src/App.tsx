@@ -180,7 +180,7 @@ function ModePage({ locale, mode, navigate }: { locale: Locale; mode: Mode; navi
     <section className={`mode-page ${details.color}`}>
       <button className="back-action" onClick={() => navigate("/")}>
         <ArrowLeft size={17} />
-        Hub
+        {t.nav.home}
       </button>
 
       <div className="mode-hero">
@@ -191,7 +191,7 @@ function ModePage({ locale, mode, navigate }: { locale: Locale; mode: Mode; navi
         </div>
         <div className="signal-panel" aria-hidden="true">
           <Icon />
-          <span>{mode === "dotnet" ? "SYSTEMS ONLINE" : "WORLD READY"}</span>
+          <span>{t.modePage.signal[mode]}</span>
         </div>
       </div>
 
@@ -201,9 +201,9 @@ function ModePage({ locale, mode, navigate }: { locale: Locale; mode: Mode; navi
           {details.skills.map((skill) => {
             const SkillIcon = skill.icon;
             return (
-              <div className="skill-tile" key={skill.label}>
+              <div className="skill-tile" key={skill.label.en}>
                 <SkillIcon size={20} />
-                <span>{skill.label}</span>
+                <span>{skill.label[locale]}</span>
               </div>
             );
           })}
@@ -213,7 +213,7 @@ function ModePage({ locale, mode, navigate }: { locale: Locale; mode: Mode; navi
       <section className="content-band focus-band">
         <h2>{t.modePage.focus}</h2>
         <div className="focus-grid">
-          {details.focus.map((focusItem) => (
+          {t.focusItems[mode].map((focusItem) => (
             <div className="focus-item" key={focusItem}>
               <span />
               {focusItem}

@@ -70,6 +70,10 @@ export const content = {
         links: "Links will be added later",
         cv: "Downloadable CV placeholder",
       },
+      signal: {
+        dotnet: "SYSTEMS ONLINE",
+        game: "WORLD READY",
+      },
     },
     shared: {
       aboutTitle: "About Samuel",
@@ -106,6 +110,20 @@ export const content = {
           title: "Technical breakdown",
           body: "A slot for systems, tooling, performance notes, shaders, AI behaviour or engine-side work.",
         },
+      ],
+    },
+    focusItems: {
+      dotnet: [
+        "API design and backend workflows",
+        "Oracle and relational data modelling",
+        "Maintainable C# codebases",
+        "Deployment-ready project structure",
+      ],
+      game: [
+        "Playable prototypes and mechanics",
+        "Realtime interaction and input",
+        "XR-ready experience design",
+        "Technical breakdowns and media",
       ],
     },
   },
@@ -153,6 +171,10 @@ export const content = {
         links: "Los enlaces se añadirán más adelante",
         cv: "Espacio reservado para CV descargable",
       },
+      signal: {
+        dotnet: "SISTEMAS LISTOS",
+        game: "MUNDO LISTO",
+      },
     },
     shared: {
       aboutTitle: "Sobre Samuel",
@@ -191,6 +213,20 @@ export const content = {
         },
       ],
     },
+    focusItems: {
+      dotnet: [
+        "Diseño de APIs y flujos backend",
+        "Oracle y modelado relacional",
+        "Bases de código C# mantenibles",
+        "Estructura preparada para despliegue",
+      ],
+      game: [
+        "Prototipos jugables y mecánicas",
+        "Interacción en tiempo real e input",
+        "Diseño de experiencias VR / XR",
+        "Desgloses técnicos y media",
+      ],
+    },
   },
 } as const;
 
@@ -201,18 +237,12 @@ export const modeDetails = {
     color: "cyan",
     route: "/dotnet",
     skills: [
-      { icon: Code2, label: "C# / .NET" },
-      { icon: Braces, label: "ASP.NET Core APIs" },
-      { icon: Database, label: "Oracle" },
-      { icon: GitBranch, label: "Git / CI" },
-      { icon: ShieldCheck, label: "Clean code" },
-      { icon: Workflow, label: "Backend logic" },
-    ],
-    focus: [
-      "API design and backend workflows",
-      "Oracle and relational data modelling",
-      "Maintainable C# codebases",
-      "Deployment-ready project structure",
+      { icon: Code2, label: { en: "C# / .NET", es: "C# / .NET" } },
+      { icon: Braces, label: { en: "ASP.NET Core APIs", es: "APIs ASP.NET Core" } },
+      { icon: Database, label: { en: "Oracle", es: "Oracle" } },
+      { icon: GitBranch, label: { en: "Git / CI", es: "Git / CI" } },
+      { icon: ShieldCheck, label: { en: "Clean code", es: "Código limpio" } },
+      { icon: Workflow, label: { en: "Backend logic", es: "Lógica backend" } },
     ],
   },
   game: {
@@ -221,18 +251,12 @@ export const modeDetails = {
     color: "violet",
     route: "/game",
     skills: [
-      { icon: Gamepad2, label: "Unity" },
-      { icon: Cpu, label: "Unreal" },
-      { icon: Headset, label: "VR / XR" },
-      { icon: MonitorPlay, label: "Realtime UX" },
-      { icon: Boxes, label: "Gameplay systems" },
-      { icon: Workflow, label: "Prototyping" },
-    ],
-    focus: [
-      "Playable prototypes and mechanics",
-      "Realtime interaction and input",
-      "XR-ready experience design",
-      "Technical breakdowns and media",
+      { icon: Gamepad2, label: { en: "Unity", es: "Unity" } },
+      { icon: Cpu, label: { en: "Unreal", es: "Unreal" } },
+      { icon: Headset, label: { en: "VR / XR", es: "VR / XR" } },
+      { icon: MonitorPlay, label: { en: "Realtime UX", es: "UX en tiempo real" } },
+      { icon: Boxes, label: { en: "Gameplay systems", es: "Sistemas gameplay" } },
+      { icon: Workflow, label: { en: "Prototyping", es: "Prototipado" } },
     ],
   },
 } as const;
