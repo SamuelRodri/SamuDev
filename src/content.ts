@@ -61,6 +61,16 @@ export const content = {
       education: "Education",
       experienceIntro: "A first version of this section, ready to be replaced with exact roles, companies and dates.",
       educationIntro: "Training and learning paths related to this profile area.",
+      experienceSection: {
+        dotnet: {
+          title: "Experience",
+          intro: "A first version of this section, ready to be replaced with exact roles, companies and dates.",
+        },
+        game: {
+          title: "Practice and projects",
+          intro: "Game development is presented here as training, practice and portfolio work, not as professional employment.",
+        },
+      },
       reel: "Media / demo reel",
       cv: "CV",
       contact: "Contact",
@@ -143,14 +153,14 @@ export const content = {
       game: [
         {
           title: "Game and interactive prototyping",
-          meta: "Portfolio area",
-          body: "Work focused on mechanics, player input, quick iteration and playable ideas built with Unity or Unreal Engine.",
+          meta: "Training and portfolio area",
+          body: "Practice focused on mechanics, player input, quick iteration and playable ideas built with Unity or Unreal Engine.",
           tags: ["Unity", "Unreal", "Gameplay", "Prototyping"],
         },
         {
           title: "VR / XR interaction",
-          meta: "Interactive experiences",
-          body: "Interest in immersive interfaces, spatial interaction, user guidance and real-time experience design.",
+          meta: "Learning focus",
+          body: "Exploration of immersive interfaces, spatial interaction, user guidance and real-time experience design.",
           tags: ["VR", "XR", "UX", "Realtime"],
         },
       ],
@@ -218,6 +228,16 @@ export const content = {
       education: "Formación",
       experienceIntro: "Primera versión de esta sección, preparada para sustituirse por cargos, empresas y fechas exactas.",
       educationIntro: "Formación y líneas de aprendizaje relacionadas con esta área del perfil.",
+      experienceSection: {
+        dotnet: {
+          title: "Experiencia",
+          intro: "Primera versión de esta sección, preparada para sustituirse por cargos, empresas y fechas exactas.",
+        },
+        game: {
+          title: "Práctica y proyectos",
+          intro: "El desarrollo de videojuegos se presenta aquí como formación, práctica y portfolio, no como experiencia profesional.",
+        },
+      },
       reel: "Media / demo reel",
       cv: "CV",
       contact: "Contacto",
@@ -300,14 +320,14 @@ export const content = {
       game: [
         {
           title: "Prototipado de videojuegos e interacción",
-          meta: "Área de portfolio",
-          body: "Trabajo centrado en mecánicas, input del jugador, iteración rápida e ideas jugables construidas con Unity o Unreal Engine.",
+          meta: "Área de formación y portfolio",
+          body: "Práctica centrada en mecánicas, input del jugador, iteración rápida e ideas jugables construidas con Unity o Unreal Engine.",
           tags: ["Unity", "Unreal", "Gameplay", "Prototipado"],
         },
         {
           title: "Interacción VR / XR",
-          meta: "Experiencias interactivas",
-          body: "Interés en interfaces inmersivas, interacción espacial, guía de usuario y diseño de experiencias en tiempo real.",
+          meta: "Línea de aprendizaje",
+          body: "Exploración de interfaces inmersivas, interacción espacial, guía de usuario y diseño de experiencias en tiempo real.",
           tags: ["VR", "XR", "UX", "Tiempo real"],
         },
       ],

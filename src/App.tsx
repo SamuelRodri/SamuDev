@@ -241,8 +241,8 @@ function ModePage({ locale, mode, navigate }: { locale: Locale; mode: Mode; navi
 
       <section className="content-band experience-band">
         <div>
-          <h2>{t.modePage.experience}</h2>
-          <p>{t.modePage.experienceIntro}</p>
+          <h2>{t.modePage.experienceSection[mode].title}</h2>
+          <p>{t.modePage.experienceSection[mode].intro}</p>
         </div>
         <div className="experience-list">
           {t.experienceItems[mode].map((item) => (
