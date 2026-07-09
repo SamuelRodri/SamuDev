@@ -16,6 +16,12 @@ import {
 export type Locale = "en" | "es";
 export type Mode = "dotnet" | "game";
 
+export const profileLinks = {
+  github: "https://github.com/SamuelRodri",
+  linkedin: "https://www.linkedin.com/in/samuelrodri/",
+  email: "mailto:samudev@outlook.com",
+} as const;
+
 export const content = {
   en: {
     nav: {
@@ -65,7 +71,7 @@ export const content = {
       aboutBody:
         "Developer profile in progress. The structure is ready to evolve as real projects, links, media and case studies are added.",
       contactBody:
-        "Contact channels will be added in the next pass. For now, the portfolio keeps the layout prepared for GitHub, LinkedIn, email and external showcases.",
+        "You can reach me by email or follow my work through GitHub and LinkedIn while the project showcase grows.",
     },
   },
   es: {
@@ -116,7 +122,7 @@ export const content = {
       aboutBody:
         "Perfil de desarrollador en construcción. La estructura está lista para crecer con proyectos reales, enlaces, media y casos de estudio.",
       contactBody:
-        "Los canales de contacto se añadirán en la siguiente pasada. Por ahora, el portfolio deja preparado el espacio para GitHub, LinkedIn, email y showcases externos.",
+        "Puedes contactarme por email o seguir mi trabajo en GitHub y LinkedIn mientras el portfolio crece con proyectos reales.",
     },
   },
 } as const;

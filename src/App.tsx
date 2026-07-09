@@ -1,6 +1,6 @@
-import { ArrowLeft, ArrowRight, Download, ExternalLink, Languages, Mail } from "lucide-react";
+import { ArrowLeft, ArrowRight, Download, ExternalLink, Github, Languages, Linkedin, Mail } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
-import { content, foundationSections, Locale, Mode, modeDetails } from "./content";
+import { content, foundationSections, Locale, Mode, modeDetails, profileLinks } from "./content";
 
 const basePath = "/SamuDev";
 
@@ -233,14 +233,22 @@ function ModePage({ locale, mode, navigate }: { locale: Locale; mode: Mode; navi
           <p>{t.shared.contactBody}</p>
         </div>
         <div className="contact-actions">
-          <button>
+          <a href={profileLinks.email}>
             <Mail size={17} />
-            {t.modePage.placeholders.links}
-          </button>
-          <button>
+            Email
+          </a>
+          <a href={profileLinks.github} target="_blank" rel="noreferrer">
+            <Github size={17} />
+            GitHub
+          </a>
+          <a href={profileLinks.linkedin} target="_blank" rel="noreferrer">
+            <Linkedin size={17} />
+            LinkedIn
+          </a>
+          <a className="disabled-link" aria-disabled="true">
             <Download size={17} />
             {t.modePage.placeholders.cv}
-          </button>
+          </a>
         </div>
       </section>
     </section>

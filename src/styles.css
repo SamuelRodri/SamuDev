@@ -29,6 +29,11 @@ button {
   cursor: pointer;
 }
 
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
 .app-shell {
   position: relative;
   min-height: 100vh;
@@ -290,7 +295,7 @@ p {
 .primary-action,
 .back-action,
 .project-card button,
-.contact-actions button {
+.contact-actions a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -386,11 +391,24 @@ p {
 }
 
 .project-card button,
-.contact-actions button {
+.contact-actions a {
   margin-top: 0.8rem;
   padding: 0.68rem 0.82rem;
   background: rgba(255, 255, 255, 0.1);
   color: #eef7ff;
+}
+
+.contact-actions a:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.contact-actions .disabled-link {
+  cursor: not-allowed;
+  opacity: 0.54;
+}
+
+.contact-actions .disabled-link:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .split-band,
