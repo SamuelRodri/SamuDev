@@ -197,7 +197,7 @@ function ModePage({ locale, mode, navigate }: { locale: Locale; mode: Mode; navi
 
       <section className="content-band about-band">
         <div className="portrait-slot" aria-label={t.aboutSection.photoLabel}>
-          <span>SR</span>
+          <img src={`${import.meta.env.BASE_URL}images/samuel-profile.jpg`} alt={t.aboutSection.photoAlt} />
           <small>{t.aboutSection.photoLabel}</small>
         </div>
         <div className="about-copy">

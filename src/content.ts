@@ -94,6 +94,7 @@ export const content = {
     },
     aboutSection: {
       photoLabel: "Photo slot",
+      photoAlt: "Samuel Rodriguez looking through viewpoint binoculars over the ocean.",
       dotnet: {
         title: "Backend profile with an interactive side.",
         body: "I approach software development with a practical mindset: understand the problem, keep the codebase maintainable and build solutions that can evolve. In the .NET path, the focus is backend logic, APIs, Oracle-backed data flows and clean project structure.",
@@ -275,6 +276,7 @@ export const content = {
     },
     aboutSection: {
       photoLabel: "Espacio para foto",
+      photoAlt: "Samuel Rodriguez mirando por unos prismáticos en un mirador frente al océano.",
       dotnet: {
         title: "Perfil backend con una parte interactiva.",
         body: "Enfoco el desarrollo de software de forma práctica: entender el problema, mantener el código claro y construir soluciones que puedan evolucionar. En la rama .NET, el foco está en lógica backend, APIs, flujos de datos con Oracle y estructura de proyecto limpia.",
