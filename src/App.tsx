@@ -1,6 +1,7 @@
 import { ArrowLeft, ArrowRight, Download, ExternalLink, Github, Languages, Linkedin, Mail } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { content, Locale, Mode, modeDetails, profileLinks } from "./content";
+import { GameProject, gameProjects } from "./gameProjects";
 
 const basePath = "/SamuDev";
 
@@ -10,7 +11,7 @@ function getInitialPath() {
 
   if (redirectedPath) {
     const cleanPath = redirectedPath.split("?")[0] || "/";
-    window.history.replaceState({}, "", `${basePath}${cleanPath}`);
+    window.history.replaceState({ fromHub: false }, "", `${basePath}${cleanPath}`);
     return normalizePath(cleanPath);
   }
 
@@ -18,7 +19,7 @@ function getInitialPath() {
 }
 
 function normalizePath(path: string) {
-  if (path === "/dotnet" || path === "/game") {
+  if (path === "/dotnet" || path === "/game" || path.startsWith("/game/projects/")) {
     return path;
   }
 
@@ -28,24 +29,33 @@ function normalizePath(path: string) {
 function App() {
   const [locale, setLocale] = useState<Locale>("en");
   const [path, setPath] = useState(getInitialPath);
+  const [fromHub, setFromHub] = useState(
+    () => normalizePath(window.location.pathname.replace(basePath, "") || "/") === "/" || window.history.state?.fromHub === true,
+  );
   const t = content[locale];
 
   useEffect(() => {
-    const onPopState = () => setPath(normalizePath(window.location.pathname.replace(basePath, "") || "/"));
+    const onPopState = () => {
+      const nextPath = normalizePath(window.location.pathname.replace(basePath, "") || "/");
+      setPath(nextPath);
+      setFromHub(nextPath === "/" || window.history.state?.fromHub === true);
+    };
     window.addEventListener("popstate", onPopState);
     return () => window.removeEventListener("popstate", onPopState);
   }, []);
 
   const navigate = (nextPath: string) => {
     const normalized = normalizePath(nextPath);
-    window.history.pushState({}, "", `${basePath}${normalized === "/" ? "/" : normalized}`);
+    const nextFromHub = path === "/" || fromHub;
+    window.history.pushState({ fromHub: nextFromHub }, "", `${basePath}${normalized === "/" ? "/" : normalized}`);
     setPath(normalized);
+    setFromHub(nextFromHub);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const activeMode = useMemo<Mode | null>(() => {
     if (path === "/dotnet") return "dotnet";
-    if (path === "/game") return "game";
+    if (path === "/game" || path.startsWith("/game/projects/")) return "game";
     return null;
   }, [path]);
 
@@ -57,9 +67,16 @@ function App() {
         path={path}
         setLocale={setLocale}
         navigate={navigate}
+        showPortfolioNavigation={path === "/" || fromHub}
         labels={t.nav}
       />
-      <main>{activeMode ? <ModePage locale={locale} mode={activeMode} navigate={navigate} /> : <Hub locale={locale} navigate={navigate} />}</main>
+      <main>{path.startsWith("/game/projects/") ? (
+        <GameProjectPage locale={locale} slug={path.split("/").pop() || ""} navigate={navigate} />
+      ) : activeMode ? (
+        <ModePage locale={locale} mode={activeMode} navigate={navigate} showBack={fromHub} />
+      ) : (
+        <Hub locale={locale} navigate={navigate} />
+      )}</main>
     </div>
   );
 }
@@ -69,6 +86,7 @@ type HeaderProps = {
   path: string;
   setLocale: (locale: Locale) => void;
   navigate: (path: string) => void;
+  showPortfolioNavigation: boolean;
   labels: {
     home: string;
     dotnet: string;
@@ -77,24 +95,24 @@ type HeaderProps = {
   };
 };
 
-function Header({ locale, path, setLocale, navigate, labels }: HeaderProps) {
+function Header({ locale, path, setLocale, navigate, showPortfolioNavigation, labels }: HeaderProps) {
   return (
     <header className="site-header">
-      <button className="brand" onClick={() => navigate("/")} aria-label="Go to hub">
+      <button className="brand" onClick={showPortfolioNavigation ? () => navigate("/") : undefined} aria-label={showPortfolioNavigation ? "Go to hub" : undefined}>
         <span className="brand-mark">SR</span>
         <span>Samuel Rodriguez</span>
       </button>
-      <nav className="nav-links" aria-label="Primary navigation">
+      {showPortfolioNavigation && <nav className="nav-links" aria-label="Primary navigation">
         <button className={path === "/" ? "active" : ""} onClick={() => navigate("/")}>
           {labels.home}
         </button>
         <button className={path === "/dotnet" ? "active" : ""} onClick={() => navigate("/dotnet")}>
           {labels.dotnet}
         </button>
-        <button className={path === "/game" ? "active" : ""} onClick={() => navigate("/game")}>
+        <button className={path.startsWith("/game") ? "active" : ""} onClick={() => navigate("/game")}>
           {labels.game}
         </button>
-      </nav>
+      </nav>}
       <button className="locale-toggle" onClick={() => setLocale(locale === "en" ? "es" : "en")}>
         <Languages size={18} />
         {locale.toUpperCase()}
@@ -170,7 +188,7 @@ function ModeCard({ locale, mode, onSelect, cta }: { locale: Locale; mode: Mode;
   );
 }
 
-function ModePage({ locale, mode, navigate }: { locale: Locale; mode: Mode; navigate: (path: string) => void }) {
+function ModePage({ locale, mode, navigate, showBack }: { locale: Locale; mode: Mode; navigate: (path: string) => void; showBack: boolean }) {
   const t = content[locale];
   const details = modeDetails[mode];
   const copy = t.modes[mode];
@@ -178,10 +196,10 @@ function ModePage({ locale, mode, navigate }: { locale: Locale; mode: Mode; navi
 
   return (
     <section className={`mode-page ${details.color}`}>
-      <button className="back-action" onClick={() => navigate("/")}>
+      {showBack && <button className="back-action" onClick={() => navigate("/")}>
         <ArrowLeft size={17} />
         {t.nav.home}
-      </button>
+      </button>}
 
       <div className="mode-hero">
         <div>
@@ -242,7 +260,25 @@ function ModePage({ locale, mode, navigate }: { locale: Locale; mode: Mode; navi
       <section className="content-band">
         <h2>{t.modePage.projects}</h2>
         <div className="project-grid">
-          {t.projectSlots[mode].map((project, index) => (
+          {mode === "game" ? gameProjects.map((project) => (
+            <article className="project-card game-project-card" key={project.id}>
+              <div className="project-cover">
+                <img src={project.image} alt={project.title} />
+                <span>{project.status[locale]}</span>
+              </div>
+              <div className="project-meta">{project.engine} · {project.language} · {project.year}</div>
+              <h3>{project.title}</h3>
+              <p>{project.summary[locale]}</p>
+              <small>{project.role[locale]}</small>
+              <div className="tag-row">
+                {project.tags.map((tag) => <span key={tag}>{tag}</span>)}
+              </div>
+              <button className="project-link" onClick={() => navigate(`/game/projects/${project.slug}`)}>
+                {locale === "es" ? "Ver proyecto" : "View project"}
+                <ArrowRight size={16} />
+              </button>
+            </article>
+          )) : t.projectSlots[mode].map((project, index) => (
             <article className="project-card" key={project.title}>
               <span>0{index + 1}</span>
               <h3>{project.title}</h3>
@@ -323,6 +359,95 @@ function ModePage({ locale, mode, navigate }: { locale: Locale; mode: Mode; navi
         </div>
       </section>
     </section>
+  );
+}
+
+function GameProjectPage({ locale, slug, navigate }: { locale: Locale; slug: string; navigate: (path: string) => void }) {
+  const project = gameProjects.find((item) => item.slug === slug);
+
+  if (!project) {
+    return (
+      <section className="project-detail-page project-not-found">
+        <h1>{locale === "es" ? "Proyecto no encontrado" : "Project not found"}</h1>
+        <button className="back-action" onClick={() => navigate("/game")}>
+          <ArrowLeft size={17} />
+          {locale === "es" ? "Volver a GameDev" : "Back to GameDev"}
+        </button>
+      </section>
+    );
+  }
+
+  return <GameProjectDetail locale={locale} project={project} navigate={navigate} />;
+}
+
+function GameProjectDetail({ locale, project, navigate }: { locale: Locale; project: GameProject; navigate: (path: string) => void }) {
+  const videoId = project.video?.includes("youtube.com") ? new URL(project.video).searchParams.get("v") : null;
+
+  return (
+    <article className="project-detail-page game">
+      <button className="back-action" onClick={() => navigate("/game")}>
+        <ArrowLeft size={17} />
+        {locale === "es" ? "Todos los proyectos" : "All projects"}
+      </button>
+
+      <section className="project-overview">
+        <div className="project-featured-media">
+          {videoId ? (
+            <iframe
+              src={`https://www.youtube-nocookie.com/embed/${videoId}`}
+              title={`${project.title} gameplay`}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          ) : project.video ? (
+            <video controls playsInline preload="metadata" poster={project.image}>
+              <source src={project.video} type="video/mp4" />
+            </video>
+          ) : (
+            <img src={project.image} alt={project.title} />
+          )}
+          <span className="media-label">Gameplay</span>
+        </div>
+
+        <div className="project-overview-copy">
+          <div className="project-title-row">
+            <p className="eyebrow">{project.engine} · {project.platform} · {project.year}</p>
+            <span className="project-status">{project.status[locale]}</span>
+          </div>
+          <h1>{project.title}</h1>
+          <p className="project-lead">{project.summary[locale]}</p>
+
+          <dl>
+            <div><dt>{locale === "es" ? "Motor" : "Engine"}</dt><dd>{project.engine}</dd></div>
+            <div><dt>{locale === "es" ? "Lenguaje" : "Language"}</dt><dd>{project.language}</dd></div>
+            <div><dt>{locale === "es" ? "Plataforma" : "Platform"}</dt><dd>{project.platform}</dd></div>
+            <div><dt>{locale === "es" ? "Rol" : "Role"}</dt><dd>{project.role[locale]}</dd></div>
+          </dl>
+          <div className="tag-row">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
+          {project.award && (
+            <div className="award-card">
+              <span>{locale === "es" ? "Reconocimiento" : "Award"}</span>
+              <strong>{project.award}</strong>
+            </div>
+          )}
+          {project.github && (
+            <a className="project-repository-link" href={project.github} target="_blank" rel="noreferrer">
+              <Github size={17} />
+              {locale === "es" ? "Ver repositorio" : "View repository"}
+              <ExternalLink size={14} />
+            </a>
+          )}
+        </div>
+      </section>
+
+      <section className="project-story">
+        <div>
+          <p className="eyebrow">{locale === "es" ? "El proyecto" : "The project"}</p>
+          <h2>{project.caseStudyTitle[locale]}</h2>
+        </div>
+        <p>{project.description[locale]}</p>
+      </section>
+    </article>
   );
 }
 
