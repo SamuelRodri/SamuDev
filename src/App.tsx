@@ -35,13 +35,19 @@ function App() {
   const t = content[locale];
 
   useEffect(() => {
+    const previousScrollRestoration = window.history.scrollRestoration;
+    window.history.scrollRestoration = "manual";
     const onPopState = () => {
       const nextPath = normalizePath(window.location.pathname.replace(basePath, "") || "/");
       setPath(nextPath);
       setFromHub(nextPath === "/" || window.history.state?.fromHub === true);
+      window.scrollTo(0, 0);
     };
     window.addEventListener("popstate", onPopState);
-    return () => window.removeEventListener("popstate", onPopState);
+    return () => {
+      window.history.scrollRestoration = previousScrollRestoration;
+      window.removeEventListener("popstate", onPopState);
+    };
   }, []);
 
   const navigate = (nextPath: string) => {
@@ -50,7 +56,7 @@ function App() {
     window.history.pushState({ fromHub: nextFromHub }, "", `${basePath}${normalized === "/" ? "/" : normalized}`);
     setPath(normalized);
     setFromHub(nextFromHub);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   };
 
   const activeMode = useMemo<Mode | null>(() => {
@@ -99,7 +105,9 @@ function Header({ locale, path, setLocale, navigate, showPortfolioNavigation, la
   return (
     <header className="site-header">
       <button className="brand" onClick={showPortfolioNavigation ? () => navigate("/") : undefined} aria-label={showPortfolioNavigation ? "Go to hub" : undefined}>
-        <span className="brand-mark">SR</span>
+        <span className="brand-mark">
+          <img src={`${import.meta.env.BASE_URL}images/samudev-logo.png`} alt="" />
+        </span>
         <span>Samuel Rodriguez</span>
       </button>
       {showPortfolioNavigation && <nav className="nav-links" aria-label="Primary navigation">
@@ -292,7 +300,7 @@ function ModePage({ locale, mode, navigate, showBack }: { locale: Locale; mode: 
         </div>
       </section>
 
-      <section className="content-band experience-band">
+      {mode === "dotnet" && <section className="content-band experience-band">
         <div>
           <h2>{t.modePage.experienceSection[mode].title}</h2>
           <p>{t.modePage.experienceSection[mode].intro}</p>
@@ -311,7 +319,7 @@ function ModePage({ locale, mode, navigate, showBack }: { locale: Locale; mode: 
             </article>
           ))}
         </div>
-      </section>
+      </section>}
 
       <section className="content-band experience-band">
         <div>
