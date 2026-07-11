@@ -98,7 +98,7 @@ export const gameProjects: GameProject[] = [
     caseStudyTitle: { en: "Reshaping geography through systems-driven strategy.", es: "Transformar la geografía mediante estrategia y sistemas." },
     role: { en: "Solo developer", es: "Solo developer" },
     tags: ["Unity", "C#", "Strategy", "GeoJSON", "Event Bus", "VContainer"],
-    image: "https://res.cloudinary.com/djcd2rpvx/image/upload/v1773249721/projects/u5OyDzwJBZa9pB0gZ1nI/images/D2_SistemaBotones_yivtfd.png",
+    image: "https://img.youtube.com/vi/CblftVzAZXE/maxresdefault.jpg",
     video: "https://www.youtube.com/watch?v=CblftVzAZXE",
     sourceUrl: "https://samuelrodri.github.io/SamuDev/project/u5OyDzwJBZa9pB0gZ1nI",
   },
