@@ -99,7 +99,7 @@ export const gameProjects: GameProject[] = [
     role: { en: "Solo developer", es: "Solo developer" },
     tags: ["Unity", "C#", "Strategy", "GeoJSON", "Event Bus", "VContainer"],
     image: "https://res.cloudinary.com/djcd2rpvx/image/upload/v1773249721/projects/u5OyDzwJBZa9pB0gZ1nI/images/D2_SistemaBotones_yivtfd.png",
-    video: "https://res.cloudinary.com/djcd2rpvx/video/upload/v1773249737/projects/u5OyDzwJBZa9pB0gZ1nI/videos/van-damme-13-enero_enor3k.mp4",
+    video: "https://www.youtube.com/watch?v=CblftVzAZXE",
     sourceUrl: "https://samuelrodri.github.io/SamuDev/project/u5OyDzwJBZa9pB0gZ1nI",
   },
 ];
