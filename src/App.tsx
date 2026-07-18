@@ -223,15 +223,62 @@ function ModePage({ locale, mode, navigate, showBack }: { locale: Locale; mode: 
   const details = modeDetails[mode];
   const copy = t.modes[mode];
   const Icon = details.icon;
+  const [activeSection, setActiveSection] = useState("overview");
+  const sections = [
+    { id: "overview", label: locale === "es" ? "Inicio" : "Overview" },
+    { id: "about", label: t.modePage.about },
+    { id: "skills", label: t.modePage.skills },
+    { id: "focus", label: t.modePage.focus },
+    { id: "projects", label: t.modePage.projects },
+    ...(mode === "dotnet" ? [{ id: "experience", label: t.modePage.experience }] : []),
+    { id: "education", label: t.modePage.education },
+    { id: "contact", label: t.modePage.contact },
+  ];
+
+  useEffect(() => {
+    const pageSections = Array.from(document.querySelectorAll<HTMLElement>(".portfolio-section"));
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible?.target.id) setActiveSection(visible.target.id);
+      },
+      { threshold: [0.35, 0.55, 0.75] },
+    );
+    pageSections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, [mode]);
+
+  const goToSection = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
 
   return (
     <section className={`mode-page ${details.color}`}>
-      {showBack && <button className="back-action" onClick={() => navigate("/")}>
-        <ArrowLeft size={17} />
-        {t.nav.home}
-      </button>}
+      <nav className="section-progress" aria-label={locale === "es" ? "Secciones del portfolio" : "Portfolio sections"}>
+        {sections.map((section) => (
+          <button
+            className={activeSection === section.id ? "active" : ""}
+            type="button"
+            key={section.id}
+            onClick={() => goToSection(section.id)}
+            aria-label={section.label}
+            aria-current={activeSection === section.id ? "true" : undefined}
+          >
+            <span />
+            <small>{section.label}</small>
+          </button>
+        ))}
+      </nav>
 
-      <div className="mode-hero">
+      <section className="portfolio-section overview-section" id="overview">
+        {showBack && <button className="back-action" onClick={() => navigate("/")}>
+          <ArrowLeft size={17} />
+          {t.nav.home}
+        </button>}
+
+        <div className="mode-hero">
         <div>
           <p className="eyebrow">{copy.label}</p>
           <h1>{copy.title}</h1>
@@ -261,9 +308,10 @@ function ModePage({ locale, mode, navigate, showBack }: { locale: Locale; mode: 
             <span>{t.modePage.signal[mode]}</span>
           </div>
         )}
-      </div>
+        </div>
+      </section>
 
-      <section className="content-band about-band">
+      <section className="content-band about-band portfolio-section" id="about">
         <div className="portrait-slot">
           <img src={`${import.meta.env.BASE_URL}images/samuel-profile.jpg`} alt={t.aboutSection.photoAlt} />
         </div>
@@ -279,7 +327,7 @@ function ModePage({ locale, mode, navigate, showBack }: { locale: Locale; mode: 
         </div>
       </section>
 
-      <section className="content-band">
+      <section className="content-band portfolio-section" id="skills">
         <h2>{t.modePage.skills}</h2>
         <div className="skill-grid" key={`${mode}-${locale}-skills`}>
           {details.skills.map((skill) => {
@@ -294,7 +342,7 @@ function ModePage({ locale, mode, navigate, showBack }: { locale: Locale; mode: 
         </div>
       </section>
 
-      <section className="content-band focus-band">
+      <section className="content-band focus-band portfolio-section" id="focus">
         <h2>{t.modePage.focus}</h2>
         <div className="focus-grid">
           {t.focusItems[mode].map((focusItem) => (
@@ -306,7 +354,7 @@ function ModePage({ locale, mode, navigate, showBack }: { locale: Locale; mode: 
         </div>
       </section>
 
-      <section className="content-band">
+      <section className="content-band portfolio-section projects-section" id="projects">
         <h2>{t.modePage.projects}</h2>
         {mode === "game" && (
           <article className="featured-project-showcase">
@@ -360,7 +408,7 @@ function ModePage({ locale, mode, navigate, showBack }: { locale: Locale; mode: 
         </div>
       </section>
 
-      {mode === "dotnet" && <section className="content-band experience-band">
+      {mode === "dotnet" && <section className="content-band experience-band portfolio-section" id="experience">
         <div>
           <h2>{t.modePage.experienceSection[mode].title}</h2>
           <p>{t.modePage.experienceSection[mode].intro}</p>
@@ -381,7 +429,7 @@ function ModePage({ locale, mode, navigate, showBack }: { locale: Locale; mode: 
         </div>
       </section>}
 
-      <section className="content-band experience-band education-band">
+      <section className="content-band experience-band education-band portfolio-section" id="education">
         <div>
           <h2>{t.modePage.education}</h2>
           <p>{t.modePage.educationIntro}</p>
@@ -408,7 +456,7 @@ function ModePage({ locale, mode, navigate, showBack }: { locale: Locale; mode: 
         </div>
       </section>
 
-      <section className="contact-band" id="contact">
+      <section className="contact-band portfolio-section" id="contact">
         <div className="contact-copy">
           <div className="availability-status">
             <span aria-hidden="true" />

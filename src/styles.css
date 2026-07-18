@@ -19,6 +19,11 @@ html {
   overflow-y: scroll;
 }
 
+html:has(.mode-page) {
+  scroll-padding-top: 90px;
+  scroll-snap-type: y mandatory;
+}
+
 body {
   margin: 0;
   min-width: 320px;
@@ -470,6 +475,91 @@ p {
   margin-bottom: 22px;
 }
 
+.portfolio-section {
+  min-height: calc(100svh - 108px);
+  scroll-margin-top: 90px;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.overview-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.overview-section .mode-hero { margin-bottom: 0; }
+
+.mode-page > .content-band,
+.mode-page > .contact-band {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.mode-page > .about-band,
+.mode-page > .experience-band,
+.mode-page > .contact-band {
+  display: grid;
+}
+
+.section-progress {
+  position: fixed;
+  z-index: 20;
+  top: 50%;
+  right: max(12px, calc((100vw - var(--page-max-width)) / 2 - 36px));
+  display: grid;
+  gap: 0.45rem;
+  transform: translateY(-50%);
+}
+
+.section-progress button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 5px;
+  background: transparent;
+}
+
+.section-progress button > span {
+  width: 8px;
+  height: 8px;
+  border: 1px solid rgba(238, 247, 255, 0.45);
+  border-radius: 50%;
+  background: rgba(6, 16, 23, 0.8);
+  transition: scale 180ms ease, background 180ms ease, box-shadow 180ms ease;
+}
+
+.section-progress button.active > span {
+  border-color: var(--line);
+  background: var(--line);
+  box-shadow: 0 0 14px var(--line);
+  scale: 1.45;
+}
+
+.section-progress small {
+  position: absolute;
+  right: 24px;
+  width: max-content;
+  padding: 0.28rem 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  background: rgba(6, 16, 23, 0.92);
+  color: rgba(238, 247, 255, 0.82);
+  font-size: 0.68rem;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(6px);
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.section-progress button:hover small,
+.section-progress button:focus-visible small {
+  opacity: 1;
+  transform: translateX(0);
+}
+
 .mode-hero h1 {
   max-width: 780px;
   font-size: clamp(2.6rem, 6.5vw, 5.7rem);
@@ -771,8 +861,11 @@ p {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html:has(.mode-page) { scroll-behavior: auto; }
   .grid-glow { animation: none; }
   .construction-notice { animation: none; transform: translateX(-50%); }
+  .section-progress button > span,
+  .section-progress small { transition: none; }
   .availability-status span { animation: none; }
   .mode-card,
   .mode-card::before,
@@ -1274,6 +1367,17 @@ p {
 }
 
 @media (max-width: 840px) {
+  html:has(.mode-page) {
+    scroll-padding-top: 0;
+    scroll-snap-type: none;
+  }
+
+  .portfolio-section {
+    min-height: auto;
+    scroll-margin-top: 0;
+  }
+
+  .section-progress { display: none; }
   .site-header {
     display: flex;
     height: auto;
