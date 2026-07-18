@@ -581,7 +581,7 @@ p {
 }
 
 .game-intro-content > p {
-  max-width: 860px;
+  max-width: 1080px;
   margin: 0;
   color: rgba(238, 247, 255, 0.88);
   font-size: clamp(1.45rem, 2.45vw, 2.35rem);
@@ -1076,10 +1076,10 @@ p {
 
 .education-index {
   position: absolute;
-  right: 16px;
-  bottom: -18px;
-  color: color-mix(in srgb, var(--line) 10%, transparent);
-  font-size: 6rem;
+  right: 20px;
+  bottom: 16px;
+  color: color-mix(in srgb, var(--line) 18%, transparent);
+  font-size: 3.2rem;
   font-weight: 900;
   line-height: 1;
   letter-spacing: -0.08em;
