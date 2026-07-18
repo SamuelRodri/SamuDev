@@ -1,6 +1,7 @@
-import { ArrowLeft, ArrowRight, Download, ExternalLink, Github, Languages, Linkedin, Mail } from "lucide-react";
+import { ArrowLeft, ArrowRight, Download, ExternalLink, Github, GraduationCap, Languages, Linkedin, Mail } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { content, Locale, Mode, modeDetails, profileLinks } from "./content";
+import { featuredGameProject } from "./featuredGameProject";
 import { GameProject, gameProjects } from "./gameProjects";
 
 const basePath = "/SamuDev";
@@ -215,16 +216,35 @@ function ModePage({ locale, mode, navigate, showBack }: { locale: Locale; mode: 
           <h1>{copy.title}</h1>
           <p>{copy.body}</p>
         </div>
-        <div className="signal-panel" aria-hidden="true">
-          <Icon />
-          <span>{t.modePage.signal[mode]}</span>
-        </div>
+        {mode === "game" ? (
+          <div className="signal-panel project-video-preview">
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              poster={featuredGameProject.poster}
+              aria-label={`${featuredGameProject.title} gameplay preview`}
+            >
+              <source src={featuredGameProject.previewVideo} type="video/mp4" />
+            </video>
+            <div className="project-preview-copy">
+              <span>{locale === "es" ? "Proyecto principal" : "Featured project"}</span>
+              <strong>{featuredGameProject.title}</strong>
+            </div>
+          </div>
+        ) : (
+          <div className="signal-panel" aria-hidden="true">
+            <Icon />
+            <span>{t.modePage.signal[mode]}</span>
+          </div>
+        )}
       </div>
 
       <section className="content-band about-band">
-        <div className="portrait-slot" aria-label={t.aboutSection.photoLabel}>
+        <div className="portrait-slot">
           <img src={`${import.meta.env.BASE_URL}images/samuel-profile.jpg`} alt={t.aboutSection.photoAlt} />
-          <small>{t.aboutSection.photoLabel}</small>
         </div>
         <div className="about-copy">
           <p className="eyebrow">{t.modePage.about}</p>
@@ -267,6 +287,25 @@ function ModePage({ locale, mode, navigate, showBack }: { locale: Locale; mode: 
 
       <section className="content-band">
         <h2>{t.modePage.projects}</h2>
+        {mode === "game" && (
+          <article className="featured-project-showcase">
+            <div className="featured-project-copy">
+              <p className="eyebrow">{t.modePage.featuredProject.label}</p>
+              <h3>{featuredGameProject.title}</h3>
+              <p>{t.modePage.featuredProject.body}</p>
+              <span>{featuredGameProject.engine}</span>
+            </div>
+            <video
+              controls
+              playsInline
+              preload="metadata"
+              poster={featuredGameProject.poster}
+              aria-label={`${featuredGameProject.title} gameplay`}
+            >
+              <source src={featuredGameProject.video} type="video/mp4" />
+            </video>
+          </article>
+        )}
         <div className="project-grid">
           {mode === "game" ? gameProjects.map((project) => (
             <article className="project-card game-project-card" key={project.id}>
@@ -321,15 +360,21 @@ function ModePage({ locale, mode, navigate, showBack }: { locale: Locale; mode: 
         </div>
       </section>}
 
-      <section className="content-band experience-band">
+      <section className="content-band experience-band education-band">
         <div>
           <h2>{t.modePage.education}</h2>
           <p>{t.modePage.educationIntro}</p>
         </div>
         <div className="experience-list">
-          {t.educationItems[mode].map((item) => (
-            <article className="experience-item" key={item.title}>
-              <span>{item.meta}</span>
+          {t.educationItems[mode].map((item, index) => (
+            <article className="experience-item education-item" key={item.title}>
+              <div className="education-card-top">
+                <span>{item.meta}</span>
+                <div className="education-icon" aria-hidden="true">
+                  <GraduationCap size={18} />
+                </div>
+              </div>
+              <span className="education-index" aria-hidden="true">0{index + 1}</span>
               <h3>{item.title}</h3>
               <p>{item.body}</p>
               <div className="tag-row">
@@ -343,7 +388,11 @@ function ModePage({ locale, mode, navigate, showBack }: { locale: Locale; mode: 
       </section>
 
       <section className="contact-band" id="contact">
-        <div>
+        <div className="contact-copy">
+          <div className="availability-status">
+            <span aria-hidden="true" />
+            {t.modePage.availability}
+          </div>
           <h2>{t.modePage.contact}</h2>
           <p>{t.shared.contactBody}</p>
         </div>

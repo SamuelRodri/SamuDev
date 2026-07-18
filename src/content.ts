@@ -57,6 +57,10 @@ export const content = {
       skills: "Core stack",
       focus: "Technical focus",
       projects: "Project slots",
+      featuredProject: {
+        label: "Featured project",
+        body: "Gameplay from the project currently taking the main spot in my GameDev portfolio.",
+      },
       experience: "Experience",
       education: "Education",
       about: "About me",
@@ -75,6 +79,7 @@ export const content = {
       reel: "Media / demo reel",
       cv: "CV",
       contact: "Contact",
+      availability: "Open to conversations and new ideas",
       placeholders: {
         project: "Project details coming soon",
         links: "Links will be added later",
@@ -93,7 +98,6 @@ export const content = {
         "You can reach me by email or follow my work through GitHub and LinkedIn while the project showcase grows.",
     },
     aboutSection: {
-      photoLabel: "Photo slot",
       photoAlt: "Samuel Rodriguez looking through viewpoint binoculars over the ocean.",
       dotnet: {
         title: "Backend profile with an interactive side.",
@@ -245,6 +249,10 @@ export const content = {
       skills: "Stack principal",
       focus: "Foco técnico",
       projects: "Espacios de proyectos",
+      featuredProject: {
+        label: "Proyecto principal",
+        body: "Gameplay del proyecto que ocupa actualmente el espacio principal de mi portfolio GameDev.",
+      },
       experience: "Experiencia",
       education: "Formación",
       about: "Sobre mí",
@@ -263,6 +271,7 @@ export const content = {
       reel: "Media / demo reel",
       cv: "CV",
       contact: "Contacto",
+      availability: "Disponible para conversar y explorar nuevas ideas",
       placeholders: {
         project: "Detalles del proyecto próximamente",
         links: "Los enlaces se añadirán más adelante",
@@ -281,7 +290,6 @@ export const content = {
         "Puedes contactarme por email o seguir mi trabajo en GitHub y LinkedIn mientras el portfolio crece con proyectos reales.",
     },
     aboutSection: {
-      photoLabel: "Espacio para foto",
       photoAlt: "Samuel Rodriguez mirando por unos prismáticos en un mirador frente al océano.",
       dotnet: {
         title: "Perfil backend con una parte interactiva.",
