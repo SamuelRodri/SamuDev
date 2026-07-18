@@ -104,8 +104,8 @@ export const content = {
         highlights: ["Pragmatic backend development", "Readable and maintainable code", "Interest in tools, workflows and systems"],
       },
       game: {
-        title: "Technical curiosity applied to play and interaction.",
-        body: "My game development profile is currently built through training, prototypes and portfolio work. I am especially interested in how mechanics, input, feedback and spatial interaction come together in Unity, Unreal and VR/XR experiences.",
+        title: "Hi, I'm Samuel — a game developer driven by curiosity.",
+        body: "I create gameplay systems, prototypes and interactive experiences while continuing to grow through training and hands-on projects. I especially enjoy exploring how mechanics, input, feedback and spatial interaction come together in Unity, Unreal and VR/XR.",
         highlights: ["Gameplay and interaction focus", "Prototype-driven learning", "Interest in VR/XR and real-time experiences"],
       },
     },
@@ -281,8 +281,8 @@ export const content = {
         highlights: ["Desarrollo backend pragmático", "Código legible y mantenible", "Interés por herramientas, flujos y sistemas"],
       },
       game: {
-        title: "Curiosidad técnica aplicada al juego y la interacción.",
-        body: "Mi perfil de desarrollo de videojuegos se está construyendo a través de formación, prototipos y portfolio. Me interesa especialmente cómo se combinan mecánicas, input, feedback e interacción espacial en experiencias con Unity, Unreal y VR/XR.",
+        title: "Hola, soy Samuel, desarrollador de videojuegos por curiosidad y vocación.",
+        body: "Creo sistemas de gameplay, prototipos y experiencias interactivas mientras sigo creciendo mediante formación y proyectos prácticos. Me interesa especialmente cómo se combinan las mecánicas, el input, el feedback y la interacción espacial en Unity, Unreal y VR/XR.",
         highlights: ["Foco en gameplay e interacción", "Aprendizaje mediante prototipos", "Interés en VR/XR y tiempo real"],
       },
     },

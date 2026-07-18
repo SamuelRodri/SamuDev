@@ -581,6 +581,31 @@ p {
   align-items: center;
 }
 
+.game-profile-intro {
+  min-height: 440px;
+  margin-top: 0;
+  margin-bottom: 28px;
+  padding: clamp(28px, 5vw, 58px);
+  grid-template-columns: minmax(210px, 280px) minmax(0, 1fr);
+  gap: clamp(30px, 5vw, 68px);
+}
+
+.game-profile-intro .portrait-slot {
+  min-height: 0;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.38), 0 0 46px color-mix(in srgb, var(--accent) 28%, transparent);
+}
+
+.game-profile-intro .portrait-slot::before { border-radius: 50%; }
+
+.game-profile-intro .portrait-slot img {
+  min-height: 0;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  object-position: 48% 40%;
+}
+
 .portrait-slot {
   min-height: 320px;
   position: relative;
