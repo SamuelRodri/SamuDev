@@ -96,6 +96,10 @@ export const content = {
       contactBody:
         "You can reach me by email or follow my work through GitHub and LinkedIn while the project showcase grows.",
     },
+    gameIntro: {
+      role: "Gameplay Programmer",
+      body: "Game programmer focused on gameplay systems and interactive experiences, with an interest in writing clean, efficient code and taking on new challenges in game development.",
+    },
     aboutSection: {
       photoAlt: "Samuel Rodriguez looking through viewpoint binoculars over the ocean.",
       dotnet: {
@@ -272,6 +276,10 @@ export const content = {
         "Construyo software desde dos enfoques complementarios: sistemas backend con .NET y experiencias interactivas con motores de videojuegos. Este portfolio está organizado para que cada área pueda crecer con sus propios proyectos, notas y media.",
       contactBody:
         "Puedes contactarme por email o seguir mi trabajo en GitHub y LinkedIn mientras el portfolio crece con proyectos reales.",
+    },
+    gameIntro: {
+      role: "Gameplay Programmer",
+      body: "Programador de videojuegos centrado en sistemas de gameplay y experiencias interactivas, con interés por escribir código limpio y eficiente y afrontar nuevos retos en el desarrollo de videojuegos.",
     },
     aboutSection: {
       photoAlt: "Samuel Rodriguez mirando por unos prismáticos en un mirador frente al océano.",

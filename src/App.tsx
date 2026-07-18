@@ -223,23 +223,6 @@ function ModePage({ locale, mode, navigate, showBack }: { locale: Locale; mode: 
   const details = modeDetails[mode];
   const copy = t.modes[mode];
   const Icon = details.icon;
-  const aboutSection = (
-    <section className={`content-band about-band ${mode === "game" ? "game-profile-intro" : ""}`}>
-      <div className="portrait-slot">
-        <img src={`${import.meta.env.BASE_URL}images/samuel-profile.jpg`} alt={t.aboutSection.photoAlt} />
-      </div>
-      <div className="about-copy">
-        <p className="eyebrow">{t.modePage.about}</p>
-        <h2>{t.aboutSection[mode].title}</h2>
-        <p>{t.aboutSection[mode].body}</p>
-        <div className="about-highlights">
-          {t.aboutSection[mode].highlights.map((highlight) => (
-            <span key={highlight}>{highlight}</span>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
 
   return (
     <section className={`mode-page ${details.color}`}>
@@ -248,7 +231,17 @@ function ModePage({ locale, mode, navigate, showBack }: { locale: Locale; mode: 
         {t.nav.home}
       </button>}
 
-      {mode === "game" && aboutSection}
+      {mode === "game" && (
+        <section className="game-intro" aria-labelledby="game-intro-title">
+          <p className="eyebrow" id="game-intro-title">{t.gameIntro.role}</p>
+          <div className="game-intro-content">
+            <div className="game-intro-photo">
+              <img src={`${import.meta.env.BASE_URL}images/samuel-profile.jpg`} alt={t.aboutSection.photoAlt} />
+            </div>
+            <p>{t.gameIntro.body}</p>
+          </div>
+        </section>
+      )}
 
       <div className="mode-hero">
         <div>
@@ -282,7 +275,23 @@ function ModePage({ locale, mode, navigate, showBack }: { locale: Locale; mode: 
         )}
       </div>
 
-      {mode === "dotnet" && aboutSection}
+      {mode === "dotnet" && (
+        <section className="content-band about-band">
+          <div className="portrait-slot">
+            <img src={`${import.meta.env.BASE_URL}images/samuel-profile.jpg`} alt={t.aboutSection.photoAlt} />
+          </div>
+          <div className="about-copy">
+            <p className="eyebrow">{t.modePage.about}</p>
+            <h2>{t.aboutSection.dotnet.title}</h2>
+            <p>{t.aboutSection.dotnet.body}</p>
+            <div className="about-highlights">
+              {t.aboutSection.dotnet.highlights.map((highlight) => (
+                <span key={highlight}>{highlight}</span>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       <section className="content-band">
         <h2>{t.modePage.skills}</h2>
