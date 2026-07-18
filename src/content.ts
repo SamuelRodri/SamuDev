@@ -410,6 +410,7 @@ export const modeDetails = {
     route: "/game",
     skills: [
       { icon: Gamepad2, label: { en: "Unity", es: "Unity" } },
+      { icon: Code2, label: { en: "C#", es: "C#" } },
       { icon: Cpu, label: { en: "Unreal Engine", es: "Unreal Engine" } },
       { icon: Headset, label: { en: "VR / XR", es: "VR / XR" } },
       { icon: MonitorPlay, label: { en: "Interactive UX", es: "UX interactiva" } },
