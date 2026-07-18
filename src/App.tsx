@@ -101,7 +101,7 @@ function App() {
       <main>{path.startsWith("/game/projects/") ? (
         <GameProjectPage locale={locale} slug={path.split("/").pop() || ""} navigate={navigate} />
       ) : activeMode ? (
-        <ModePage locale={locale} mode={activeMode} navigate={navigate} showBack={fromHub} />
+        <ModePage locale={locale} mode={activeMode} navigate={navigate} />
       ) : (
         <Hub locale={locale} navigate={navigate} />
       )}</main>
@@ -218,7 +218,7 @@ function ModeCard({ locale, mode, onSelect, cta }: { locale: Locale; mode: Mode;
   );
 }
 
-function ModePage({ locale, mode, navigate, showBack }: { locale: Locale; mode: Mode; navigate: (path: string) => void; showBack: boolean }) {
+function ModePage({ locale, mode, navigate }: { locale: Locale; mode: Mode; navigate: (path: string) => void }) {
   const t = content[locale];
   const details = modeDetails[mode];
   const copy = t.modes[mode];
@@ -226,11 +226,6 @@ function ModePage({ locale, mode, navigate, showBack }: { locale: Locale; mode: 
 
   return (
     <section className={`mode-page ${details.color} ${mode}-mode-page`}>
-      {showBack && <button className="back-action" onClick={() => navigate("/")}>
-        <ArrowLeft size={17} />
-        {t.nav.home}
-      </button>}
-
       {mode === "game" && (
         <section className="game-intro" aria-labelledby="game-intro-title">
           <p className="eyebrow" id="game-intro-title">{t.gameIntro.role}</p>

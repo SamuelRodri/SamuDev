@@ -590,12 +590,8 @@ p {
   padding-top: 28px;
 }
 
-.game-mode-page .back-action {
-  margin-bottom: 8px;
-}
-
 .game-mode-page .game-intro {
-  padding-top: 18px;
+  padding-top: 8px;
 }
 
 .game-intro > .eyebrow {
