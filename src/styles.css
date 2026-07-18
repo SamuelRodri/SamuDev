@@ -639,8 +639,7 @@ p {
 }
 
 .skill-grid,
-.project-grid,
-.focus-grid {
+.project-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 12px;
@@ -653,15 +652,13 @@ p {
   padding: 1rem;
 }
 
-.mode-page .skill-tile,
-.mode-page .focus-item {
+.mode-page .skill-tile {
   border-color: color-mix(in srgb, var(--line) 18%, rgba(255, 255, 255, 0.1));
   background: color-mix(in srgb, var(--accent) 9%, rgba(255, 255, 255, 0.045));
   transition: transform 200ms ease, border-color 200ms ease, background 200ms ease;
 }
 
-.mode-page .skill-tile:hover,
-.mode-page .focus-item:hover {
+.mode-page .skill-tile:hover {
   transform: translateY(-3px);
   border-color: color-mix(in srgb, var(--line) 48%, transparent);
   background: color-mix(in srgb, var(--accent) 18%, rgba(255, 255, 255, 0.06));
@@ -669,32 +666,6 @@ p {
 
 .skill-tile svg {
   color: var(--line);
-}
-
-.focus-grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.focus-item {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  min-height: 64px;
-  padding: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.045);
-  color: rgba(238, 247, 255, 0.82);
-  font-weight: 720;
-}
-
-.focus-item span {
-  width: 9px;
-  height: 9px;
-  flex: 0 0 auto;
-  border-radius: 999px;
-  background: var(--line);
-  box-shadow: 0 0 18px var(--line);
 }
 
 .project-grid {
@@ -778,7 +749,6 @@ p {
   .mode-card::before,
   .mode-page .content-band,
   .mode-page .skill-tile,
-  .mode-page .focus-item,
   .mode-page .project-card,
   .education-item,
   .education-item::after,
@@ -1321,7 +1291,6 @@ p {
   .hero-copy > p:not(.eyebrow) { margin-left: 0; }
 
   .skill-grid,
-  .focus-grid,
   .project-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1378,7 +1347,6 @@ p {
   }
 
   .skill-grid,
-  .focus-grid,
   .project-grid {
     grid-template-columns: 1fr;
   }

@@ -294,18 +294,6 @@ function ModePage({ locale, mode, navigate, showBack }: { locale: Locale; mode: 
         </div>
       </section>
 
-      <section className="content-band focus-band">
-        <h2>{t.modePage.focus}</h2>
-        <div className="focus-grid">
-          {t.focusItems[mode].map((focusItem) => (
-            <div className="focus-item" key={focusItem}>
-              <span />
-              {focusItem}
-            </div>
-          ))}
-        </div>
-      </section>
-
       <section className="content-band">
         <h2>{t.modePage.projects}</h2>
         {mode === "game" && (

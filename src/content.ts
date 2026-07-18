@@ -55,7 +55,6 @@ export const content = {
     modePage: {
       overview: "Overview",
       skills: "Core stack",
-      focus: "Technical focus",
       projects: "Project slots",
       featuredProject: {
         label: "Featured project",
@@ -138,20 +137,6 @@ export const content = {
           title: "Technical breakdown",
           body: "A slot for documenting engine-side systems, implementation decisions, performance notes or lessons learned.",
         },
-      ],
-    },
-    focusItems: {
-      dotnet: [
-        "API design and backend workflows",
-        "Oracle and relational data modelling",
-        "Maintainable C# codebases",
-        "Deployment-ready project structure",
-      ],
-      game: [
-        "Gameplay mechanics and player input",
-        "Unity and Unreal prototyping",
-        "VR / XR interaction patterns",
-        "Technical notes, clips and demos",
       ],
     },
     experienceItems: {
@@ -247,7 +232,6 @@ export const content = {
     modePage: {
       overview: "Resumen",
       skills: "Stack principal",
-      focus: "Foco técnico",
       projects: "Espacios de proyectos",
       featuredProject: {
         label: "Proyecto principal",
@@ -330,20 +314,6 @@ export const content = {
           title: "Desglose técnico",
           body: "Un espacio para documentar sistemas dentro del motor, decisiones de implementación, rendimiento o aprendizajes.",
         },
-      ],
-    },
-    focusItems: {
-      dotnet: [
-        "Diseño de APIs y flujos backend",
-        "Oracle y modelado relacional",
-        "Bases de código C# mantenibles",
-        "Estructura preparada para despliegue",
-      ],
-      game: [
-        "Mecánicas de gameplay e input",
-        "Prototipado en Unity y Unreal",
-        "Patrones de interacción VR / XR",
-        "Notas técnicas, clips y demos",
       ],
     },
     experienceItems: {
