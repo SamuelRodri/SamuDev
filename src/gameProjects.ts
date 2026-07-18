@@ -45,7 +45,7 @@ export const gameProjects: GameProject[] = [
     },
     caseStudyTitle: { en: "Immersive learning applied to anatomy.", es: "Aprendizaje inmersivo aplicado a la anatomía." },
     role: { en: "Solo developer · Computer Engineering final project", es: "Solo developer · TFG de Ingeniería Informática" },
-    tags: ["VR", "Unity", "C#", "Healthcare"],
+    tags: ["VR", "Unity", "C#"],
     image: "https://res.cloudinary.com/djcd2rpvx/image/upload/v1772475471/projects/W3LaGTNAzZ901JWaAAD7/images/vertebral-column-vr_alrcnl.jpg",
     video: "https://www.youtube.com/watch?v=BTNumYcCQ3U&t=7s",
     award: "Premio Accésit Cátedra Telefónica a la Innovación Educativa",
