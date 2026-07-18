@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowRight, Download, ExternalLink, Github, GraduationCap, Languages, Linkedin, Mail } from "lucide-react";
+import { ArrowLeft, ArrowRight, Download, ExternalLink, Github, GraduationCap, Languages, Linkedin, Mail, X } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { content, Locale, Mode, modeDetails, profileLinks } from "./content";
 import { featuredGameProject } from "./featuredGameProject";
@@ -29,6 +29,7 @@ function normalizePath(path: string) {
 
 function App() {
   const [locale, setLocale] = useState<Locale>("en");
+  const [showConstructionNotice, setShowConstructionNotice] = useState(true);
   const [path, setPath] = useState(getInitialPath);
   const [fromHub, setFromHub] = useState(
     () => normalizePath(window.location.pathname.replace(basePath, "") || "/") === "/" || window.history.state?.fromHub === true,
@@ -69,6 +70,26 @@ function App() {
   return (
     <div className="app-shell">
       <div className="grid-glow" aria-hidden="true" />
+      {showConstructionNotice && (
+        <aside className="construction-notice" role="status">
+          <span className="construction-notice-dot" aria-hidden="true" />
+          <p>
+            <strong>{locale === "es" ? "Portfolio en construcción" : "Portfolio under construction"}</strong>
+            <span>
+              {locale === "es"
+                ? "Estoy dando los últimos retoques. Algunas secciones seguirán creciendo próximamente."
+                : "I'm adding the finishing touches. Some sections will continue to grow soon."}
+            </span>
+          </p>
+          <button
+            type="button"
+            onClick={() => setShowConstructionNotice(false)}
+            aria-label={locale === "es" ? "Cerrar aviso" : "Close notice"}
+          >
+            <X size={17} />
+          </button>
+        </aside>
+      )}
       <Header
         locale={locale}
         path={path}
