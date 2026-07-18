@@ -224,6 +224,22 @@ function ModePage({ locale, mode, navigate }: { locale: Locale; mode: Mode; navi
   const details = modeDetails[mode];
   const copy = t.modes[mode];
   const Icon = details.icon;
+  const skillsSection = (
+    <section className="content-band">
+      <h2>{t.modePage.skills}</h2>
+      <div className="skill-grid" key={`${mode}-${locale}-skills`}>
+        {details.skills.map((skill) => {
+          const SkillIcon = skill.icon;
+          return (
+            <div className="skill-tile" key={skill.label.en}>
+              <SkillIcon size={20} />
+              <span>{skill.label[locale]}</span>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  );
 
   return (
     <section className={`mode-page ${details.color} ${mode}-mode-page`}>
@@ -271,20 +287,7 @@ function ModePage({ locale, mode, navigate }: { locale: Locale; mode: Mode; navi
         </section>
       )}
 
-      <section className="content-band">
-        <h2>{t.modePage.skills}</h2>
-        <div className="skill-grid" key={`${mode}-${locale}-skills`}>
-          {details.skills.map((skill) => {
-            const SkillIcon = skill.icon;
-            return (
-              <div className="skill-tile" key={skill.label.en}>
-                <SkillIcon size={20} />
-                <span>{skill.label[locale]}</span>
-              </div>
-            );
-          })}
-        </div>
-      </section>
+      {mode === "dotnet" && skillsSection}
 
       <section className="content-band">
         <h2>{t.modePage.projects}</h2>
@@ -339,6 +342,8 @@ function ModePage({ locale, mode, navigate }: { locale: Locale; mode: Mode; navi
           ))}
         </div>
       </section>
+
+      {mode === "game" && skillsSection}
 
       {mode === "dotnet" && <section className="content-band experience-band">
         <div>
