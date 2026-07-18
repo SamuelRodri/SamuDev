@@ -1403,16 +1403,14 @@ p {
 }
 
 body {
-  background:
-    linear-gradient(90deg, rgba(91, 226, 241, 0.035) 1px, transparent 1px),
-    #071015;
-  background-size: 96px 100%;
+  background: #071015;
 }
 
 .grid-glow {
-  opacity: 0.48;
-  background-image: linear-gradient(115deg, transparent 0 49.8%, rgba(255, 255, 255, 0.035) 50%, transparent 50.2%);
-  background-size: 280px 280px;
+  opacity: 1;
+  background:
+    linear-gradient(105deg, rgba(45, 222, 255, 0.055), transparent 28%),
+    linear-gradient(255deg, rgba(133, 104, 255, 0.065), transparent 32%);
   mask-image: none;
   animation: none;
 }
@@ -1692,7 +1690,6 @@ h3 { letter-spacing: -0.035em; }
 
 @media (max-width: 560px) {
   :root { --page-gutter: 22px; }
-  body { background-size: 64px 100%; }
   .hero-copy h1 { font-size: 3.5rem; }
   .mode-page .content-band > h2 { align-items: flex-start; flex-direction: column; gap: 0.5rem; }
 }
