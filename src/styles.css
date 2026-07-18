@@ -1393,3 +1393,306 @@ p {
     grid-template-columns: 1fr;
   }
 }
+
+/* Editorial / technical visual system */
+:root {
+  --page-gutter: 64px;
+  color: #e7edf0;
+  background: #071015;
+  font-family: Bahnschrift, "Arial Narrow", "Segoe UI", sans-serif;
+}
+
+body {
+  background:
+    linear-gradient(90deg, rgba(91, 226, 241, 0.035) 1px, transparent 1px),
+    #071015;
+  background-size: 96px 100%;
+}
+
+.grid-glow {
+  opacity: 0.48;
+  background-image: linear-gradient(115deg, transparent 0 49.8%, rgba(255, 255, 255, 0.035) 50%, transparent 50.2%);
+  background-size: 280px 280px;
+  mask-image: none;
+  animation: none;
+}
+
+.site-header {
+  height: 76px;
+  border-bottom: 1px solid rgba(231, 237, 240, 0.13);
+  backdrop-filter: blur(18px);
+}
+
+.brand { letter-spacing: 0.02em; }
+
+.brand-mark {
+  width: 42px;
+  height: 42px;
+  border-radius: 3px;
+  background: #0c171d;
+  box-shadow: none;
+}
+
+.nav-links {
+  padding: 3px;
+  border-radius: 3px;
+  background: #0b151b;
+}
+
+.nav-links button,
+.locale-toggle {
+  border-radius: 2px;
+  font-family: "Cascadia Code", Consolas, monospace;
+  font-size: 0.76rem;
+  text-transform: uppercase;
+}
+
+.nav-links button.active {
+  color: #071015;
+  background: #dce9ed;
+}
+
+.locale-toggle { border-radius: 2px; }
+
+.hub,
+.mode-page { padding-top: 64px; }
+
+.eyebrow {
+  font-family: "Cascadia Code", Consolas, monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+}
+
+.eyebrow::before {
+  margin-right: 0.5rem;
+  color: currentColor;
+  content: "//";
+  opacity: 0.6;
+}
+
+h1,
+h2,
+h3 { letter-spacing: -0.035em; }
+
+.hero-copy h1 {
+  max-width: 1050px;
+  font-size: clamp(4rem, 7.5vw, 7.4rem);
+  font-weight: 650;
+  line-height: 0.86;
+  white-space: normal;
+}
+
+.hero-copy > p:not(.eyebrow) {
+  padding-left: 20px;
+  border-left: 2px solid #64ddea;
+}
+
+.mode-grid {
+  gap: 2px;
+  margin-top: 58px;
+  border: 1px solid rgba(231, 237, 240, 0.14);
+  background: rgba(231, 237, 240, 0.14);
+}
+
+.mode-card,
+.project-card,
+.content-band,
+.contact-band {
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.mode-card {
+  min-height: 500px;
+  border: 0;
+  background: #0a151b;
+}
+
+.mode-card::before {
+  opacity: 0.12;
+  background: linear-gradient(155deg, var(--accent), transparent 34%);
+}
+
+.mode-card:hover {
+  z-index: 1;
+  transform: translateY(-4px);
+  border-color: transparent;
+  box-shadow: 0 18px 0 color-mix(in srgb, var(--line) 22%, transparent);
+}
+
+.mode-card-copy > span,
+.project-meta,
+.project-card > span {
+  font-family: "Cascadia Code", Consolas, monospace;
+}
+
+.mode-card-copy h2 {
+  max-width: 620px;
+  font-size: clamp(2.2rem, 4vw, 4rem);
+  font-weight: 600;
+}
+
+.mode-visual {
+  height: 180px;
+  border-bottom: 1px solid color-mix(in srgb, var(--line) 25%, transparent);
+}
+
+.mode-icon { width: 126px; height: 126px; }
+
+.stat-row span,
+.skill-tile,
+.tag-row span,
+.about-highlights span {
+  border-radius: 2px;
+  font-family: "Cascadia Code", Consolas, monospace;
+}
+
+.primary-action,
+.back-action,
+.project-card button,
+.contact-actions a {
+  border-radius: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.055em;
+  font-size: 0.76rem;
+}
+
+.hub-contact {
+  margin-top: 30px;
+  border-bottom: 0;
+}
+
+.hub-contact a,
+.profile-actions a {
+  border-radius: 2px;
+  font-family: "Cascadia Code", Consolas, monospace;
+}
+
+.game-intro {
+  border-bottom: 1px solid rgba(231, 237, 240, 0.13);
+}
+
+.game-intro-photo {
+  padding: 3px;
+  border-radius: 2px 50% 50% 50%;
+  box-shadow: 12px 12px 0 color-mix(in srgb, var(--line) 14%, transparent);
+}
+
+.game-intro-photo img { border-radius: 0 50% 50% 50%; }
+
+.game-intro-content > p {
+  font-weight: 350;
+  letter-spacing: -0.035em;
+}
+
+.mode-page .content-band,
+.mode-page .contact-band {
+  margin-top: 28px;
+  border-color: rgba(231, 237, 240, 0.14);
+  background: #0a151b;
+  box-shadow: none;
+}
+
+.mode-page .content-band:hover {
+  transform: none;
+  border-color: color-mix(in srgb, var(--line) 45%, rgba(231, 237, 240, 0.14));
+  box-shadow: none;
+}
+
+.mode-page .content-band > h2 {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(231, 237, 240, 0.13);
+  font-size: clamp(2.2rem, 4vw, 4.2rem);
+  font-weight: 560;
+}
+
+.mode-page .content-band > h2::before {
+  color: var(--line);
+  font-family: "Cascadia Code", Consolas, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  content: "SECTION";
+}
+
+.featured-project-showcase {
+  border-radius: 0;
+  background: #0d1920;
+}
+
+.featured-project-copy { border-right: 1px solid rgba(231, 237, 240, 0.14); }
+.featured-project-copy > span { border-radius: 2px; }
+
+.project-grid { gap: 2px; background: rgba(231, 237, 240, 0.14); }
+
+.game-project-card {
+  border: 0;
+  background: #0b171d;
+}
+
+.mode-page .project-card:hover {
+  z-index: 1;
+  transform: translateY(-3px);
+  border-color: transparent;
+  box-shadow: 0 12px 0 color-mix(in srgb, var(--line) 20%, transparent);
+}
+
+.project-cover .project-link,
+.project-cover .project-status-badge { border-radius: 2px; }
+
+.skill-grid { gap: 2px; background: rgba(231, 237, 240, 0.12); }
+
+.skill-tile {
+  min-height: 66px;
+  border: 0;
+  background: #0c181e !important;
+}
+
+.experience-list { gap: 2px; background: rgba(231, 237, 240, 0.12); }
+
+.experience-item,
+.education-item {
+  border: 0;
+  border-radius: 0;
+  background: #0c181e;
+}
+
+.education-icon { border-radius: 2px; }
+
+.contact-band {
+  border-left: 4px solid var(--line) !important;
+  background: #0c181e !important;
+}
+
+.contact-actions a {
+  background: transparent;
+  color: #e7edf0;
+}
+
+.construction-notice {
+  border-radius: 2px;
+  background: #0b151b;
+  box-shadow: 8px 8px 0 rgba(100, 221, 234, 0.14);
+}
+
+.construction-notice button { border-radius: 2px; }
+
+@media (max-width: 840px) {
+  :root { --page-gutter: 36px; }
+  .site-header { height: auto; }
+  .mode-grid,
+  .project-grid,
+  .skill-grid,
+  .experience-list { gap: 1px; }
+  .game-intro-photo { border-radius: 2px 45% 45% 45%; }
+  .game-intro-photo img { border-radius: 0 45% 45% 45%; }
+}
+
+@media (max-width: 560px) {
+  :root { --page-gutter: 22px; }
+  body { background-size: 64px 100%; }
+  .hero-copy h1 { font-size: 3.5rem; }
+  .mode-page .content-band > h2 { align-items: flex-start; flex-direction: column; gap: 0.5rem; }
+}
