@@ -239,37 +239,19 @@ function ModePage({ locale, mode, navigate }: { locale: Locale; mode: Mode; navi
         </section>
       )}
 
-      <div className="mode-hero">
-        <div>
-          <p className="eyebrow">{copy.label}</p>
-          <h1>{copy.title}</h1>
-          <p>{copy.body}</p>
-        </div>
-        {mode === "game" ? (
-          <div className="signal-panel project-video-preview">
-            <video
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="auto"
-              poster={featuredGameProject.poster}
-              aria-label={`${featuredGameProject.title} gameplay preview`}
-            >
-              <source src={featuredGameProject.previewVideo} type="video/mp4" />
-            </video>
-            <div className="project-preview-copy">
-              <span>{locale === "es" ? "Proyecto principal" : "Featured project"}</span>
-              <strong>{featuredGameProject.title}</strong>
-            </div>
+      {mode === "dotnet" && (
+        <div className="mode-hero">
+          <div>
+            <p className="eyebrow">{copy.label}</p>
+            <h1>{copy.title}</h1>
+            <p>{copy.body}</p>
           </div>
-        ) : (
           <div className="signal-panel" aria-hidden="true">
             <Icon />
             <span>{t.modePage.signal[mode]}</span>
           </div>
-        )}
-      </div>
+        </div>
+      )}
 
       {mode === "dotnet" && (
         <section className="content-band about-band">
