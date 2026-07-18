@@ -1,4 +1,5 @@
-import { ArrowLeft, ArrowRight, Download, ExternalLink, Gamepad2, Github, GraduationCap, Languages, Linkedin, Mail, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, Download, ExternalLink, GraduationCap, Languages, Mail, X } from "lucide-react";
+import { FaGithub, FaItchIo, FaLinkedin } from "react-icons/fa";
 import { useEffect, useMemo, useState } from "react";
 import { content, Locale, Mode, modeDetails, profileLinks } from "./content";
 import { featuredGameProject } from "./featuredGameProject";
@@ -171,11 +172,11 @@ function Hub({ locale, navigate }: { locale: Locale; navigate: (path: string) =>
         <span>{t.hero.contactLabel}</span>
         <div>
           <a href={profileLinks.github} target="_blank" rel="noreferrer">
-            <Github size={17} />
+            <FaGithub size={17} />
             GitHub
           </a>
           <a href={profileLinks.linkedin} target="_blank" rel="noreferrer">
-            <Linkedin size={17} />
+            <FaLinkedin size={17} />
             LinkedIn
           </a>
           <a href={profileLinks.email}>
@@ -420,16 +421,16 @@ function ModePage({ locale, mode, navigate }: { locale: Locale; mode: Mode; navi
             Email
           </a>
           <a href={profileLinks.github} target="_blank" rel="noreferrer">
-            <Github size={17} />
+            <FaGithub size={17} />
             GitHub
           </a>
           <a href={profileLinks.linkedin} target="_blank" rel="noreferrer">
-            <Linkedin size={17} />
+            <FaLinkedin size={17} />
             LinkedIn
           </a>
           {mode === "game" && (
             <a href={profileLinks.itch} target="_blank" rel="noreferrer">
-              <Gamepad2 size={17} />
+              <FaItchIo size={17} />
               itch.io
             </a>
           )}
@@ -513,7 +514,7 @@ function GameProjectDetail({ locale, project, navigate }: { locale: Locale; proj
           )}
           {project.github && (
             <a className="project-repository-link" href={project.github} target="_blank" rel="noreferrer">
-              <Github size={17} />
+              <FaGithub size={17} />
               {locale === "es" ? "Ver repositorio" : "View repository"}
               <ExternalLink size={14} />
             </a>
