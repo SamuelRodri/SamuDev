@@ -312,10 +312,26 @@ function ModePage({ locale, mode, navigate }: { locale: Locale; mode: Mode; navi
         )}
         <div className="project-grid">
           {mode === "game" ? gameProjects.map((project) => (
-            <article className="project-card game-project-card" key={project.id}>
+            <article
+              className="project-card game-project-card"
+              key={project.id}
+              role="link"
+              tabIndex={0}
+              aria-label={`${locale === "es" ? "Ver proyecto" : "View project"}: ${project.title}`}
+              onClick={() => navigate(`/game/projects/${project.slug}`)}
+              onKeyDown={(event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                  event.preventDefault();
+                  navigate(`/game/projects/${project.slug}`);
+                }
+              }}
+            >
               <div className="project-cover">
                 <img src={project.image} alt={project.title} />
-                <span>{project.status[locale]}</span>
+                <span className="project-status-badge">{project.status[locale]}</span>
+                <span className="project-link" aria-hidden="true">
+                  <ArrowRight size={22} />
+                </span>
               </div>
               <div className="project-meta">{project.engine} · {project.language} · {project.year}</div>
               <h3>{project.title}</h3>
@@ -324,10 +340,6 @@ function ModePage({ locale, mode, navigate }: { locale: Locale; mode: Mode; navi
               <div className="tag-row">
                 {project.tags.map((tag) => <span key={tag}>{tag}</span>)}
               </div>
-              <button className="project-link" onClick={() => navigate(`/game/projects/${project.slug}`)}>
-                {locale === "es" ? "Ver proyecto" : "View project"}
-                <ArrowRight size={16} />
-              </button>
             </article>
           )) : t.projectSlots[mode].map((project, index) => (
             <article className="project-card" key={project.title}>

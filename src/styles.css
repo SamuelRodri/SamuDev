@@ -769,6 +769,12 @@ p {
 .game-project-card {
   padding: 0;
   overflow: hidden;
+  cursor: pointer;
+}
+
+.game-project-card:focus-visible {
+  outline: 2px solid var(--line);
+  outline-offset: 4px;
 }
 
 .game-project-card > :not(.project-cover) {
@@ -794,9 +800,9 @@ p {
   transform: scale(1.035);
 }
 
-.project-cover span {
+.project-cover .project-status-badge {
   position: absolute;
-  right: 12px;
+  left: 12px;
   bottom: 12px;
   padding: 0.38rem 0.62rem;
   border: 1px solid rgba(255, 255, 255, 0.18);
@@ -1130,25 +1136,36 @@ p {
   color: #d5ceff;
 }
 
-.game-project-card .project-link {
-  min-height: 42px;
-  padding: 0.68rem 0.95rem;
+.project-cover .project-link {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  margin: 0;
+  padding: 0;
   border: 1px solid color-mix(in srgb, var(--line) 42%, transparent);
-  border-radius: 999px;
-  background: linear-gradient(135deg, rgba(133, 104, 255, 0.34), rgba(91, 69, 190, 0.18));
+  border-radius: 12px;
+  background: rgba(6, 16, 23, 0.86);
+  color: #fff;
+  backdrop-filter: blur(10px);
   box-shadow: 0 8px 24px rgba(98, 74, 210, 0.14);
   transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
 }
 
-.game-project-card .project-link svg { transition: transform 180ms ease; }
-.game-project-card .project-link:hover {
-  color: #fff;
-  transform: translateY(-2px);
+.project-cover .project-link svg { transition: transform 180ms ease; }
+.game-project-card:hover .project-cover .project-link,
+.game-project-card:focus-visible .project-cover .project-link {
+  transform: translateX(2px);
   border-color: var(--line);
   background: linear-gradient(135deg, rgba(154, 128, 255, 0.5), rgba(91, 69, 190, 0.28));
   box-shadow: 0 12px 30px rgba(112, 84, 238, 0.24);
 }
-.game-project-card .project-link:hover svg { transform: translateX(4px); }
+.game-project-card:hover .project-cover .project-link svg,
+.game-project-card:focus-visible .project-cover .project-link svg { transform: translateX(3px); }
 
 .contact-actions {
   display: flex;
