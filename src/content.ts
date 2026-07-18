@@ -19,6 +19,7 @@ export type Mode = "dotnet" | "game";
 export const profileLinks = {
   github: "https://github.com/SamuelRodri",
   linkedin: "https://www.linkedin.com/in/samuelrodri/",
+  itch: "https://samuelrodri.itch.io/",
   email: "mailto:samudev@outlook.com",
 } as const;
 

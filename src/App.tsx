@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowRight, Download, ExternalLink, Github, GraduationCap, Languages, Linkedin, Mail, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, Download, ExternalLink, Gamepad2, Github, GraduationCap, Languages, Linkedin, Mail, X } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { content, Locale, Mode, modeDetails, profileLinks } from "./content";
 import { featuredGameProject } from "./featuredGameProject";
@@ -225,7 +225,7 @@ function ModePage({ locale, mode, navigate, showBack }: { locale: Locale; mode: 
   const Icon = details.icon;
 
   return (
-    <section className={`mode-page ${details.color}`}>
+    <section className={`mode-page ${details.color} ${mode}-mode-page`}>
       {showBack && <button className="back-action" onClick={() => navigate("/")}>
         <ArrowLeft size={17} />
         {t.nav.home}
@@ -432,6 +432,12 @@ function ModePage({ locale, mode, navigate, showBack }: { locale: Locale; mode: 
             <Linkedin size={17} />
             LinkedIn
           </a>
+          {mode === "game" && (
+            <a href={profileLinks.itch} target="_blank" rel="noreferrer">
+              <Gamepad2 size={17} />
+              itch.io
+            </a>
+          )}
           <a className="disabled-link" aria-disabled="true">
             <Download size={17} />
             {t.modePage.placeholders.cv}

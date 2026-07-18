@@ -586,6 +586,18 @@ p {
   padding: clamp(24px, 4vw, 54px) 0;
 }
 
+.game-mode-page {
+  padding-top: 28px;
+}
+
+.game-mode-page .back-action {
+  margin-bottom: 8px;
+}
+
+.game-mode-page .game-intro {
+  padding-top: 18px;
+}
+
 .game-intro > .eyebrow {
   margin: 0 0 clamp(30px, 5vw, 62px);
   color: var(--line);
@@ -1380,6 +1392,7 @@ p {
   .construction-notice p span { display: none; }
 
   .game-intro { margin-bottom: 28px; }
+  .game-mode-page { padding-top: 20px; }
   .game-intro > .eyebrow { margin-bottom: 26px; }
   .game-intro-photo { width: min(190px, 62vw); }
   .game-intro-content > p { font-size: 1.55rem; }
