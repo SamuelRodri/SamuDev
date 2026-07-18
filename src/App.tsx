@@ -300,11 +300,15 @@ function ModePage({ locale, mode, navigate }: { locale: Locale; mode: Mode; navi
               <span>{featuredGameProject.engine}</span>
             </div>
             <video
-              controls
+              autoPlay
+              muted
+              loop
               playsInline
-              preload="metadata"
+              preload="auto"
+              disablePictureInPicture
               poster={featuredGameProject.poster}
               aria-label={`${featuredGameProject.title} gameplay`}
+              onContextMenu={(event) => event.preventDefault()}
             >
               <source src={featuredGameProject.video} type="video/mp4" />
             </video>
@@ -475,13 +479,22 @@ function GameProjectDetail({ locale, project, navigate }: { locale: Locale; proj
         <div className="project-featured-media">
           {videoId ? (
             <iframe
-              src={`https://www.youtube-nocookie.com/embed/${videoId}`}
+              src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${videoId}&playsinline=1&rel=0`}
               title={`${project.title} gameplay`}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
+              tabIndex={-1}
             />
           ) : project.video ? (
-            <video controls playsInline preload="metadata" poster={project.image}>
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              disablePictureInPicture
+              poster={project.image}
+              onContextMenu={(event) => event.preventDefault()}
+            >
               <source src={project.video} type="video/mp4" />
             </video>
           ) : (
