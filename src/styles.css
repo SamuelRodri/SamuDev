@@ -537,6 +537,17 @@ p {
   align-items: center;
 }
 
+.page-transition { animation: page-enter 220ms ease-out both; }
+
+@keyframes page-enter {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-transition { animation: none; }
+}
+
 .game-intro {
   margin-bottom: 38px;
   padding: clamp(18px, 3vw, 38px) 0;
@@ -680,6 +691,7 @@ p {
 .project-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
+.featured-project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
 .featured-project-showcase {
   display: grid;
@@ -835,6 +847,27 @@ p {
   margin-bottom: 22px;
 }
 
+.view-all-projects {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  width: fit-content;
+  margin: 24px auto 0;
+  padding: .8rem 1.1rem;
+  border: 1px solid color-mix(in srgb, var(--line) 45%, transparent);
+  background: transparent;
+  color: #eef7ff;
+  font: inherit;
+  font-size: .82rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+.view-all-projects:hover { border-color: var(--line); color: var(--line); }
+.view-all-projects svg { transition: transform 180ms ease; }
+.view-all-projects:hover svg { transform: translateX(3px); }
+.all-projects-page { padding-bottom: 80px; }
+
 .project-link {
   display: inline-flex;
   align-items: center;
@@ -873,12 +906,31 @@ p {
 }
 
 .project-featured-media iframe,
-.project-featured-media img,
-.project-featured-media video { width: 100%; height: 100%; border: 0; object-fit: cover; }
+.project-featured-media img { width: 100%; height: 100%; border: 0; object-fit: cover; }
 .project-featured-media iframe,
 .project-featured-media video { pointer-events: none; }
-.media-label { position: absolute; left: 14px; top: 14px; padding: .4rem .65rem; border-radius: 999px; background: rgba(3,6,9,.78); color: #fff; font-size: .72rem; font-weight: 850; letter-spacing: .06em; text-transform: uppercase; pointer-events: none; }
-
+.project-featured-media.native-video { min-height: 0; align-self: start; }
+.project-featured-media.native-video video { display: block; width: 100%; height: auto; border: 0; }
+.video-sound-toggle {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: .6rem .8rem;
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 999px;
+  background: rgba(3,6,9,.8);
+  color: #fff;
+  font: inherit;
+  font-size: .75rem;
+  font-weight: 800;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+}
+.video-sound-toggle:hover { border-color: var(--line); color: var(--line); }
+.video-sound-toggle:focus-visible { outline: 2px solid var(--line); outline-offset: 3px; }
 .project-overview-copy {
   display: flex;
   flex-direction: column;
@@ -907,6 +959,11 @@ p {
 .project-overview-copy dl div { display: grid; gap: 4px; }
 .project-overview-copy dt { color: rgba(238,247,255,.48); font-size: .68rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
 .project-overview-copy dd { margin: 0; color: #eef7ff; font-size: .9rem; font-weight: 680; }
+.native-video-overview .project-overview-copy { align-self: start; padding: 20px 24px; }
+.native-video-overview .project-overview-copy h1 { margin: 12px 0 10px; font-size: clamp(2.5rem, 3.4vw, 3.55rem); }
+.native-video-overview .project-lead { margin: 0; line-height: 1.5; }
+.native-video-overview .project-overview-copy dl { gap: 9px 14px; margin: 14px 0 12px; padding-top: 13px; }
+.native-video-overview .project-repository-link { margin-top: 14px; padding: .65rem 1rem; }
 .project-story { display: grid; grid-template-columns: .7fr 1.3fr; gap: 40px; margin-top: 20px; padding: 30px; border: 1px solid rgba(255,255,255,.1); border-radius: 14px; background: rgba(255,255,255,.045); }
 .project-story h2 { margin: 0.45rem 0 0; }
 .project-story > p:last-child { color: rgba(238,247,255,.7); line-height: 1.8; }
@@ -921,6 +978,11 @@ p {
 @media (max-width: 820px) {
   .project-overview { grid-template-columns: 1fr; }
   .project-featured-media { min-height: 0; aspect-ratio: 16 / 9; }
+  .native-video-overview .project-overview-copy { padding: 26px; }
+  .native-video-overview .project-overview-copy h1 { margin: 18px 0 12px; font-size: clamp(2.25rem, 4vw, 4.4rem); }
+  .native-video-overview .project-lead { margin: 1em 0; line-height: 1.6; }
+  .native-video-overview .project-overview-copy dl { gap: 14px; margin: 22px 0 18px; padding-top: 20px; }
+  .native-video-overview .project-repository-link { margin-top: 24px; padding: .75rem 1rem; }
   .project-story { grid-template-columns: 1fr; gap: 16px; }
 }
 

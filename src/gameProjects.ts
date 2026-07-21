@@ -1,4 +1,5 @@
 import type { Locale } from "./content";
+import { featuredGameProject } from "./featuredGameProject";
 
 type LocalizedText = Record<Locale, string>;
 
@@ -20,15 +21,44 @@ export type GameProject = {
   image: string;
   video?: string;
   github?: string;
+  itch?: string;
   award?: string;
   sourceUrl: string;
 };
 
 export const gameProjects: GameProject[] = [
   {
+    id: "project-holmes",
+    slug: "proyecto-holmes",
+    featured: false,
+    title: featuredGameProject.title,
+    engine: featuredGameProject.engine,
+    language: "Blueprints",
+    year: 2026,
+    platform: "PC",
+    status: { en: "In development", es: "En desarrollo" },
+    summary: {
+      en: "An Unreal Engine game project currently in development.",
+      es: "Un proyecto de videojuego en Unreal Engine actualmente en desarrollo.",
+    },
+    description: {
+      en: "Proyecto Holmes is the game project currently taking the main spot in my GameDev portfolio. Its development focuses on building and refining gameplay in Unreal Engine.",
+      es: "Proyecto Holmes es el videojuego que ocupa actualmente el espacio principal de mi portfolio GameDev. Su desarrollo se centra en construir y perfeccionar el gameplay en Unreal Engine.",
+    },
+    caseStudyTitle: {
+      en: "Gameplay development in Unreal Engine.",
+      es: "Desarrollo de gameplay en Unreal Engine.",
+    },
+    role: { en: "Solo developer", es: "Solo developer" },
+    tags: ["Unreal Engine", "Blueprints", "Gameplay"],
+    image: featuredGameProject.poster,
+    video: featuredGameProject.video,
+    sourceUrl: "",
+  },
+  {
     id: "W3LaGTNAzZ901JWaAAD7",
     slug: "columna-vertebral-vr",
-    featured: false,
+    featured: true,
     title: "Columna Vertebral VR",
     engine: "Unity",
     language: "C#",
@@ -80,7 +110,7 @@ export const gameProjects: GameProject[] = [
   {
     id: "u5OyDzwJBZa9pB0gZ1nI",
     slug: "proyecto-van-damme",
-    featured: false,
+    featured: true,
     title: "Proyecto Van Damme",
     engine: "Unity",
     language: "C#",
@@ -99,7 +129,8 @@ export const gameProjects: GameProject[] = [
     role: { en: "Solo developer", es: "Solo developer" },
     tags: ["Unity", "C#", "Strategy", "GeoJSON", "Event Bus", "VContainer"],
     image: "https://img.youtube.com/vi/CblftVzAZXE/maxresdefault.jpg",
-    video: "https://www.youtube.com/watch?v=CblftVzAZXE",
+    video: `${import.meta.env.BASE_URL}videos/teaser-vandamme.mp4`,
+    itch: "https://samuelrodri.itch.io/van-damme",
     sourceUrl: "https://samuelrodri.github.io/SamuDev/project/u5OyDzwJBZa9pB0gZ1nI",
   },
 ];

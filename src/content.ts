@@ -2,16 +2,17 @@ import {
   Boxes,
   Braces,
   Code2,
-  Cpu,
   Database,
   Gamepad2,
   GitBranch,
   Headset,
-  MonitorPlay,
+  Puzzle,
   ServerCog,
   ShieldCheck,
   Workflow,
 } from "lucide-react";
+import { FaVrCardboard } from "react-icons/fa";
+import { SiGodotengine, SiUnity, SiUnrealengine } from "react-icons/si";
 
 export type Locale = "en" | "es";
 export type Mode = "dotnet" | "game";
@@ -56,7 +57,10 @@ export const content = {
     modePage: {
       overview: "Overview",
       skills: "Core stack",
-      projects: "Project slots",
+      projects: "Projects",
+      featuredProjects: "Featured projects",
+      viewAllProjects: "View more projects",
+      allProjects: "All projects",
       featuredProject: {
         label: "Featured project",
         body: "Gameplay from the project currently taking the main spot in my GameDev portfolio.",
@@ -237,7 +241,10 @@ export const content = {
     modePage: {
       overview: "Resumen",
       skills: "Stack principal",
-      projects: "Espacios de proyectos",
+      projects: "Proyectos",
+      featuredProjects: "Proyectos destacados",
+      viewAllProjects: "Ver más proyectos",
+      allProjects: "Todos los proyectos",
       featuredProject: {
         label: "Proyecto principal",
         body: "Gameplay del proyecto que ocupa actualmente el espacio principal de mi portfolio GameDev.",
@@ -409,13 +416,14 @@ export const modeDetails = {
     color: "violet",
     route: "/game",
     skills: [
-      { icon: Gamepad2, label: { en: "Unity", es: "Unity" } },
+      { icon: SiUnity, label: { en: "Unity", es: "Unity" } },
       { icon: Code2, label: { en: "C#", es: "C#" } },
-      { icon: Cpu, label: { en: "Unreal Engine", es: "Unreal Engine" } },
-      { icon: Headset, label: { en: "VR / XR", es: "VR / XR" } },
-      { icon: MonitorPlay, label: { en: "Interactive UX", es: "UX interactiva" } },
+      { icon: SiUnrealengine, label: { en: "Unreal Engine", es: "Unreal Engine" } },
+      { icon: FaVrCardboard, label: { en: "VR / XR", es: "VR / XR" } },
       { icon: Boxes, label: { en: "Gameplay systems", es: "Sistemas de gameplay" } },
+      { icon: Puzzle, label: { en: "Design patterns", es: "Patrones de diseño" } },
       { icon: Workflow, label: { en: "Prototyping", es: "Prototipado" } },
+      { icon: SiGodotengine, label: { en: "Godot", es: "Godot" } },
     ],
   },
 } as const;

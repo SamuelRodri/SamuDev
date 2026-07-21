@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowRight, Download, ExternalLink, GraduationCap, Languages, Mail, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, Download, ExternalLink, GraduationCap, Languages, Mail, Volume2, VolumeX, X } from "lucide-react";
 import { FaGithub, FaItchIo, FaLinkedin } from "react-icons/fa";
 import { useEffect, useMemo, useState } from "react";
 import { content, Locale, Mode, modeDetails, profileLinks } from "./content";
@@ -21,7 +21,7 @@ function getInitialPath() {
 }
 
 function normalizePath(path: string) {
-  if (path === "/dotnet" || path === "/game" || path.startsWith("/game/projects/")) {
+  if (path === "/dotnet" || path === "/game" || path === "/game/projects" || path.startsWith("/game/projects/")) {
     return path;
   }
 
@@ -64,7 +64,7 @@ function App() {
 
   const activeMode = useMemo<Mode | null>(() => {
     if (path === "/dotnet") return "dotnet";
-    if (path === "/game" || path.startsWith("/game/projects/")) return "game";
+    if (path === "/game" || path.startsWith("/game/projects")) return "game";
     return null;
   }, [path]);
 
@@ -99,7 +99,9 @@ function App() {
         showPortfolioNavigation={path === "/" || fromHub}
         labels={t.nav}
       />
-      <main>{path.startsWith("/game/projects/") ? (
+      <main key={path} className="page-transition">{path === "/game/projects" ? (
+        <AllGameProjectsPage locale={locale} navigate={navigate} />
+      ) : path.startsWith("/game/projects/") ? (
         <GameProjectPage locale={locale} slug={path.split("/").pop() || ""} navigate={navigate} />
       ) : activeMode ? (
         <ModePage locale={locale} mode={activeMode} navigate={navigate} />
@@ -290,7 +292,7 @@ function ModePage({ locale, mode, navigate }: { locale: Locale; mode: Mode; navi
       {mode === "dotnet" && skillsSection}
 
       <section className="content-band">
-        <h2>{t.modePage.projects}</h2>
+        <h2>{mode === "game" ? t.modePage.featuredProjects : t.modePage.projects}</h2>
         {mode === "game" && (
           <article className="featured-project-showcase">
             <div className="featured-project-copy">
@@ -314,8 +316,8 @@ function ModePage({ locale, mode, navigate }: { locale: Locale; mode: Mode; navi
             </video>
           </article>
         )}
-        <div className="project-grid">
-          {mode === "game" ? gameProjects.map((project) => (
+        <div className={`project-grid${mode === "game" ? " featured-project-grid" : ""}`}>
+          {mode === "game" ? gameProjects.filter((project) => project.featured).map((project) => (
             <article
               className="project-card game-project-card"
               key={project.id}
@@ -357,6 +359,12 @@ function ModePage({ locale, mode, navigate }: { locale: Locale; mode: Mode; navi
             </article>
           ))}
         </div>
+        {mode === "game" && (
+          <button className="view-all-projects" type="button" onClick={() => navigate("/game/projects")}>
+            {t.modePage.viewAllProjects}
+            <ArrowRight size={18} />
+          </button>
+        )}
       </section>
 
       {mode === "game" && skillsSection}
@@ -447,6 +455,51 @@ function ModePage({ locale, mode, navigate }: { locale: Locale; mode: Mode; navi
   );
 }
 
+function AllGameProjectsPage({ locale, navigate }: { locale: Locale; navigate: (path: string) => void }) {
+  const t = content[locale];
+
+  return (
+    <section className="mode-page violet all-projects-page">
+      <button className="back-action" onClick={() => navigate("/game")}>
+        <ArrowLeft size={17} />
+        {locale === "es" ? "Volver a GameDev" : "Back to GameDev"}
+      </button>
+      <section className="content-band">
+        <h2>{t.modePage.allProjects}</h2>
+        <div className="project-grid">
+          {gameProjects.map((project) => (
+            <article
+              className="project-card game-project-card"
+              key={project.id}
+              role="link"
+              tabIndex={0}
+              aria-label={`${locale === "es" ? "Ver proyecto" : "View project"}: ${project.title}`}
+              onClick={() => navigate(`/game/projects/${project.slug}`)}
+              onKeyDown={(event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                  event.preventDefault();
+                  navigate(`/game/projects/${project.slug}`);
+                }
+              }}
+            >
+              <div className="project-cover">
+                <img src={project.image} alt={project.title} />
+                <span className="project-status-badge">{project.status[locale]}</span>
+                <span className="project-link" aria-hidden="true"><ArrowRight size={22} /></span>
+              </div>
+              <div className="project-meta">{project.engine} · {project.language} · {project.year}</div>
+              <h3>{project.title}</h3>
+              <p>{project.summary[locale]}</p>
+              <small>{project.role[locale]}</small>
+              <div className="tag-row">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
+            </article>
+          ))}
+        </div>
+      </section>
+    </section>
+  );
+}
+
 function GameProjectPage({ locale, slug, navigate }: { locale: Locale; slug: string; navigate: (path: string) => void }) {
   const project = gameProjects.find((item) => item.slug === slug);
 
@@ -467,6 +520,7 @@ function GameProjectPage({ locale, slug, navigate }: { locale: Locale; slug: str
 
 function GameProjectDetail({ locale, project, navigate }: { locale: Locale; project: GameProject; navigate: (path: string) => void }) {
   const videoId = project.video?.includes("youtube.com") ? new URL(project.video).searchParams.get("v") : null;
+  const [isMuted, setIsMuted] = useState(true);
 
   return (
     <article className="project-detail-page game">
@@ -475,8 +529,8 @@ function GameProjectDetail({ locale, project, navigate }: { locale: Locale; proj
         {locale === "es" ? "Todos los proyectos" : "All projects"}
       </button>
 
-      <section className="project-overview">
-        <div className="project-featured-media">
+      <section className={`project-overview${project.video && !videoId ? " native-video-overview" : ""}`}>
+        <div className={`project-featured-media${project.video && !videoId ? " native-video" : ""}`}>
           {videoId ? (
             <iframe
               src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${videoId}&playsinline=1&rel=0`}
@@ -487,7 +541,7 @@ function GameProjectDetail({ locale, project, navigate }: { locale: Locale; proj
           ) : project.video ? (
             <video
               autoPlay
-              muted
+              muted={isMuted}
               loop
               playsInline
               preload="auto"
@@ -500,7 +554,24 @@ function GameProjectDetail({ locale, project, navigate }: { locale: Locale; proj
           ) : (
             <img src={project.image} alt={project.title} />
           )}
-          <span className="media-label">Gameplay</span>
+          {project.video && !videoId && (
+            <button
+              className="video-sound-toggle"
+              type="button"
+              onClick={() => setIsMuted((muted) => !muted)}
+              aria-label={isMuted
+                ? (locale === "es" ? "Activar sonido" : "Turn sound on")
+                : (locale === "es" ? "Silenciar vídeo" : "Mute video")}
+              title={isMuted
+                ? (locale === "es" ? "Activar sonido" : "Turn sound on")
+                : (locale === "es" ? "Silenciar vídeo" : "Mute video")}
+            >
+              {isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
+              <span>{isMuted
+                ? (locale === "es" ? "Activar sonido" : "Sound on")
+                : (locale === "es" ? "Silenciar" : "Mute")}</span>
+            </button>
+          )}
         </div>
 
         <div className="project-overview-copy">
@@ -528,6 +599,13 @@ function GameProjectDetail({ locale, project, navigate }: { locale: Locale; proj
             <a className="project-repository-link" href={project.github} target="_blank" rel="noreferrer">
               <FaGithub size={17} />
               {locale === "es" ? "Ver repositorio" : "View repository"}
+              <ExternalLink size={14} />
+            </a>
+          )}
+          {project.itch && (
+            <a className="project-repository-link" href={project.itch} target="_blank" rel="noreferrer">
+              <FaItchIo size={17} />
+              {locale === "es" ? "Jugar en itch.io" : "Play on itch.io"}
               <ExternalLink size={14} />
             </a>
           )}
