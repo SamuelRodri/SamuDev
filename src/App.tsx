@@ -3,6 +3,7 @@ import { FaGithub, FaItchIo, FaLinkedin } from "react-icons/fa";
 import { useEffect, useMemo, useState } from "react";
 import { content, Locale, Mode, modeDetails, profileLinks } from "./content";
 import { featuredGameProject } from "./featuredGameProject";
+import { gameJamProjects } from "./gameJamProjects";
 import { GameProject, gameProjects } from "./gameProjects";
 
 const basePath = "/SamuDev";
@@ -493,6 +494,35 @@ function AllGameProjectsPage({ locale, navigate }: { locale: Locale; navigate: (
               <small>{project.role[locale]}</small>
               <div className="tag-row">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
             </article>
+          ))}
+        </div>
+      </section>
+      <section className="content-band game-jams-section">
+        <h2>Game Jams</h2>
+        <div className="game-jams-grid">
+          {gameJamProjects.map((project) => (
+            <a
+              className="game-jam-card"
+              href={project.itch}
+              key={project.itch}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={`${locale === "es" ? "Jugar a" : "Play"} ${project.title} ${locale === "es" ? "en itch.io" : "on itch.io"}`}
+            >
+              <div className="project-cover">
+                <img src={project.image} alt="" />
+                <span className="jam-year">{project.year}</span>
+              </div>
+              <div className="game-jam-copy">
+                <div className="project-meta">{project.jam}</div>
+                <h3>{project.title}</h3>
+                <p>{project.summary[locale]}</p>
+                <div className="jam-card-footer">
+                  <span>{project.engine} · {project.genre[locale]}</span>
+                  <span className="jam-play-link">itch.io <ExternalLink size={15} /></span>
+                </div>
+              </div>
+            </a>
           ))}
         </div>
       </section>
