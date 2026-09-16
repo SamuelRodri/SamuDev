@@ -1,29 +1,29 @@
 {
-  "id": "u5OyDzwJBZa9pB0gZ1nI",
-  "slug": "proyecto-van-damme",
-  "featured": true,
   "title": "Proyecto Van Damme",
-  "engine": "Unity",
-  "language": "C#",
-  "year": 2025,
-  "platform": "PC",
-  "status": "in-development",
+  "status": "completed",
+  "published": true,
+  "featured": true,
+  "image": "https://img.youtube.com/vi/CblftVzAZXE/maxresdefault.jpg",
   "summary": {
-    "en": "A strategy and card-combat game where countries can be merged and divided to reshape the map.",
-    "es": "Videojuego de estrategia y combate con cartas en el que puedes fusionar y dividir países para alterar el mapa."
-  },
-  "description": {
-    "en": "Strategy drives every decision: players reshape geography by merging and dividing countries, while a dynamic card-combat system determines conquests and defeats. Territories are generated procedurally from GeoJSON data. The codebase uses the Command pattern for player actions, an Event Bus for communication between systems and VContainer for dependency injection.",
-    "es": "La estrategia guía cada decisión: el jugador puede modificar la geografía fusionando y dividiendo países, mientras un sistema dinámico de combate con cartas decide las conquistas y derrotas. Los territorios se generan proceduralmente desde datos GeoJSON. La arquitectura utiliza el patrón Command para las acciones, un Event Bus para comunicar sistemas y VContainer para la inyección de dependencias."
+    "es": "Videojuego de estrategia y combate con cartas en el que puedes fusionar y dividir países para alterar el mapa.",
+    "en": "A strategy and card-combat game where countries can be merged and divided to reshape the map."
   },
   "caseStudyTitle": {
-    "en": "Reshaping geography through systems-driven strategy.",
-    "es": "Transformar la geografía mediante estrategia y sistemas."
+    "es": "Transformar la geografía mediante estrategia y sistemas.",
+    "en": "Reshaping geography through systems-driven strategy."
+  },
+  "description": {
+    "es": "La estrategia guía cada decisión: el jugador puede modificar la geografía fusionando y dividiendo países, mientras un sistema dinámico de combate con cartas decide las conquistas y derrotas. Los territorios se generan proceduralmente desde datos GeoJSON. La arquitectura utiliza el patrón Command para las acciones, un Event Bus para comunicar sistemas y VContainer para la inyección de dependencias.",
+    "en": "Strategy drives every decision: players reshape geography by merging and dividing countries, while a dynamic card-combat system determines conquests and defeats. Territories are generated procedurally from GeoJSON data. The codebase uses the Command pattern for player actions, an Event Bus for communication between systems and VContainer for dependency injection."
   },
   "role": {
-    "en": "Solo developer",
-    "es": "Solo developer"
+    "es": "Solo developer",
+    "en": "Solo developer"
   },
+  "year": 2025,
+  "engine": "Unity",
+  "platform": "PC",
+  "language": "C#",
   "tags": [
     "Unity",
     "C#",
@@ -32,8 +32,8 @@
     "Event Bus",
     "VContainer"
   ],
-  "image": "https://img.youtube.com/vi/CblftVzAZXE/maxresdefault.jpg",
-  "video": "/videos/teaser-vandamme.mp4",
   "itch": "https://samuelrodri.itch.io/van-damme",
-  "published": true
+  "video": "/videos/teaser-vandamme.mp4",
+  "slug": "proyecto-van-damme",
+  "id": "u5OyDzwJBZa9pB0gZ1nI"
 }
