@@ -1,3 +1,4 @@
+import { EngineIcon } from "../components/EngineIcon";
 import { projectStatuses } from "../gameProjects";
 import { useState } from "react";
 import { ArrowLeft, ExternalLink, Volume2, VolumeX } from "lucide-react";
@@ -106,12 +107,12 @@ function GameJamProjectDetail({ locale, project, navigate }: PageProps & { proje
           <h1>{project.title}</h1>
           <p className="project-lead">{project.summary[locale]}</p>
           <dl>
-            {project.engine && <div><dt>{locale === "es" ? "Motor" : "Engine"}</dt><dd>{project.engine}</dd></div>}
+            {project.engine && <div><dt>{locale === "es" ? "Motor" : "Engine"}</dt><dd><EngineIcon engine={project.engine} /></dd></div>}
             <div><dt>{locale === "es" ? "Género" : "Genre"}</dt><dd>{project.genre[locale]}</dd></div>
             <div><dt>Game Jam</dt><dd>{project.jam}</dd></div>
             <div><dt>{locale === "es" ? "Rol" : "Role"}</dt><dd>{project.role[locale]}</dd></div>
           </dl>
-          <div className="tag-row">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
+          <div className="tag-row">{project.tags.map((tag) => <span key={tag}>{tag === project.engine ? <EngineIcon engine={tag} /> : tag}</span>)}</div>
           <ExternalProjectLink href={project.itch} locale={locale} kind="itch" />
         </div>
       </section>
@@ -179,18 +180,18 @@ function GameProjectDetail({ locale, project, navigate }: PageProps & { project:
         </div>
         <div className="project-overview-copy">
           <div className="project-title-row">
-            <p className="eyebrow">{[project.engine, project.platform, project.year].filter(Boolean).join(" · ")}</p>
+            <p className="eyebrow">{[project.platform, project.year].filter(Boolean).join(" · ")}</p>
             <span className="project-status">{projectStatuses[project.status][locale]}</span>
           </div>
           <h1>{project.title}</h1>
           <p className="project-lead">{project.summary[locale]}</p>
           <dl>
-            {project.engine && <div><dt>{locale === "es" ? "Motor" : "Engine"}</dt><dd>{project.engine}</dd></div>}
+            {project.engine && <div><dt>{locale === "es" ? "Motor" : "Engine"}</dt><dd><EngineIcon engine={project.engine} /></dd></div>}
             {project.language && <div><dt>{locale === "es" ? "Lenguaje" : "Language"}</dt><dd>{project.language}</dd></div>}
             <div><dt>{locale === "es" ? "Plataforma" : "Platform"}</dt><dd>{project.platform}</dd></div>
             <div><dt>{locale === "es" ? "Rol" : "Role"}</dt><dd>{project.role[locale]}</dd></div>
           </dl>
-          <div className="tag-row">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
+          <div className="tag-row">{project.tags.map((tag) => <span key={tag}>{tag === project.engine ? <EngineIcon engine={tag} /> : tag}</span>)}</div>
           {project.award && <div className="award-card"><span>{locale === "es" ? "Reconocimiento" : "Award"}</span><strong>{project.award}</strong></div>}
           {project.github && <ExternalProjectLink href={project.github} locale={locale} kind="github" />}
           {project.itch && <ExternalProjectLink href={project.itch} locale={locale} kind="itch" />}

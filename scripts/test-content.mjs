@@ -34,6 +34,14 @@ const statuses = JSON.parse(readFileSync(new URL('../src/projectStatuses.json', 
 for (const status of Object.keys(statuses)) assert.equal(prepareContent([{ ...game, status }], [], {}).games[0].status, status);
 for (const status of ['custom', '', null, { es: 'Prototipo', en: 'Prototype' }]) assert.throws(() => prepareContent([{ ...game, status }], [], {}), /status/);
 assert.deepEqual(config.content[0].fields.find((field) => field.name === 'status').options.values, Object.entries(statuses).map(([name, label]) => ({ name, label: label.es })));
+const engines = JSON.parse(readFileSync(new URL('../src/gameEngines.json', import.meta.url), 'utf8'));
+for (const engine of engines) assert.equal(prepareContent([{ ...game, engine }], [], {}).games[0].engine, engine);
+assert.throws(() => prepareContent([{ ...game, engine: 'Unknown engine' }], [], {}), /engine/);
+for (const collection of config.content.filter((entry) => entry.type === 'collection')) {
+  const engine = collection.fields.find((field) => field.name === 'engine');
+  assert.equal(engine.type, 'select');
+  assert.deepEqual(engine.options.values, engines);
+}
 
 assert.deepEqual(prepareContent([other, game], [], {gameOrder: [game.slug, other.slug]}).games.map(p=>p.slug), [game.slug,other.slug]);
 assert.deepEqual(prepareContent([other, game], [], {gameOrder: [game.slug]}).games.map(p=>p.slug), [game.slug,other.slug]);

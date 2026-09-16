@@ -2,6 +2,6 @@
   "prototype": { "es": "Prototipo", "en": "Prototype" },
   "in-development": { "es": "En desarrollo", "en": "In development" },
   "released": { "es": "Publicado", "en": "Released" },
-  "completed": { "es": "Finalizado sin publicar", "en": "Completed, unreleased" },
+  "completed": { "es": "Finalizado", "en": "Completed" },
   "on-hold": { "es": "En pausa", "en": "On hold" }
 }

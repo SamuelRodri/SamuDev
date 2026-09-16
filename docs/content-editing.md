@@ -11,7 +11,7 @@ No se necesitan contraseñas ni tokens dentro del portfolio. La sesión y el acc
 
 ## Estado del proyecto
 
-El estado del desarrollo se elige en un selector: Prototipo, En desarrollo, Publicado, Finalizado sin publicar o En pausa. La web traduce el valor a cada idioma. Este estado es independiente de **Mostrar en mi portfolio**: puedes mostrar un prototipo o mantener oculta la ficha de un juego publicado.
+El estado del desarrollo se elige en un selector: Prototipo, En desarrollo, Publicado, Finalizado o En pausa. La web traduce el valor a cada idioma. Este estado es independiente de **Mostrar en mi portfolio**: puedes mostrar un prototipo o mantener oculta la ficha de un juego publicado.
 
 ## Formulario
 
@@ -41,3 +41,7 @@ La integración cubre los proyectos GameDev y las game jams existentes. Los bloq
 Comprobación final tras conectar el panel: crear una ficha con Mostrar en mi portfolio desactivado, guardar, completar ambas traducciones, publicar y verificar su aparición. La conexión real del panel requiere iniciar sesión con la cuenta propietaria.
 
 Documentación: https://pagescms.org/docs/quick-start/
+
+## Motor del juego
+
+Selecciona Unity, Unreal Engine o Godot en el desplegable de la ficha (también en game jams). Si un proyecto no tiene motor confirmado, puedes dejarlo sin seleccionar en Proyectos GameDev. La ficha muestra el icono del motor, con su nombre accesible y visible al pasar el cursor.

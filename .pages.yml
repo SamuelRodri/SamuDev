@@ -74,7 +74,7 @@
               },
               {
                 "name": "completed",
-                "label": "Finalizado sin publicar"
+                "label": "Finalizado"
               },
               {
                 "name": "on-hold",
@@ -192,8 +192,15 @@
         {
           "name": "engine",
           "label": "Motor del juego",
-          "type": "string",
-          "description": "Por ejemplo: Unity, Unreal Engine o Godot."
+          "type": "select",
+          "description": "Selecciona el motor utilizado. Su icono se muestra en la ficha.",
+          "options": {
+            "values": [
+              "Unity",
+              "Unreal Engine",
+              "Godot"
+            ]
+          }
         },
         {
           "name": "platform",
@@ -404,8 +411,16 @@
         {
           "name": "engine",
           "label": "Motor del juego",
-          "type": "string",
-          "description": "Por ejemplo: Unity, Unreal Engine o Godot."
+          "type": "select",
+          "description": "Selecciona el motor utilizado. Su icono se muestra en la ficha.",
+          "options": {
+            "values": [
+              "Unity",
+              "Unreal Engine",
+              "Godot"
+            ]
+          },
+          "required": true
         },
         {
           "name": "tags",
