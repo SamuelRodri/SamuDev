@@ -17,7 +17,6 @@ export function prepareContent(games, jams, settings) {
       if (!text(p.slug) || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(p.slug) || p.slug === "jams" || slugs.has(p.slug)) fail("slug (must be unique)");
       slugs.add(p.slug);
       if (typeof p.published !== "boolean") fail("published");
-      if (!Number.isFinite(p.order)) fail("order");
       if (!text(p.title)) fail("title");
       if (kind === "games" && p.status != null && !Object.hasOwn(projectStatuses, p.status)) fail("status");
       // Drafts may be incomplete and never enter the generated site data.
@@ -44,8 +43,17 @@ export function prepareContent(games, jams, settings) {
     }
   }
   if (settings.featuredGame && !games.some((p) => p.slug === settings.featuredGame)) throw new Error("Selected featured game does not exist; clear or update it in settings first.");
-  const published = (entries) => entries.filter((p) => p.published).sort((a, b) => a.order - b.order || a.slug.localeCompare(b.slug));
-  return { games: published(games).map((project) => ({ ...project, id: project.id || project.slug })), jams: published(jams), featuredGame: settings.featuredGame || "" };
+  const published = (entries, key) => {
+    const order = settings[key] ?? [];
+    if (!Array.isArray(order) || !order.every(text) || new Set(order).size !== order.length) {
+      throw new Error(`${key}: select each project at most once`);
+    }
+    // Removed entries are harmless; new projects appear last until explicitly ordered.
+    const rank = new Map(order.map((slug, index) => [slug, index]));
+    return entries.filter((p) => p.published).sort((a, b) =>
+      (rank.get(a.slug) ?? Infinity) - (rank.get(b.slug) ?? Infinity) || a.slug.localeCompare(b.slug));
+  };
+  return { games: published(games, "gameOrder").map((project) => ({ ...project, id: project.id || project.slug })), jams: published(jams, "jamOrder"), featuredGame: settings.featuredGame || "" };
 }
 
 export function generateContent() {

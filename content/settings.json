@@ -1,3 +1,15 @@
 {
-  "featuredGame": "synastra"
+  "featuredGame": "synastra",
+  "gameOrder": [
+    "synastra",
+    "proyecto-holmes",
+    "columna-vertebral-vr",
+    "factory-metroidvania",
+    "proyecto-van-damme"
+  ],
+  "jamOrder": [
+    "lets-make-spaghetti",
+    "feline-fashion-frenzy",
+    "monster-express"
+  ]
 }

@@ -31,7 +31,6 @@
           "year"
         ],
         "sort": [
-          "order",
           "title",
           "year"
         ],
@@ -41,7 +40,7 @@
           "summary.en"
         ],
         "default": {
-          "sort": "order",
+          "sort": "title",
           "order": "asc"
         }
       },
@@ -97,7 +96,7 @@
           "label": "Mostrar entre los destacados",
           "type": "boolean",
           "default": false,
-          "description": "Aparecerá en la selección de GameDev. El proyecto principal se elige en Portada de GameDev."
+          "description": "Aparecerá en la selección de GameDev. El proyecto principal se elige en Organizar portfolio."
         },
         {
           "name": "image",
@@ -240,14 +239,6 @@
           "description": "Indica el nombre del premio recibido."
         },
         {
-          "name": "order",
-          "label": "Posición en la lista",
-          "type": "number",
-          "default": 10,
-          "required": true,
-          "description": "Los números menores aparecen primero: 10, 20, 30..."
-        },
-        {
           "name": "slug",
           "label": "Dirección de la ficha",
           "type": "string",
@@ -285,7 +276,6 @@
           "year"
         ],
         "sort": [
-          "order",
           "title",
           "year"
         ],
@@ -295,7 +285,7 @@
           "summary.en"
         ],
         "default": {
-          "sort": "order",
+          "sort": "title",
           "order": "asc"
         }
       },
@@ -431,14 +421,6 @@
           "description": "Pega la dirección completa, empezando por https://."
         },
         {
-          "name": "order",
-          "label": "Posición en la lista",
-          "type": "number",
-          "default": 10,
-          "required": true,
-          "description": "Los números menores aparecen primero: 10, 20, 30..."
-        },
-        {
           "name": "slug",
           "label": "Dirección de la ficha",
           "type": "string",
@@ -453,7 +435,7 @@
     },
     {
       "name": "settings",
-      "label": "Portada de GameDev",
+      "label": "Organizar portfolio",
       "type": "file",
       "path": "content/settings.json",
       "format": "json",
@@ -469,6 +451,32 @@
             "search": "title"
           },
           "description": "Elige la ficha que ocupará el espacio principal. Sus textos e imagen se actualizan al editar el proyecto. Debe tener activado Mostrar en mi portfolio."
+        },
+        {
+          "name": "gameOrder",
+          "label": "Orden de los proyectos",
+          "type": "reference",
+          "list": true,
+          "description": "Selecciona los proyectos en el orden de arriba abajo. Los que no incluyas aparecerán al final. Cada proyecto debe aparecer una sola vez.",
+          "options": {
+            "collection": "games",
+            "value": "{fields.slug}",
+            "label": "{fields.title}",
+            "search": "title"
+          }
+        },
+        {
+          "name": "jamOrder",
+          "label": "Orden de las game jams",
+          "type": "reference",
+          "list": true,
+          "description": "Selecciona los proyectos en el orden de arriba abajo. Los que no incluyas aparecerán al final. Cada proyecto debe aparecer una sola vez.",
+          "options": {
+            "collection": "jams",
+            "value": "{fields.slug}",
+            "label": "{fields.title}",
+            "search": "title"
+          }
         }
       ]
     }

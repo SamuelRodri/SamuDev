@@ -15,15 +15,15 @@ El estado del desarrollo se elige en un selector: Prototipo, En desarrollo, Publ
 
 ## Formulario
 
-Empieza por nombre, estado y visibilidad; sigue con portada, capturas y textos. Los datos del juego vienen después; enlaces opcionales, posición y dirección quedan al final. No necesitas rellenar un identificador interno ni un nombre de archivo.
+Empieza por nombre, estado y visibilidad; sigue con portada, capturas y textos. Los datos del juego vienen después; enlaces opcionales y dirección quedan al final. No necesitas rellenar un identificador interno ni un nombre de archivo.
 
 ## Uso diario
 
 - **Mis proyectos GameDev** y **Mis game jams**: crear o editar una ficha. Cada ficha tiene textos en español e inglés. Los textos largos son texto plano.
 - **Mostrar en mi portfolio**: desactivado permite guardar un borrador incompleto. Activarlo requiere completar los campos de ambas lenguas. Desactivarlo retira la ficha de la web tras el despliegue.
-- **Posición en la lista**: los números menores aparecen primero.
+- **Organizar portfolio**: usa las listas Orden de los proyectos y Orden de las game jams para definir la secuencia de arriba abajo, sin editar cada ficha. Los proyectos nuevos que no estén en la lista aparecen al final por su dirección; los borradores permanecen ocultos. El listado del editor se ordena por nombre, independientemente del orden de la web.
 - **Mostrar entre los destacados**: añade la ficha a los destacados de GameDev.
-- **Portada de GameDev**: selecciona el proyecto principal. Título, resumen, imagen y enlace se toman de su ficha. Si está en borrador, se oculta la portada principal. Para eliminarlo, limpia o cambia primero esta selección.
+- **Organizar portfolio**: selecciona el proyecto principal. Título, resumen, imagen y enlace se toman de su ficha. Si está en borrador, se oculta la portada principal. Para eliminarlo, limpia o cambia primero esta selección.
 - **Imagen de portada** y **Galería de capturas**: subir imágenes o usar URLs HTTPS existentes. Las imágenes subidas se guardan en `public/images/projects`. La web adapta las rutas al prefijo de alojamiento.
 - **Vídeo**: URL HTTPS de un MP4, enlace `https://www.youtube.com/watch?v=...` o ruta de un MP4 existente bajo `/videos/`. Los vídeos nuevos se alojan externamente.
 - **Dirección de la ficha**: usa un valor único y consérvalo tras publicar. El identificador interno está oculto; los proyectos nuevos lo obtienen automáticamente de esta dirección.
