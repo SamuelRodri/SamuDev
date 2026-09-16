@@ -1,0 +1,38 @@
+{
+  "id": "synastra",
+  "slug": "synastra",
+  "featured": false,
+  "title": "Synastra",
+  "year": 2026,
+  "platform": "HTML5",
+  "status": {
+    "en": "Prototype",
+    "es": "Prototipo"
+  },
+  "summary": {
+    "en": "A fantasy roguelike that turns matching pairs into a game of memory, luck and strategy.",
+    "es": "Un roguelike de fantasía que transforma las parejas de cartas en un juego de memoria, suerte y estrategia."
+  },
+  "description": {
+    "en": "Created by LuminariaCreations for IndieGG Jam - The Third. Match cards and build scoring synergies through their rarity, affinity and family. Choose upgrades between rounds, then adapt your strategy to bosses that introduce special rules. Play the prototype directly in your browser on itch.io.",
+    "es": "Creado por LuminariaCreations para IndieGG Jam - The Third. Empareja cartas y crea sinergias de puntuación con su rareza, afinidad y familia. Elige potenciadores entre rondas y adapta tu estrategia a jefes que introducen reglas especiales. Puedes jugar al prototipo directamente en el navegador desde itch.io."
+  },
+  "caseStudyTitle": {
+    "en": "Memory and strategy in every pair.",
+    "es": "Memoria y estrategia en cada pareja."
+  },
+  "role": {
+    "en": "Team project · LuminariaCreations",
+    "es": "Proyecto en equipo · LuminariaCreations"
+  },
+  "tags": [
+    "Roguelike",
+    "Cards",
+    "HTML5",
+    "Game Jam"
+  ],
+  "image": "https://img.itch.zone/aW1nLzI5NzIzMjU2LnBuZw==/original/lU%2FeKc.png",
+  "itch": "https://luminariacreations.itch.io/synastra",
+  "published": true,
+  "order": 10
+}

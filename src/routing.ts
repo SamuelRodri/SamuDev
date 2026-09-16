@@ -10,7 +10,7 @@ const ROUTES = {
 export { ROUTES };
 
 export function normalizePath(path: string) {
-  const cleanPath = path.split(/[?#]/, 1)[0] || ROUTES.home;
+  const cleanPath = path.split(/[?#]/, 1)[0].replace(/\/+$/, "") || ROUTES.home;
 
   if (
     cleanPath === ROUTES.dotnet
@@ -24,18 +24,32 @@ export function normalizePath(path: string) {
   return ROUTES.home;
 }
 
-export function getInitialPath() {
-  const params = new URLSearchParams(window.location.search);
-  const redirectedPath = params.get("path");
+export function parseRoute(value: string) {
+  const url = new URL(value, "https://portfolio.local");
+  const match = url.pathname.match(/^\/(es|en)(\/|$)/);
+  const locale: Locale = match?.[1] === "es" ? "es" : "en";
+  const path = normalizePath(match ? url.pathname.slice(3) : url.pathname);
+  return { locale, path, search: url.search, hash: url.hash };
+}
 
-  if (redirectedPath) {
-    const path = normalizePath(redirectedPath);
-    window.history.replaceState({ fromHub: false }, "", `${BASE_PATH}${path}`);
-    return path;
-  }
+export const localizedPath = (path: string, locale: Locale) =>
+  `${BASE_PATH}/${locale}${path === ROUTES.home ? "" : path}`;
 
-  return normalizePath(window.location.pathname.replace(BASE_PATH, "") || ROUTES.home);
+export function routeFromLocation() {
+  const { pathname, search, hash } = window.location;
+  const relativePath = BASE_PATH && (pathname === BASE_PATH || pathname.startsWith(`${BASE_PATH}/`))
+    ? pathname.slice(BASE_PATH.length)
+    : pathname;
+  const redirectedPath = new URLSearchParams(search).get("path");
+  return parseRoute(redirectedPath || `${relativePath || "/"}${search}${hash}`);
+}
+
+export function getInitialRoute() {
+  const route = routeFromLocation();
+  window.history.replaceState(window.history.state, "", `${localizedPath(route.path, route.locale)}${route.search}${route.hash}`);
+  return route;
 }
 
 export const gameProjectPath = (slug: string) => `${ROUTES.gameProjects}/${slug}`;
 export const gameJamProjectPath = (slug: string) => `${ROUTES.gameProjects}/jams/${slug}`;
+import type { Locale } from "./content";

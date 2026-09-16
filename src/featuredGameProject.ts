@@ -1,7 +1,4 @@
-export const featuredGameProject = {
-  title: "Synastra",
-  slug: "synastra",
-  platform: "HTML5",
-  itch: "https://luminariacreations.itch.io/synastra",
-  poster: "https://img.itch.zone/aW1nLzI5NzIzMjU2LnBuZw==/original/lU%2FeKc.png",
-} as const;
+import data from './generated/projects.json';
+import { gameProjects } from './gameProjects';
+
+export const featuredGameProject = gameProjects.find((project) => project.slug === data.featuredGame);

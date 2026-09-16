@@ -83,6 +83,14 @@ function ProjectStory({ locale, title, description, isJam = false }: { locale: L
   );
 }
 
+function ProjectGallery({ images, title, locale }: { images?: string[]; title: string; locale: Locale }) {
+  if (!images?.length) return null;
+  return <section className="content-band">
+    <h2>{locale === "es" ? "Capturas" : "Screenshots"}</h2>
+    <div className="project-gallery">{images.map((src, index) => <img key={`${src}-${index}`} src={src} alt={`${title} — ${index + 1}`} loading="lazy" />)}</div>
+  </section>;
+}
+
 function GameJamProjectDetail({ locale, project, navigate }: PageProps & { project: GameJamProject }) {
   return (
     <article className="project-detail-page game">
@@ -112,6 +120,7 @@ function GameJamProjectDetail({ locale, project, navigate }: PageProps & { proje
         description={project.description[locale]}
         isJam
       />
+      <ProjectGallery images={project.gallery} title={project.title} locale={locale} />
     </article>
   );
 }
@@ -187,6 +196,7 @@ function GameProjectDetail({ locale, project, navigate }: PageProps & { project:
         </div>
       </section>
       <ProjectStory locale={locale} title={project.caseStudyTitle[locale]} description={project.description[locale]} />
+      <ProjectGallery images={project.gallery} title={project.title} locale={locale} />
     </article>
   );
 }

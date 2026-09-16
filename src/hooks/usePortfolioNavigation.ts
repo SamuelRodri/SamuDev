@@ -1,23 +1,27 @@
 import { useEffect, useState } from "react";
-import { BASE_PATH, getInitialPath, normalizePath, ROUTES } from "../routing";
+import { getInitialRoute, localizedPath, normalizePath, routeFromLocation, ROUTES } from "../routing";
+import type { Locale } from "../content";
 import type { Navigate } from "../types";
 
-const pathFromLocation = () => normalizePath(window.location.pathname.replace(BASE_PATH, "") || ROUTES.home);
-
 export function usePortfolioNavigation() {
-  const [path, setPath] = useState(getInitialPath);
+  const [route, setRoute] = useState(getInitialRoute);
+  const { path, locale } = route;
   const [fromHub, setFromHub] = useState(
-    () => pathFromLocation() === ROUTES.home || window.history.state?.fromHub === true,
+    () => path === ROUTES.home || window.history.state?.fromHub === true,
   );
+
+  useEffect(() => {
+    document.documentElement.lang = locale;
+  }, [locale]);
 
   useEffect(() => {
     const previousScrollRestoration = window.history.scrollRestoration;
     window.history.scrollRestoration = "manual";
 
     const onPopState = () => {
-      const nextPath = pathFromLocation();
-      setPath(nextPath);
-      setFromHub(nextPath === ROUTES.home || window.history.state?.fromHub === true);
+      const nextRoute = getInitialRoute();
+      setRoute(nextRoute);
+      setFromHub(nextRoute.path === ROUTES.home || window.history.state?.fromHub === true);
       window.scrollTo(0, 0);
     };
 
@@ -31,12 +35,17 @@ export function usePortfolioNavigation() {
   const navigate: Navigate = (nextPath) => {
     const normalized = normalizePath(nextPath);
     const nextFromHub = path === ROUTES.home || fromHub;
-    window.history.pushState({ fromHub: nextFromHub }, "", `${BASE_PATH}${normalized}`);
-    setPath(normalized);
+    window.history.pushState({ fromHub: nextFromHub }, "", localizedPath(normalized, locale));
+    setRoute(routeFromLocation());
     setFromHub(nextFromHub);
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   };
 
-  return { path, fromHub, navigate };
-}
+  const setLocale = (nextLocale: Locale) => {
+    if (nextLocale === locale) return;
+    window.history.pushState({ fromHub }, "", `${localizedPath(path, nextLocale)}${window.location.search}${window.location.hash}`);
+    setRoute(routeFromLocation());
+  };
 
+  return { path, locale, setLocale, fromHub, navigate };
+}

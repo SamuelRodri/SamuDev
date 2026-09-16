@@ -63,7 +63,6 @@ export const content = {
       allProjects: "All projects",
       featuredProject: {
         label: "Featured project",
-        body: "A fantasy roguelike blending memory, luck and strategy. Match cards, build synergies and overcome each boss's special rules.",
       },
       experience: "Experience",
       education: "Education",
@@ -247,7 +246,6 @@ export const content = {
       allProjects: "Todos los proyectos",
       featuredProject: {
         label: "Proyecto principal",
-        body: "Un roguelike de fantasía que combina memoria, suerte y estrategia. Empareja cartas, crea sinergias y supera las reglas de cada jefe.",
       },
       experience: "Experiencia",
       education: "Formación",

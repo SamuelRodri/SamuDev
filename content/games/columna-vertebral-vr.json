@@ -1,0 +1,40 @@
+{
+  "id": "W3LaGTNAzZ901JWaAAD7",
+  "slug": "columna-vertebral-vr",
+  "featured": true,
+  "title": "Columna Vertebral VR",
+  "engine": "Unity",
+  "language": "C#",
+  "year": 2023,
+  "platform": "Meta Quest 2",
+  "status": {
+    "en": "Completed",
+    "es": "Terminado"
+  },
+  "summary": {
+    "en": "A virtual reality application for physiotherapy students to study the human spine.",
+    "es": "Aplicación de realidad virtual para que estudiantes de Fisioterapia estudien la columna vertebral."
+  },
+  "description": {
+    "en": "A virtual reality application created for physiotherapy students to explore and study the human spine in an immersive environment. It was developed as a Computer Engineering final project at the University of Las Palmas de Gran Canaria, in collaboration with the School of Physiotherapy.",
+    "es": "Aplicación de realidad virtual creada para que estudiantes del grado de Fisioterapia puedan explorar y estudiar la columna vertebral en un entorno inmersivo. Fue desarrollada como TFG de Ingeniería Informática en la Universidad de Las Palmas de Gran Canaria, en colaboración con la Escuela de Fisioterapia."
+  },
+  "caseStudyTitle": {
+    "en": "Immersive learning applied to anatomy.",
+    "es": "Aprendizaje inmersivo aplicado a la anatomía."
+  },
+  "role": {
+    "en": "Solo developer · Computer Engineering final project",
+    "es": "Solo developer · TFG de Ingeniería Informática"
+  },
+  "tags": [
+    "VR",
+    "Unity",
+    "C#"
+  ],
+  "image": "https://res.cloudinary.com/djcd2rpvx/image/upload/v1772475471/projects/W3LaGTNAzZ901JWaAAD7/images/vertebral-column-vr_alrcnl.jpg",
+  "video": "https://www.youtube.com/watch?v=BTNumYcCQ3U&t=7s",
+  "award": "Premio Accésit Cátedra Telefónica a la Innovación Educativa",
+  "published": true,
+  "order": 30
+}

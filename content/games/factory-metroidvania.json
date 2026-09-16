@@ -1,0 +1,41 @@
+{
+  "id": "dTNNhEe8uRbJWdIllmrp",
+  "slug": "factory-metroidvania",
+  "featured": false,
+  "title": "Factory Metroidvania",
+  "engine": "Unreal Engine",
+  "language": "Blueprints",
+  "year": 2025,
+  "platform": "PC",
+  "status": {
+    "en": "Prototype",
+    "es": "Prototipo"
+  },
+  "summary": {
+    "en": "Escape a burning factory by finding new abilities and opening the path to previously unreachable areas.",
+    "es": "Escapa de una fábrica en llamas adquiriendo habilidades que permiten acceder a nuevas zonas."
+  },
+  "description": {
+    "en": "A small metroidvania prototype developed in Unreal Engine as part of the Master's Degree in Video Game Design and Development. The player controls a robot trapped inside a burning factory and must find the emergency exit key. Power-ups unlock new areas, while enemy turrets can be destroyed with ranged attacks or avoided.",
+    "es": "Pequeño prototipo de metroidvania desarrollado en Unreal Engine como trabajo del Máster en Diseño y Desarrollo de Videojuegos. El jugador controla un robot atrapado en una fábrica en llamas y debe encontrar la llave de la salida de emergencia. Los power-ups permiten acceder a nuevas zonas, mientras que las torretas enemigas pueden destruirse con disparos o evitarse."
+  },
+  "caseStudyTitle": {
+    "en": "Abilities turn the factory into an interconnected challenge.",
+    "es": "Habilidades que convierten la fábrica en un desafío interconectado."
+  },
+  "role": {
+    "en": "Solo developer · Master's project",
+    "es": "Solo developer · Proyecto de máster"
+  },
+  "tags": [
+    "Unreal Engine",
+    "Blueprints",
+    "Metroidvania",
+    "Gameplay"
+  ],
+  "image": "https://res.cloudinary.com/djcd2rpvx/image/upload/v1780768138/projects/dTNNhEe8uRbJWdIllmrp/images/metroidvania-unreal_rqhvd1.png",
+  "video": "https://www.youtube.com/watch?v=FS5Cg6a4TqY",
+  "github": "https://github.com/SamuelRodri/Plataformas-Unreal",
+  "published": true,
+  "order": 40
+}

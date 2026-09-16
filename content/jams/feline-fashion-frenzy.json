@@ -1,0 +1,33 @@
+{
+  "slug": "feline-fashion-frenzy",
+  "title": "Feline Fashion Frenzy",
+  "jam": "Gran Canaria Game Island I",
+  "year": 2023,
+  "engine": "Unity",
+  "genre": {
+    "en": "Action / Stealth",
+    "es": "Acción / Sigilo"
+  },
+  "summary": {
+    "en": "Change disguises and outsmart the mouse police to recover Frenzy's stolen ball of wool.",
+    "es": "Cambia de disfraz y burla a la policía ratón para recuperar el ovillo robado de Frenzy."
+  },
+  "description": {
+    "en": "A 2D action and stealth game made as a team for Gran Canaria Game Island I. Its central mechanic combines disguises, evasion and quick decisions as Frenzy tries to recover a stolen ball of wool.",
+    "es": "Un juego 2D de acción y sigilo creado en equipo para Gran Canaria Game Island I. Su mecánica central combina disfraces, evasión y decisiones rápidas mientras Frenzy intenta recuperar su ovillo robado."
+  },
+  "role": {
+    "en": "Team member",
+    "es": "Miembro del equipo"
+  },
+  "tags": [
+    "Unity",
+    "2D",
+    "Stealth",
+    "Team project"
+  ],
+  "image": "https://img.itch.zone/aW1nLzExODgwNTQxLnBuZw==/508x254%23mb/xEmytP.png",
+  "itch": "https://thebestjamteamever.itch.io/feline-fashion-frenzy",
+  "published": true,
+  "order": 20
+}

@@ -10,12 +10,11 @@ import { ROUTES, gameProjectPath } from "./routing";
 import type { Navigate } from "./types";
 import { usePortfolioNavigation } from "./hooks/usePortfolioNavigation";
 
-const featuredProjects = gameProjects.filter((project) => project.featured);
+const featuredProjects = gameProjects.filter((project) => project.featured && project.slug !== featuredGameProject?.slug);
 
 function App() {
-  const [locale, setLocale] = useState<Locale>("en");
   const [showConstructionNotice, setShowConstructionNotice] = useState(true);
-  const { path, fromHub, navigate } = usePortfolioNavigation();
+  const { path, locale, setLocale, fromHub, navigate } = usePortfolioNavigation();
   const t = content[locale];
   const activeMode: Mode | null = path === ROUTES.dotnet
     ? "dotnet"
@@ -101,7 +100,7 @@ function Header({ locale, path, setLocale, navigate, showPortfolioNavigation, la
           {labels.game}
         </button>
       </nav>}
-      <button className="locale-toggle" onClick={() => setLocale(locale === "en" ? "es" : "en")}>
+      <button className="locale-toggle" aria-label={locale === "en" ? "Cambiar a espa\u00f1ol" : "Switch to English"} onClick={() => setLocale(locale === "en" ? "es" : "en")}>
         <Languages size={18} />
         {locale.toUpperCase()}
       </button>
@@ -248,21 +247,21 @@ function ModePage({ locale, mode, navigate }: { locale: Locale; mode: Mode; navi
 
       <section className="content-band">
         <h2>{mode === "game" ? t.modePage.featuredProjects : t.modePage.projects}</h2>
-        {mode === "game" && (
+        {mode === "game" && featuredGameProject && (
           <article className="featured-project-showcase">
             <div className="featured-project-copy">
               <p className="eyebrow">{t.modePage.featuredProject.label}</p>
               <h3>{featuredGameProject.title}</h3>
-              <p>{t.modePage.featuredProject.body}</p>
-              <span>{featuredGameProject.platform} · Roguelike</span>
-              <button className="project-repository-link" type="button" onClick={() => navigate(gameProjectPath(featuredGameProject.slug))}>
+              <p>{featuredGameProject.summary[locale]}</p>
+              <span>{[featuredGameProject.platform, featuredGameProject.engine].filter(Boolean).join(" · ")}</span>
+              <button className="project-repository-link" type="button" onClick={() => { if (featuredGameProject) navigate(gameProjectPath(featuredGameProject.slug)); }}>
                 {locale === "es" ? "Ver proyecto" : "View project"} <ArrowRight size={17} />
               </button>
-              <a className="project-repository-link" href={featuredGameProject.itch} target="_blank" rel="noreferrer">
+              {featuredGameProject.itch && <a className="project-repository-link" href={featuredGameProject.itch} target="_blank" rel="noreferrer">
                 <FaItchIo size={17} /> {locale === "es" ? "Jugar en itch.io" : "Play on itch.io"} <ExternalLink size={14} />
-              </a>
+              </a>}
             </div>
-            <img src={featuredGameProject.poster} alt={locale === "es" ? "Portada de Synastra" : "Synastra cover art"} />
+            <img src={featuredGameProject.image} alt={featuredGameProject.title} />
           </article>
         )}
         <div className={`project-grid${mode === "game" ? " featured-project-grid" : ""}`}>
