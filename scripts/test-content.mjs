@@ -17,6 +17,7 @@ assert.ok(!JSON.stringify(result).includes(draft.title));
 assert.equal(prepareContent([draft], [], { featuredGame: "draft" }).games.length, 0);
 assert.throws(() => prepareContent([game, game], [], {}), /slug/);
 assert.throws(() => prepareContent([game, { ...other, id: game.id }], [], {}), /id/);
+assert.equal(prepareContent([{ ...game, id: undefined }], [], {}).games[0].id, game.slug);
 assert.throws(() => prepareContent([{ ...game, summary: { en: "Missing Spanish" } }], [], {}), /summary/);
 assert.throws(() => prepareContent([{ ...game, image: "javascript:alert(1)" }], [], {}), /image/);
 assert.throws(() => prepareContent([{ ...game, itch: "javascript:alert(1)" }], [], {}), /itch/);

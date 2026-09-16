@@ -14,157 +14,48 @@
   "content": [
     {
       "name": "games",
-      "label": "Proyectos GameDev",
+      "label": "Mis proyectos GameDev",
       "type": "collection",
       "path": "content/games",
       "format": "json",
-      "filename": "{fields.slug}.json",
+      "filename": {
+        "template": "{fields.slug}.json",
+        "field": false
+      },
       "view": {
         "primary": "title",
-        "sort": "order",
-        "order": "asc",
         "fields": [
           "title",
+          "status",
           "published",
-          "order"
-        ]
+          "year"
+        ],
+        "sort": [
+          "order",
+          "title",
+          "year"
+        ],
+        "search": [
+          "title",
+          "summary.es",
+          "summary.en"
+        ],
+        "default": {
+          "sort": "order",
+          "order": "asc"
+        }
       },
       "fields": [
         {
           "name": "title",
-          "label": "Nombre",
-          "type": "string",
-          "required": true
-        },
-        {
-          "name": "slug",
-          "label": "URL (no cambiar tras publicar)",
+          "label": "Nombre del proyecto",
           "type": "string",
           "required": true,
-          "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
-        },
-        {
-          "name": "published",
-          "label": "Visible en el portfolio",
-          "type": "boolean",
-          "default": false,
-          "description": "Controla si la ficha aparece en la web, independientemente del estado del juego."
-        },
-        {
-          "name": "order",
-          "label": "Orden (menor primero)",
-          "type": "number",
-          "default": 10,
-          "required": true
-        },
-        {
-          "name": "year",
-          "label": "Año",
-          "type": "number"
-        },
-        {
-          "name": "engine",
-          "label": "Motor",
-          "type": "string"
-        },
-        {
-          "name": "summary",
-          "label": "Resumen",
-          "type": "object",
-          "fields": [
-            {
-              "name": "es",
-              "label": "Español",
-              "type": "text"
-            },
-            {
-              "name": "en",
-              "label": "English",
-              "type": "text"
-            }
-          ]
-        },
-        {
-          "name": "description",
-          "label": "Descripción",
-          "type": "object",
-          "fields": [
-            {
-              "name": "es",
-              "label": "Español",
-              "type": "text"
-            },
-            {
-              "name": "en",
-              "label": "English",
-              "type": "text"
-            }
-          ]
-        },
-        {
-          "name": "role",
-          "label": "Tu contribución",
-          "type": "object",
-          "fields": [
-            {
-              "name": "es",
-              "label": "Español",
-              "type": "text"
-            },
-            {
-              "name": "en",
-              "label": "English",
-              "type": "text"
-            }
-          ]
-        },
-        {
-          "name": "tags",
-          "label": "Etiquetas",
-          "type": "string",
-          "list": true
-        },
-        {
-          "name": "image",
-          "label": "Portada",
-          "type": "image"
-        },
-        {
-          "name": "gallery",
-          "label": "Capturas",
-          "type": "image",
-          "list": true
-        },
-        {
-          "name": "itch",
-          "label": "Enlace itch.io",
-          "type": "string"
-        },
-        {
-          "name": "id",
-          "label": "Identificador estable",
-          "type": "string",
-          "required": true
-        },
-        {
-          "name": "featured",
-          "label": "Destacado",
-          "type": "boolean",
-          "default": false
-        },
-        {
-          "name": "platform",
-          "label": "Plataforma",
-          "type": "string"
-        },
-        {
-          "name": "language",
-          "label": "Lenguaje",
-          "type": "string"
+          "description": "El nombre que verán los visitantes."
         },
         {
           "name": "status",
-          "label": "Estado del desarrollo",
+          "label": "Estado del juego",
           "type": "select",
           "required": true,
           "default": "prototype",
@@ -191,197 +82,378 @@
                 "label": "En pausa"
               }
             ]
-          }
-        },
-        {
-          "name": "caseStudyTitle",
-          "label": "Título de la descripción",
-          "type": "object",
-          "fields": [
-            {
-              "name": "es",
-              "label": "Español",
-              "type": "text"
-            },
-            {
-              "name": "en",
-              "label": "English",
-              "type": "text"
-            }
-          ]
-        },
-        {
-          "name": "video",
-          "label": "Vídeo (URL MP4 o YouTube watch)",
-          "type": "string"
-        },
-        {
-          "name": "github",
-          "label": "Repositorio GitHub",
-          "type": "string"
-        },
-        {
-          "name": "award",
-          "label": "Reconocimiento",
-          "type": "string"
-        }
-      ]
-    },
-    {
-      "name": "jams",
-      "label": "Game jams",
-      "type": "collection",
-      "path": "content/jams",
-      "format": "json",
-      "filename": "{fields.slug}.json",
-      "view": {
-        "primary": "title",
-        "sort": "order",
-        "order": "asc",
-        "fields": [
-          "title",
-          "published",
-          "order"
-        ]
-      },
-      "fields": [
-        {
-          "name": "title",
-          "label": "Nombre",
-          "type": "string",
-          "required": true
-        },
-        {
-          "name": "slug",
-          "label": "URL (no cambiar tras publicar)",
-          "type": "string",
-          "required": true,
-          "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+          },
+          "description": "Elige en qué punto está el desarrollo."
         },
         {
           "name": "published",
-          "label": "Visible en el portfolio",
+          "label": "Mostrar en mi portfolio",
           "type": "boolean",
           "default": false,
-          "description": "Controla si la ficha aparece en la web, independientemente del estado del juego."
+          "description": "Activa cuando la ficha esté lista en ambos idiomas. Desactivado: se guarda como borrador."
         },
         {
-          "name": "order",
-          "label": "Orden (menor primero)",
-          "type": "number",
-          "default": 10,
-          "required": true
+          "name": "featured",
+          "label": "Mostrar entre los destacados",
+          "type": "boolean",
+          "default": false,
+          "description": "Aparecerá en la selección de GameDev. El proyecto principal se elige en Portada de GameDev."
         },
         {
-          "name": "year",
-          "label": "Año",
-          "type": "number"
+          "name": "image",
+          "label": "Imagen de portada",
+          "type": "image",
+          "description": "Sube una imagen o pega su enlace. Se utiliza en la tarjeta y en la ficha."
         },
         {
-          "name": "engine",
-          "label": "Motor",
-          "type": "string"
+          "name": "gallery",
+          "label": "Galería de capturas (opcional)",
+          "type": "image",
+          "list": true,
+          "description": "Añade las capturas en el orden en que quieres mostrarlas."
         },
         {
           "name": "summary",
-          "label": "Resumen",
+          "label": "Presentación breve",
           "type": "object",
           "fields": [
             {
               "name": "es",
-              "label": "Español",
+              "label": "Texto en español",
               "type": "text"
             },
             {
               "name": "en",
-              "label": "English",
+              "label": "Text in English",
               "type": "text"
             }
-          ]
+          ],
+          "description": "Una o dos frases para presentar el proyecto en las tarjetas y la portada. Completa ambos idiomas antes de mostrarlo."
+        },
+        {
+          "name": "caseStudyTitle",
+          "label": "Titular de la ficha",
+          "type": "object",
+          "fields": [
+            {
+              "name": "es",
+              "label": "Texto en español",
+              "type": "string"
+            },
+            {
+              "name": "en",
+              "label": "Text in English",
+              "type": "string"
+            }
+          ],
+          "description": "Una frase breve que encabece el apartado Sobre el proyecto."
         },
         {
           "name": "description",
-          "label": "Descripción",
+          "label": "Sobre el proyecto",
           "type": "object",
           "fields": [
             {
               "name": "es",
-              "label": "Español",
+              "label": "Texto en español",
               "type": "text"
             },
             {
               "name": "en",
-              "label": "English",
+              "label": "Text in English",
               "type": "text"
             }
-          ]
+          ],
+          "description": "Cuenta en qué consiste y qué lo hace interesante. Completa ambos idiomas antes de mostrarlo."
         },
         {
           "name": "role",
-          "label": "Tu contribución",
+          "label": "Qué hiciste en el proyecto",
           "type": "object",
           "fields": [
             {
               "name": "es",
-              "label": "Español",
-              "type": "text"
+              "label": "Texto en español",
+              "type": "string"
             },
             {
               "name": "en",
-              "label": "English",
-              "type": "text"
+              "label": "Text in English",
+              "type": "string"
             }
-          ]
+          ],
+          "description": "Describe tu contribución, por ejemplo: programación de gameplay y diseño de niveles."
+        },
+        {
+          "name": "year",
+          "label": "Año del proyecto",
+          "type": "number",
+          "description": "Por ejemplo: 2026."
+        },
+        {
+          "name": "engine",
+          "label": "Motor del juego",
+          "type": "string",
+          "description": "Por ejemplo: Unity, Unreal Engine o Godot."
+        },
+        {
+          "name": "platform",
+          "label": "Dónde se juega",
+          "type": "string",
+          "description": "Por ejemplo: PC, navegador o Meta Quest 2."
+        },
+        {
+          "name": "language",
+          "label": "Lenguaje de programación (opcional)",
+          "type": "string",
+          "description": "Por ejemplo: C#, C++ o Blueprints."
         },
         {
           "name": "tags",
           "label": "Etiquetas",
           "type": "string",
-          "list": true
-        },
-        {
-          "name": "image",
-          "label": "Portada",
-          "type": "image"
-        },
-        {
-          "name": "gallery",
-          "label": "Capturas",
-          "type": "image",
-          "list": true
+          "list": true,
+          "description": "Añade una por elemento: estrategia, cartas, realidad virtual..."
         },
         {
           "name": "itch",
-          "label": "Enlace itch.io",
-          "type": "string"
+          "label": "Página del juego en itch.io",
+          "type": "string",
+          "description": "Pega la dirección completa, empezando por https://."
         },
         {
-          "name": "jam",
-          "label": "Nombre de la jam",
-          "type": "string"
+          "name": "video",
+          "label": "Vídeo (opcional)",
+          "type": "string",
+          "description": "Pega un enlace de YouTube con formato youtube.com/watch?v=... o un enlace directo a un MP4."
         },
         {
-          "name": "genre",
-          "label": "Género",
+          "name": "github",
+          "label": "Código en GitHub (opcional)",
+          "type": "string",
+          "description": "Pega la dirección completa del repositorio, empezando por https://."
+        },
+        {
+          "name": "award",
+          "label": "Premio o reconocimiento (opcional)",
+          "type": "string",
+          "description": "Indica el nombre del premio recibido."
+        },
+        {
+          "name": "order",
+          "label": "Posición en la lista",
+          "type": "number",
+          "default": 10,
+          "required": true,
+          "description": "Los números menores aparecen primero: 10, 20, 30..."
+        },
+        {
+          "name": "slug",
+          "label": "Dirección de la ficha",
+          "type": "string",
+          "required": true,
+          "pattern": {
+            "regex": "^[a-z0-9]+(-[a-z0-9]+)*$",
+            "message": "Usa letras minúsculas sin tildes, números y guiones. Ejemplo: mi-juego."
+          },
+          "description": "Por ejemplo: mi-juego. Usa minúsculas y guiones. Consérvala después de publicar para que los enlaces sigan funcionando."
+        },
+        {
+          "name": "id",
+          "label": "Identificador estable",
+          "type": "string",
+          "hidden": true
+        }
+      ]
+    },
+    {
+      "name": "jams",
+      "label": "Mis game jams",
+      "type": "collection",
+      "path": "content/jams",
+      "format": "json",
+      "filename": {
+        "template": "{fields.slug}.json",
+        "field": false
+      },
+      "view": {
+        "primary": "title",
+        "fields": [
+          "title",
+          "jam",
+          "published",
+          "year"
+        ],
+        "sort": [
+          "order",
+          "title",
+          "year"
+        ],
+        "search": [
+          "title",
+          "summary.es",
+          "summary.en"
+        ],
+        "default": {
+          "sort": "order",
+          "order": "asc"
+        }
+      },
+      "fields": [
+        {
+          "name": "title",
+          "label": "Nombre del proyecto",
+          "type": "string",
+          "required": true,
+          "description": "El nombre que verán los visitantes."
+        },
+        {
+          "name": "published",
+          "label": "Mostrar en mi portfolio",
+          "type": "boolean",
+          "default": false,
+          "description": "Activa cuando la ficha esté lista en ambos idiomas. Desactivado: se guarda como borrador."
+        },
+        {
+          "name": "image",
+          "label": "Imagen de portada",
+          "type": "image",
+          "description": "Sube una imagen o pega su enlace. Se utiliza en la tarjeta y en la ficha."
+        },
+        {
+          "name": "gallery",
+          "label": "Galería de capturas (opcional)",
+          "type": "image",
+          "list": true,
+          "description": "Añade las capturas en el orden en que quieres mostrarlas."
+        },
+        {
+          "name": "summary",
+          "label": "Presentación breve",
           "type": "object",
           "fields": [
             {
               "name": "es",
-              "label": "Español",
+              "label": "Texto en español",
               "type": "text"
             },
             {
               "name": "en",
-              "label": "English",
+              "label": "Text in English",
               "type": "text"
             }
-          ]
+          ],
+          "description": "Una o dos frases para presentar el proyecto en las tarjetas y la portada. Completa ambos idiomas antes de mostrarlo."
+        },
+        {
+          "name": "description",
+          "label": "Sobre el proyecto",
+          "type": "object",
+          "fields": [
+            {
+              "name": "es",
+              "label": "Texto en español",
+              "type": "text"
+            },
+            {
+              "name": "en",
+              "label": "Text in English",
+              "type": "text"
+            }
+          ],
+          "description": "Cuenta en qué consiste y qué lo hace interesante. Completa ambos idiomas antes de mostrarlo."
+        },
+        {
+          "name": "role",
+          "label": "Qué hiciste en el proyecto",
+          "type": "object",
+          "fields": [
+            {
+              "name": "es",
+              "label": "Texto en español",
+              "type": "string"
+            },
+            {
+              "name": "en",
+              "label": "Text in English",
+              "type": "string"
+            }
+          ],
+          "description": "Describe tu contribución, por ejemplo: programación de gameplay y diseño de niveles."
+        },
+        {
+          "name": "genre",
+          "label": "Género del juego",
+          "type": "object",
+          "fields": [
+            {
+              "name": "es",
+              "label": "Texto en español",
+              "type": "string"
+            },
+            {
+              "name": "en",
+              "label": "Text in English",
+              "type": "string"
+            }
+          ],
+          "description": "Por ejemplo: puzles, plataformas o estrategia, en ambos idiomas."
+        },
+        {
+          "name": "jam",
+          "label": "Nombre de la game jam",
+          "type": "string",
+          "description": "El evento en el que se creó el juego."
+        },
+        {
+          "name": "year",
+          "label": "Año del proyecto",
+          "type": "number",
+          "description": "Por ejemplo: 2026."
+        },
+        {
+          "name": "engine",
+          "label": "Motor del juego",
+          "type": "string",
+          "description": "Por ejemplo: Unity, Unreal Engine o Godot."
+        },
+        {
+          "name": "tags",
+          "label": "Etiquetas",
+          "type": "string",
+          "list": true,
+          "description": "Añade una por elemento: estrategia, cartas, realidad virtual..."
+        },
+        {
+          "name": "itch",
+          "label": "Página del juego en itch.io",
+          "type": "string",
+          "description": "Pega la dirección completa, empezando por https://."
+        },
+        {
+          "name": "order",
+          "label": "Posición en la lista",
+          "type": "number",
+          "default": 10,
+          "required": true,
+          "description": "Los números menores aparecen primero: 10, 20, 30..."
+        },
+        {
+          "name": "slug",
+          "label": "Dirección de la ficha",
+          "type": "string",
+          "required": true,
+          "pattern": {
+            "regex": "^[a-z0-9]+(-[a-z0-9]+)*$",
+            "message": "Usa letras minúsculas sin tildes, números y guiones. Ejemplo: mi-juego."
+          },
+          "description": "Por ejemplo: mi-juego. Usa minúsculas y guiones. Consérvala después de publicar para que los enlaces sigan funcionando."
         }
       ]
     },
     {
       "name": "settings",
-      "label": "Portada GameDev",
+      "label": "Portada de GameDev",
       "type": "file",
       "path": "content/settings.json",
       "format": "json",
@@ -395,7 +467,8 @@
             "value": "{fields.slug}",
             "label": "{fields.title}",
             "search": "title"
-          }
+          },
+          "description": "Elige la ficha que ocupará el espacio principal. Sus textos e imagen se actualizan al editar el proyecto. Debe tener activado Mostrar en mi portfolio."
         }
       ]
     }

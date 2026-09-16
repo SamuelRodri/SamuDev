@@ -11,18 +11,22 @@ No se necesitan contraseñas ni tokens dentro del portfolio. La sesión y el acc
 
 ## Estado del proyecto
 
-El estado del desarrollo se elige en un selector: Prototipo, En desarrollo, Publicado, Finalizado sin publicar o En pausa. La web traduce el valor a cada idioma. Este estado es independiente de **Visible en el portfolio**: puedes mostrar un prototipo o mantener oculta la ficha de un juego publicado.
+El estado del desarrollo se elige en un selector: Prototipo, En desarrollo, Publicado, Finalizado sin publicar o En pausa. La web traduce el valor a cada idioma. Este estado es independiente de **Mostrar en mi portfolio**: puedes mostrar un prototipo o mantener oculta la ficha de un juego publicado.
+
+## Formulario
+
+Empieza por nombre, estado y visibilidad; sigue con portada, capturas y textos. Los datos del juego vienen después; enlaces opcionales, posición y dirección quedan al final. No necesitas rellenar un identificador interno ni un nombre de archivo.
 
 ## Uso diario
 
-- **Proyectos GameDev** y **Game jams**: crear o editar una ficha. Cada ficha tiene textos en español e inglés. Los textos largos son texto plano.
-- **Visible en el portfolio**: desactivado permite guardar un borrador incompleto. Activarlo requiere completar los campos de ambas lenguas. Desactivarlo retira la ficha de la web tras el despliegue.
-- **Orden**: los números menores aparecen primero.
-- **Destacado**: añade la ficha a los destacados de GameDev.
-- **Portada GameDev**: selecciona el proyecto principal. Título, resumen, imagen y enlace se toman de su ficha. Si está en borrador, se oculta la portada principal. Para eliminarlo, limpia o cambia primero esta selección.
-- **Portada** y **Capturas**: subir imágenes o usar URLs HTTPS existentes. Las imágenes subidas se guardan en `public/images/projects`. La web adapta las rutas al prefijo de alojamiento.
+- **Mis proyectos GameDev** y **Mis game jams**: crear o editar una ficha. Cada ficha tiene textos en español e inglés. Los textos largos son texto plano.
+- **Mostrar en mi portfolio**: desactivado permite guardar un borrador incompleto. Activarlo requiere completar los campos de ambas lenguas. Desactivarlo retira la ficha de la web tras el despliegue.
+- **Posición en la lista**: los números menores aparecen primero.
+- **Mostrar entre los destacados**: añade la ficha a los destacados de GameDev.
+- **Portada de GameDev**: selecciona el proyecto principal. Título, resumen, imagen y enlace se toman de su ficha. Si está en borrador, se oculta la portada principal. Para eliminarlo, limpia o cambia primero esta selección.
+- **Imagen de portada** y **Galería de capturas**: subir imágenes o usar URLs HTTPS existentes. Las imágenes subidas se guardan en `public/images/projects`. La web adapta las rutas al prefijo de alojamiento.
 - **Vídeo**: URL HTTPS de un MP4, enlace `https://www.youtube.com/watch?v=...` o ruta de un MP4 existente bajo `/videos/`. Los vídeos nuevos se alojan externamente.
-- **URL** e **Identificador estable**: valores únicos. Conserva la URL de las fichas publicadas para no romper enlaces compartidos.
+- **Dirección de la ficha**: usa un valor único y consérvalo tras publicar. El identificador interno está oculto; los proyectos nuevos lo obtienen automáticamente de esta dirección.
 
 Guardar en `main` genera un commit y activa GitHub Actions. La web cambia cuando termina el workflow **Deploy portfolio**. Si falla la validación, la versión anterior continúa publicada; revisa el error en Actions, corrige la ficha y guarda de nuevo.
 
@@ -34,6 +38,6 @@ La integración cubre los proyectos GameDev y las game jams existentes. Los bloq
 
 `npm run dev`, `npm run build` y `npm run typecheck` generan primero los datos públicos desde `content/`. Tras editar JSON localmente con el servidor abierto, ejecuta `npm run content:build` para actualizar la vista. `src/generated/` no se versiona. Ejecuta `npm test` para comprobar rutas y reglas de contenido.
 
-Comprobación final tras conectar el panel: crear una ficha con Visible en el portfolio desactivado, guardar, completar ambas traducciones, publicar y verificar su aparición. La conexión real del panel requiere iniciar sesión con la cuenta propietaria.
+Comprobación final tras conectar el panel: crear una ficha con Mostrar en mi portfolio desactivado, guardar, completar ambas traducciones, publicar y verificar su aparición. La conexión real del panel requiere iniciar sesión con la cuenta propietaria.
 
 Documentación: https://pagescms.org/docs/quick-start/

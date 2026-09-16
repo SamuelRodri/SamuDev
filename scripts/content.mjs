@@ -26,10 +26,11 @@ export function prepareContent(games, jams, settings) {
       for (const field of ["summary", "description", "role", ...(kind === "games" ? ["caseStudyTitle"] : ["genre"])]) {
         if (!["es", "en"].every((locale) => text(p[field]?.[locale]))) fail(`${field} (es/en)`);
       }
-      for (const field of kind === "games" ? ["id", "platform"] : ["jam", "engine", "itch"]) if (!text(p[field])) fail(field);
+      for (const field of kind === "games" ? ["platform"] : ["jam", "engine", "itch"]) if (!text(p[field])) fail(field);
       if (kind === "games") {
-        if (ids.has(p.id)) fail("id (must be unique)");
-        ids.add(p.id);
+        const id = p.id || p.slug;
+        if (!text(id) || ids.has(id)) fail("id (must be unique)");
+        ids.add(id);
       }
       if (!Number.isInteger(p.year) || p.year < 1900 || p.year > 2200) fail("year");
       if (!Array.isArray(p.tags) || !p.tags.every(text)) fail("tags");
@@ -44,7 +45,7 @@ export function prepareContent(games, jams, settings) {
   }
   if (settings.featuredGame && !games.some((p) => p.slug === settings.featuredGame)) throw new Error("Selected featured game does not exist; clear or update it in settings first.");
   const published = (entries) => entries.filter((p) => p.published).sort((a, b) => a.order - b.order || a.slug.localeCompare(b.slug));
-  return { games: published(games), jams: published(jams), featuredGame: settings.featuredGame || "" };
+  return { games: published(games).map((project) => ({ ...project, id: project.id || project.slug })), jams: published(jams), featuredGame: settings.featuredGame || "" };
 }
 
 export function generateContent() {
