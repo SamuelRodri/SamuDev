@@ -4,6 +4,7 @@ import { resolve } from "node:path";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
 const read = (path) => JSON.parse(readFileSync(resolve(root, path), "utf8"));
+const projectStatuses = read("src/projectStatuses.json");
 const text = (v) => typeof v === "string" && v.trim().length > 0;
 const media = (v) => text(v) && (/^https:\/\//.test(v) || /^\/(images|videos)\//.test(v)) && !v.includes("..");
 
@@ -18,9 +19,11 @@ export function prepareContent(games, jams, settings) {
       if (typeof p.published !== "boolean") fail("published");
       if (!Number.isFinite(p.order)) fail("order");
       if (!text(p.title)) fail("title");
+      if (kind === "games" && p.status != null && !Object.hasOwn(projectStatuses, p.status)) fail("status");
       // Drafts may be incomplete and never enter the generated site data.
       if (!p.published) continue;
-      for (const field of ["summary", "description", "role", ...(kind === "games" ? ["status", "caseStudyTitle"] : ["genre"])]) {
+      if (kind === "games" && !Object.hasOwn(projectStatuses, p.status)) fail("status");
+      for (const field of ["summary", "description", "role", ...(kind === "games" ? ["caseStudyTitle"] : ["genre"])]) {
         if (!["es", "en"].every((locale) => text(p[field]?.[locale]))) fail(`${field} (es/en)`);
       }
       for (const field of kind === "games" ? ["id", "platform"] : ["jam", "engine", "itch"]) if (!text(p[field])) fail(field);

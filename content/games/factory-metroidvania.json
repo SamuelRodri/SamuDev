@@ -7,10 +7,7 @@
   "language": "Blueprints",
   "year": 2025,
   "platform": "PC",
-  "status": {
-    "en": "Prototype",
-    "es": "Prototipo"
-  },
+  "status": "prototype",
   "summary": {
     "en": "Escape a burning factory by finding new abilities and opening the path to previously unreachable areas.",
     "es": "Escapa de una fábrica en llamas adquiriendo habilidades que permiten acceder a nuevas zonas."

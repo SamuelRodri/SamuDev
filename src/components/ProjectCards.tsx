@@ -1,3 +1,4 @@
+import { projectStatuses } from "../gameProjects";
 import { ArrowRight } from "lucide-react";
 import type { KeyboardEvent } from "react";
 import type { Locale } from "../content";
@@ -32,7 +33,7 @@ export function GameProjectCard({ project, locale, navigate }: { project: GamePr
     <article className="project-card game-project-card" {...interactiveProps}>
       <div className="project-cover">
         <img src={project.image} alt={project.title} loading="lazy" />
-        <span className="project-status-badge">{project.status[locale]}</span>
+        <span className="project-status-badge">{projectStatuses[project.status][locale]}</span>
         <span className="project-link" aria-hidden="true"><ArrowRight size={22} /></span>
       </div>
       <div className="project-meta">{[project.engine, project.language, project.year].filter(Boolean).join(" · ")}</div>

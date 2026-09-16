@@ -5,10 +5,7 @@
   "title": "Synastra",
   "year": 2026,
   "platform": "HTML5",
-  "status": {
-    "en": "Prototype",
-    "es": "Prototipo"
-  },
+  "status": "prototype",
   "summary": {
     "en": "A fantasy roguelike that turns matching pairs into a game of memory, luck and strategy.",
     "es": "Un roguelike de fantasía que transforma las parejas de cartas en un juego de memoria, suerte y estrategia."

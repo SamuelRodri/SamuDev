@@ -7,10 +7,7 @@
   "language": "C#",
   "year": 2023,
   "platform": "Meta Quest 2",
-  "status": {
-    "en": "Completed",
-    "es": "Terminado"
-  },
+  "status": "completed",
   "summary": {
     "en": "A virtual reality application for physiotherapy students to study the human spine.",
     "es": "Aplicación de realidad virtual para que estudiantes de Fisioterapia estudien la columna vertebral."

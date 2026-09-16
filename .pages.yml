@@ -45,9 +45,10 @@
         },
         {
           "name": "published",
-          "label": "Publicado",
+          "label": "Visible en el portfolio",
           "type": "boolean",
-          "default": false
+          "default": false,
+          "description": "Controla si la ficha aparece en la web, independientemente del estado del juego."
         },
         {
           "name": "order",
@@ -164,19 +165,33 @@
         {
           "name": "status",
           "label": "Estado del desarrollo",
-          "type": "object",
-          "fields": [
-            {
-              "name": "es",
-              "label": "Español",
-              "type": "text"
-            },
-            {
-              "name": "en",
-              "label": "English",
-              "type": "text"
-            }
-          ]
+          "type": "select",
+          "required": true,
+          "default": "prototype",
+          "options": {
+            "values": [
+              {
+                "name": "prototype",
+                "label": "Prototipo"
+              },
+              {
+                "name": "in-development",
+                "label": "En desarrollo"
+              },
+              {
+                "name": "released",
+                "label": "Publicado"
+              },
+              {
+                "name": "completed",
+                "label": "Finalizado sin publicar"
+              },
+              {
+                "name": "on-hold",
+                "label": "En pausa"
+              }
+            ]
+          }
         },
         {
           "name": "caseStudyTitle",
@@ -245,9 +260,10 @@
         },
         {
           "name": "published",
-          "label": "Publicado",
+          "label": "Visible en el portfolio",
           "type": "boolean",
-          "default": false
+          "default": false,
+          "description": "Controla si la ficha aparece en la web, independientemente del estado del juego."
         },
         {
           "name": "order",

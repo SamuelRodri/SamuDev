@@ -7,10 +7,7 @@
   "language": "C#",
   "year": 2025,
   "platform": "PC",
-  "status": {
-    "en": "In development",
-    "es": "En desarrollo"
-  },
+  "status": "in-development",
   "summary": {
     "en": "A strategy and card-combat game where countries can be merged and divided to reshape the map.",
     "es": "Videojuego de estrategia y combate con cartas en el que puedes fusionar y dividir países para alterar el mapa."

@@ -1,3 +1,4 @@
+import { projectStatuses } from "../gameProjects";
 import { useState } from "react";
 import { ArrowLeft, ExternalLink, Volume2, VolumeX } from "lucide-react";
 import { FaGithub, FaItchIo } from "react-icons/fa";
@@ -179,7 +180,7 @@ function GameProjectDetail({ locale, project, navigate }: PageProps & { project:
         <div className="project-overview-copy">
           <div className="project-title-row">
             <p className="eyebrow">{[project.engine, project.platform, project.year].filter(Boolean).join(" · ")}</p>
-            <span className="project-status">{project.status[locale]}</span>
+            <span className="project-status">{projectStatuses[project.status][locale]}</span>
           </div>
           <h1>{project.title}</h1>
           <p className="project-lead">{project.summary[locale]}</p>

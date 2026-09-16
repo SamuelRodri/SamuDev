@@ -7,10 +7,7 @@
   "language": "Blueprints",
   "year": 2026,
   "platform": "PC",
-  "status": {
-    "en": "In development",
-    "es": "En desarrollo"
-  },
+  "status": "in-development",
   "summary": {
     "en": "An Unreal Engine game project currently in development.",
     "es": "Un proyecto de videojuego en Unreal Engine actualmente en desarrollo."

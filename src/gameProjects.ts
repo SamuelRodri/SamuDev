@@ -1,6 +1,9 @@
 import type { LocalizedText } from './types';
 import data from './generated/projects.json';
 import { resolveMedia } from './projectMedia';
+import projectStatuses from './projectStatuses.json';
+
+export { projectStatuses };
 
 export type GameProject = {
   id: string;
@@ -11,7 +14,7 @@ export type GameProject = {
   language?: string;
   year: number;
   platform: string;
-  status: LocalizedText;
+  status: keyof typeof projectStatuses;
   summary: LocalizedText;
   description: LocalizedText;
   caseStudyTitle: LocalizedText;

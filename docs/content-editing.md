@@ -9,10 +9,14 @@
 
 No se necesitan contraseñas ni tokens dentro del portfolio. La sesión y el acceso de escritura los gestiona Pages CMS con GitHub.
 
+## Estado del proyecto
+
+El estado del desarrollo se elige en un selector: Prototipo, En desarrollo, Publicado, Finalizado sin publicar o En pausa. La web traduce el valor a cada idioma. Este estado es independiente de **Visible en el portfolio**: puedes mostrar un prototipo o mantener oculta la ficha de un juego publicado.
+
 ## Uso diario
 
 - **Proyectos GameDev** y **Game jams**: crear o editar una ficha. Cada ficha tiene textos en español e inglés. Los textos largos son texto plano.
-- **Publicado**: desactivado permite guardar un borrador incompleto. Activarlo requiere completar los campos de ambas lenguas. Desactivarlo retira la ficha de la web tras el despliegue.
+- **Visible en el portfolio**: desactivado permite guardar un borrador incompleto. Activarlo requiere completar los campos de ambas lenguas. Desactivarlo retira la ficha de la web tras el despliegue.
 - **Orden**: los números menores aparecen primero.
 - **Destacado**: añade la ficha a los destacados de GameDev.
 - **Portada GameDev**: selecciona el proyecto principal. Título, resumen, imagen y enlace se toman de su ficha. Si está en borrador, se oculta la portada principal. Para eliminarlo, limpia o cambia primero esta selección.
@@ -30,6 +34,6 @@ La integración cubre los proyectos GameDev y las game jams existentes. Los bloq
 
 `npm run dev`, `npm run build` y `npm run typecheck` generan primero los datos públicos desde `content/`. Tras editar JSON localmente con el servidor abierto, ejecuta `npm run content:build` para actualizar la vista. `src/generated/` no se versiona. Ejecuta `npm test` para comprobar rutas y reglas de contenido.
 
-Comprobación final tras conectar el panel: crear una ficha con Publicado desactivado, guardar, completar ambas traducciones, publicar y verificar su aparición. La conexión real del panel requiere iniciar sesión con la cuenta propietaria.
+Comprobación final tras conectar el panel: crear una ficha con Visible en el portfolio desactivado, guardar, completar ambas traducciones, publicar y verificar su aparición. La conexión real del panel requiere iniciar sesión con la cuenta propietaria.
 
 Documentación: https://pagescms.org/docs/quick-start/
