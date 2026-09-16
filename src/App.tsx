@@ -1,73 +1,25 @@
-import { ArrowLeft, ArrowRight, Download, ExternalLink, GraduationCap, Languages, Mail, Volume2, VolumeX, X } from "lucide-react";
+import { ArrowRight, Download, ExternalLink, GraduationCap, Languages, Mail, X } from "lucide-react";
 import { FaGithub, FaItchIo, FaLinkedin } from "react-icons/fa";
-import { useEffect, useMemo, useState } from "react";
+import { useState } from "react";
 import { content, Locale, Mode, modeDetails, profileLinks } from "./content";
 import { featuredGameProject } from "./featuredGameProject";
-import { gameJamProjects } from "./gameJamProjects";
-import { GameProject, gameProjects } from "./gameProjects";
+import { gameProjects } from "./gameProjects";
+import { GameProjectCard } from "./components/ProjectCards";
+import { AllGameProjectsPage, GameJamProjectPage, GameProjectPage } from "./pages/GameProjectsPages";
+import { ROUTES, gameProjectPath } from "./routing";
+import type { Navigate } from "./types";
+import { usePortfolioNavigation } from "./hooks/usePortfolioNavigation";
 
-const basePath = "/SamuDev";
-
-function getInitialPath() {
-  const params = new URLSearchParams(window.location.search);
-  const redirectedPath = params.get("path");
-
-  if (redirectedPath) {
-    const cleanPath = redirectedPath.split("?")[0] || "/";
-    window.history.replaceState({ fromHub: false }, "", `${basePath}${cleanPath}`);
-    return normalizePath(cleanPath);
-  }
-
-  return normalizePath(window.location.pathname.replace(basePath, "") || "/");
-}
-
-function normalizePath(path: string) {
-  if (path === "/dotnet" || path === "/game" || path === "/game/projects" || path.startsWith("/game/projects/")) {
-    return path;
-  }
-
-  return "/";
-}
+const featuredProjects = gameProjects.filter((project) => project.featured);
 
 function App() {
   const [locale, setLocale] = useState<Locale>("en");
   const [showConstructionNotice, setShowConstructionNotice] = useState(true);
-  const [path, setPath] = useState(getInitialPath);
-  const [fromHub, setFromHub] = useState(
-    () => normalizePath(window.location.pathname.replace(basePath, "") || "/") === "/" || window.history.state?.fromHub === true,
-  );
+  const { path, fromHub, navigate } = usePortfolioNavigation();
   const t = content[locale];
-
-  useEffect(() => {
-    const previousScrollRestoration = window.history.scrollRestoration;
-    window.history.scrollRestoration = "manual";
-    const onPopState = () => {
-      const nextPath = normalizePath(window.location.pathname.replace(basePath, "") || "/");
-      setPath(nextPath);
-      setFromHub(nextPath === "/" || window.history.state?.fromHub === true);
-      window.scrollTo(0, 0);
-    };
-    window.addEventListener("popstate", onPopState);
-    return () => {
-      window.history.scrollRestoration = previousScrollRestoration;
-      window.removeEventListener("popstate", onPopState);
-    };
-  }, []);
-
-  const navigate = (nextPath: string) => {
-    const normalized = normalizePath(nextPath);
-    const nextFromHub = path === "/" || fromHub;
-    window.history.pushState({ fromHub: nextFromHub }, "", `${basePath}${normalized === "/" ? "/" : normalized}`);
-    setPath(normalized);
-    setFromHub(nextFromHub);
-    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-  };
-
-  const activeMode = useMemo<Mode | null>(() => {
-    if (path === "/dotnet") return "dotnet";
-    if (path === "/game" || path.startsWith("/game/projects")) return "game";
-    return null;
-  }, [path]);
+  const activeMode: Mode | null = path === ROUTES.dotnet
+    ? "dotnet"
+    : (path === ROUTES.game || path.startsWith(ROUTES.gameProjects) ? "game" : null);
 
   return (
     <div className="app-shell">
@@ -97,11 +49,13 @@ function App() {
         path={path}
         setLocale={setLocale}
         navigate={navigate}
-        showPortfolioNavigation={path === "/" || fromHub}
+        showPortfolioNavigation={path === ROUTES.home || fromHub}
         labels={t.nav}
       />
-      <main key={path} className="page-transition">{path === "/game/projects" ? (
+      <main key={path} className="page-transition">{path === ROUTES.gameProjects ? (
         <AllGameProjectsPage locale={locale} navigate={navigate} />
+      ) : path.startsWith("/game/projects/jams/") ? (
+        <GameJamProjectPage locale={locale} slug={path.split("/").pop() || ""} navigate={navigate} />
       ) : path.startsWith("/game/projects/") ? (
         <GameProjectPage locale={locale} slug={path.split("/").pop() || ""} navigate={navigate} />
       ) : activeMode ? (
@@ -117,7 +71,7 @@ type HeaderProps = {
   locale: Locale;
   path: string;
   setLocale: (locale: Locale) => void;
-  navigate: (path: string) => void;
+  navigate: Navigate;
   showPortfolioNavigation: boolean;
   labels: {
     home: string;
@@ -155,7 +109,7 @@ function Header({ locale, path, setLocale, navigate, showPortfolioNavigation, la
   );
 }
 
-function Hub({ locale, navigate }: { locale: Locale; navigate: (path: string) => void }) {
+function Hub({ locale, navigate }: { locale: Locale; navigate: Navigate }) {
   const t = content[locale];
 
   return (
@@ -222,7 +176,7 @@ function ModeCard({ locale, mode, onSelect, cta }: { locale: Locale; mode: Mode;
   );
 }
 
-function ModePage({ locale, mode, navigate }: { locale: Locale; mode: Mode; navigate: (path: string) => void }) {
+function ModePage({ locale, mode, navigate }: { locale: Locale; mode: Mode; navigate: Navigate }) {
   const t = content[locale];
   const details = modeDetails[mode];
   const copy = t.modes[mode];
@@ -300,54 +254,20 @@ function ModePage({ locale, mode, navigate }: { locale: Locale; mode: Mode; navi
               <p className="eyebrow">{t.modePage.featuredProject.label}</p>
               <h3>{featuredGameProject.title}</h3>
               <p>{t.modePage.featuredProject.body}</p>
-              <span>{featuredGameProject.engine}</span>
+              <span>{featuredGameProject.platform} · Roguelike</span>
+              <button className="project-repository-link" type="button" onClick={() => navigate(gameProjectPath(featuredGameProject.slug))}>
+                {locale === "es" ? "Ver proyecto" : "View project"} <ArrowRight size={17} />
+              </button>
+              <a className="project-repository-link" href={featuredGameProject.itch} target="_blank" rel="noreferrer">
+                <FaItchIo size={17} /> {locale === "es" ? "Jugar en itch.io" : "Play on itch.io"} <ExternalLink size={14} />
+              </a>
             </div>
-            <video
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="auto"
-              disablePictureInPicture
-              poster={featuredGameProject.poster}
-              aria-label={`${featuredGameProject.title} gameplay`}
-              onContextMenu={(event) => event.preventDefault()}
-            >
-              <source src={featuredGameProject.video} type="video/mp4" />
-            </video>
+            <img src={featuredGameProject.poster} alt={locale === "es" ? "Portada de Synastra" : "Synastra cover art"} />
           </article>
         )}
         <div className={`project-grid${mode === "game" ? " featured-project-grid" : ""}`}>
-          {mode === "game" ? gameProjects.filter((project) => project.featured).map((project) => (
-            <article
-              className="project-card game-project-card"
-              key={project.id}
-              role="link"
-              tabIndex={0}
-              aria-label={`${locale === "es" ? "Ver proyecto" : "View project"}: ${project.title}`}
-              onClick={() => navigate(`/game/projects/${project.slug}`)}
-              onKeyDown={(event) => {
-                if (event.key === "Enter" || event.key === " ") {
-                  event.preventDefault();
-                  navigate(`/game/projects/${project.slug}`);
-                }
-              }}
-            >
-              <div className="project-cover">
-                <img src={project.image} alt={project.title} />
-                <span className="project-status-badge">{project.status[locale]}</span>
-                <span className="project-link" aria-hidden="true">
-                  <ArrowRight size={22} />
-                </span>
-              </div>
-              <div className="project-meta">{project.engine} · {project.language} · {project.year}</div>
-              <h3>{project.title}</h3>
-              <p>{project.summary[locale]}</p>
-              <small>{project.role[locale]}</small>
-              <div className="tag-row">
-                {project.tags.map((tag) => <span key={tag}>{tag}</span>)}
-              </div>
-            </article>
+          {mode === "game" ? featuredProjects.map((project) => (
+            <GameProjectCard key={project.id} project={project} locale={locale} navigate={navigate} />
           )) : t.projectSlots[mode].map((project, index) => (
             <article className="project-card" key={project.title}>
               <span>0{index + 1}</span>
@@ -453,203 +373,6 @@ function ModePage({ locale, mode, navigate }: { locale: Locale; mode: Mode; navi
         </div>
       </section>
     </section>
-  );
-}
-
-function AllGameProjectsPage({ locale, navigate }: { locale: Locale; navigate: (path: string) => void }) {
-  const t = content[locale];
-
-  return (
-    <section className="mode-page violet all-projects-page">
-      <button className="back-action" onClick={() => navigate("/game")}>
-        <ArrowLeft size={17} />
-        {locale === "es" ? "Volver a GameDev" : "Back to GameDev"}
-      </button>
-      <section className="content-band">
-        <h2>{t.modePage.allProjects}</h2>
-        <div className="project-grid">
-          {gameProjects.map((project) => (
-            <article
-              className="project-card game-project-card"
-              key={project.id}
-              role="link"
-              tabIndex={0}
-              aria-label={`${locale === "es" ? "Ver proyecto" : "View project"}: ${project.title}`}
-              onClick={() => navigate(`/game/projects/${project.slug}`)}
-              onKeyDown={(event) => {
-                if (event.key === "Enter" || event.key === " ") {
-                  event.preventDefault();
-                  navigate(`/game/projects/${project.slug}`);
-                }
-              }}
-            >
-              <div className="project-cover">
-                <img src={project.image} alt={project.title} />
-                <span className="project-status-badge">{project.status[locale]}</span>
-                <span className="project-link" aria-hidden="true"><ArrowRight size={22} /></span>
-              </div>
-              <div className="project-meta">{project.engine} · {project.language} · {project.year}</div>
-              <h3>{project.title}</h3>
-              <p>{project.summary[locale]}</p>
-              <small>{project.role[locale]}</small>
-              <div className="tag-row">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
-            </article>
-          ))}
-        </div>
-      </section>
-      <section className="content-band game-jams-section">
-        <h2>Game Jams</h2>
-        <div className="game-jams-grid">
-          {gameJamProjects.map((project) => (
-            <a
-              className="game-jam-card"
-              href={project.itch}
-              key={project.itch}
-              target="_blank"
-              rel="noreferrer"
-              aria-label={`${locale === "es" ? "Jugar a" : "Play"} ${project.title} ${locale === "es" ? "en itch.io" : "on itch.io"}`}
-            >
-              <div className="project-cover">
-                <img src={project.image} alt="" />
-                <span className="jam-year">{project.year}</span>
-              </div>
-              <div className="game-jam-copy">
-                <div className="project-meta">{project.jam}</div>
-                <h3>{project.title}</h3>
-                <p>{project.summary[locale]}</p>
-                <div className="jam-card-footer">
-                  <span>{project.engine} · {project.genre[locale]}</span>
-                  <span className="jam-play-link">itch.io <ExternalLink size={15} /></span>
-                </div>
-              </div>
-            </a>
-          ))}
-        </div>
-      </section>
-    </section>
-  );
-}
-
-function GameProjectPage({ locale, slug, navigate }: { locale: Locale; slug: string; navigate: (path: string) => void }) {
-  const project = gameProjects.find((item) => item.slug === slug);
-
-  if (!project) {
-    return (
-      <section className="project-detail-page project-not-found">
-        <h1>{locale === "es" ? "Proyecto no encontrado" : "Project not found"}</h1>
-        <button className="back-action" onClick={() => navigate("/game")}>
-          <ArrowLeft size={17} />
-          {locale === "es" ? "Volver a GameDev" : "Back to GameDev"}
-        </button>
-      </section>
-    );
-  }
-
-  return <GameProjectDetail locale={locale} project={project} navigate={navigate} />;
-}
-
-function GameProjectDetail({ locale, project, navigate }: { locale: Locale; project: GameProject; navigate: (path: string) => void }) {
-  const videoId = project.video?.includes("youtube.com") ? new URL(project.video).searchParams.get("v") : null;
-  const [isMuted, setIsMuted] = useState(true);
-
-  return (
-    <article className="project-detail-page game">
-      <button className="back-action" onClick={() => navigate("/game")}>
-        <ArrowLeft size={17} />
-        {locale === "es" ? "Todos los proyectos" : "All projects"}
-      </button>
-
-      <section className={`project-overview${project.video && !videoId ? " native-video-overview" : ""}`}>
-        <div className={`project-featured-media${project.video && !videoId ? " native-video" : ""}`}>
-          {videoId ? (
-            <iframe
-              src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${videoId}&playsinline=1&rel=0`}
-              title={`${project.title} gameplay`}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              tabIndex={-1}
-            />
-          ) : project.video ? (
-            <video
-              autoPlay
-              muted={isMuted}
-              loop
-              playsInline
-              preload="auto"
-              disablePictureInPicture
-              poster={project.image}
-              onContextMenu={(event) => event.preventDefault()}
-            >
-              <source src={project.video} type="video/mp4" />
-            </video>
-          ) : (
-            <img src={project.image} alt={project.title} />
-          )}
-          {project.video && !videoId && (
-            <button
-              className="video-sound-toggle"
-              type="button"
-              onClick={() => setIsMuted((muted) => !muted)}
-              aria-label={isMuted
-                ? (locale === "es" ? "Activar sonido" : "Turn sound on")
-                : (locale === "es" ? "Silenciar vídeo" : "Mute video")}
-              title={isMuted
-                ? (locale === "es" ? "Activar sonido" : "Turn sound on")
-                : (locale === "es" ? "Silenciar vídeo" : "Mute video")}
-            >
-              {isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
-              <span>{isMuted
-                ? (locale === "es" ? "Activar sonido" : "Sound on")
-                : (locale === "es" ? "Silenciar" : "Mute")}</span>
-            </button>
-          )}
-        </div>
-
-        <div className="project-overview-copy">
-          <div className="project-title-row">
-            <p className="eyebrow">{project.engine} · {project.platform} · {project.year}</p>
-            <span className="project-status">{project.status[locale]}</span>
-          </div>
-          <h1>{project.title}</h1>
-          <p className="project-lead">{project.summary[locale]}</p>
-
-          <dl>
-            <div><dt>{locale === "es" ? "Motor" : "Engine"}</dt><dd>{project.engine}</dd></div>
-            <div><dt>{locale === "es" ? "Lenguaje" : "Language"}</dt><dd>{project.language}</dd></div>
-            <div><dt>{locale === "es" ? "Plataforma" : "Platform"}</dt><dd>{project.platform}</dd></div>
-            <div><dt>{locale === "es" ? "Rol" : "Role"}</dt><dd>{project.role[locale]}</dd></div>
-          </dl>
-          <div className="tag-row">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
-          {project.award && (
-            <div className="award-card">
-              <span>{locale === "es" ? "Reconocimiento" : "Award"}</span>
-              <strong>{project.award}</strong>
-            </div>
-          )}
-          {project.github && (
-            <a className="project-repository-link" href={project.github} target="_blank" rel="noreferrer">
-              <FaGithub size={17} />
-              {locale === "es" ? "Ver repositorio" : "View repository"}
-              <ExternalLink size={14} />
-            </a>
-          )}
-          {project.itch && (
-            <a className="project-repository-link" href={project.itch} target="_blank" rel="noreferrer">
-              <FaItchIo size={17} />
-              {locale === "es" ? "Jugar en itch.io" : "Play on itch.io"}
-              <ExternalLink size={14} />
-            </a>
-          )}
-        </div>
-      </section>
-
-      <section className="project-story">
-        <div>
-          <p className="eyebrow">{locale === "es" ? "El proyecto" : "The project"}</p>
-          <h2>{project.caseStudyTitle[locale]}</h2>
-        </div>
-        <p>{project.description[locale]}</p>
-      </section>
-    </article>
   );
 }
 

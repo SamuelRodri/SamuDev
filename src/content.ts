@@ -63,7 +63,7 @@ export const content = {
       allProjects: "All projects",
       featuredProject: {
         label: "Featured project",
-        body: "Gameplay from the project currently taking the main spot in my GameDev portfolio.",
+        body: "A fantasy roguelike blending memory, luck and strategy. Match cards, build synergies and overcome each boss's special rules.",
       },
       experience: "Experience",
       education: "Education",
@@ -247,7 +247,7 @@ export const content = {
       allProjects: "Todos los proyectos",
       featuredProject: {
         label: "Proyecto principal",
-        body: "Gameplay del proyecto que ocupa actualmente el espacio principal de mi portfolio GameDev.",
+        body: "Un roguelike de fantasía que combina memoria, suerte y estrategia. Empareja cartas, crea sinergias y supera las reglas de cada jefe.",
       },
       experience: "Experiencia",
       education: "Formación",

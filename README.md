@@ -24,6 +24,9 @@ npm run build
 - `/SamuDev/` - mode selection hub
 - `/SamuDev/dotnet` - .NET Developer mode
 - `/SamuDev/game` - Game Developer mode
+- `/SamuDev/game/projects` - all GameDev projects and game jams
+- `/SamuDev/game/projects/:slug` - individual project
+- `/SamuDev/game/projects/jams/:slug` - individual game jam project
 
 ## Deploy
 

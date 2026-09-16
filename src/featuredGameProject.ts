@@ -1,6 +1,7 @@
 export const featuredGameProject = {
-  title: "Proyecto Holmes",
-  engine: "Unreal Engine",
-  video: `${import.meta.env.BASE_URL}videos/featured-game-project.mp4`,
-  poster: `${import.meta.env.BASE_URL}images/featured-game-project-poster.jpg`,
+  title: "Synastra",
+  slug: "synastra",
+  platform: "HTML5",
+  itch: "https://luminariacreations.itch.io/synastra",
+  poster: "https://img.itch.zone/aW1nLzI5NzIzMjU2LnBuZw==/original/lU%2FeKc.png",
 } as const;

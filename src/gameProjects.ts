@@ -1,15 +1,14 @@
 import type { Locale } from "./content";
 import { featuredGameProject } from "./featuredGameProject";
-
-type LocalizedText = Record<Locale, string>;
+import type { LocalizedText } from "./types";
 
 export type GameProject = {
   id: string;
   slug: string;
   featured: boolean;
   title: string;
-  engine: string;
-  language: string;
+  engine?: string;
+  language?: string;
   year: number;
   platform: string;
   status: LocalizedText;
@@ -23,16 +22,40 @@ export type GameProject = {
   github?: string;
   itch?: string;
   award?: string;
-  sourceUrl: string;
 };
 
 export const gameProjects: GameProject[] = [
   {
+    id: "synastra",
+    slug: featuredGameProject.slug,
+    featured: false,
+    title: featuredGameProject.title,
+    year: 2026,
+    platform: featuredGameProject.platform,
+    status: { en: "Prototype", es: "Prototipo" },
+    summary: {
+      en: "A fantasy roguelike that turns matching pairs into a game of memory, luck and strategy.",
+      es: "Un roguelike de fantasía que transforma las parejas de cartas en un juego de memoria, suerte y estrategia.",
+    },
+    description: {
+      en: "Created by LuminariaCreations for IndieGG Jam - The Third. Match cards and build scoring synergies through their rarity, affinity and family. Choose upgrades between rounds, then adapt your strategy to bosses that introduce special rules. Play the prototype directly in your browser on itch.io.",
+      es: "Creado por LuminariaCreations para IndieGG Jam - The Third. Empareja cartas y crea sinergias de puntuación con su rareza, afinidad y familia. Elige potenciadores entre rondas y adapta tu estrategia a jefes que introducen reglas especiales. Puedes jugar al prototipo directamente en el navegador desde itch.io.",
+    },
+    caseStudyTitle: {
+      en: "Memory and strategy in every pair.",
+      es: "Memoria y estrategia en cada pareja.",
+    },
+    role: { en: "Team project · LuminariaCreations", es: "Proyecto en equipo · LuminariaCreations" },
+    tags: ["Roguelike", "Cards", "HTML5", "Game Jam"],
+    image: featuredGameProject.poster,
+    itch: featuredGameProject.itch,
+  },
+  {
     id: "project-holmes",
     slug: "proyecto-holmes",
     featured: false,
-    title: featuredGameProject.title,
-    engine: featuredGameProject.engine,
+    title: "Proyecto Holmes",
+    engine: "Unreal Engine",
     language: "Blueprints",
     year: 2026,
     platform: "PC",
@@ -42,8 +65,8 @@ export const gameProjects: GameProject[] = [
       es: "Un proyecto de videojuego en Unreal Engine actualmente en desarrollo.",
     },
     description: {
-      en: "Proyecto Holmes is the game project currently taking the main spot in my GameDev portfolio. Its development focuses on building and refining gameplay in Unreal Engine.",
-      es: "Proyecto Holmes es el videojuego que ocupa actualmente el espacio principal de mi portfolio GameDev. Su desarrollo se centra en construir y perfeccionar el gameplay en Unreal Engine.",
+      en: "Proyecto Holmes is a game project in development. Its development focuses on building and refining gameplay in Unreal Engine.",
+      es: "Proyecto Holmes es un videojuego en desarrollo. Su desarrollo se centra en construir y perfeccionar el gameplay en Unreal Engine.",
     },
     caseStudyTitle: {
       en: "Gameplay development in Unreal Engine.",
@@ -51,9 +74,8 @@ export const gameProjects: GameProject[] = [
     },
     role: { en: "Solo developer", es: "Solo developer" },
     tags: ["Unreal Engine", "Blueprints", "Gameplay"],
-    image: featuredGameProject.poster,
-    video: featuredGameProject.video,
-    sourceUrl: "",
+    image: `${import.meta.env.BASE_URL}images/featured-game-project-poster.jpg`,
+    video: `${import.meta.env.BASE_URL}videos/featured-game-project.mp4`,
   },
   {
     id: "W3LaGTNAzZ901JWaAAD7",
@@ -79,7 +101,6 @@ export const gameProjects: GameProject[] = [
     image: "https://res.cloudinary.com/djcd2rpvx/image/upload/v1772475471/projects/W3LaGTNAzZ901JWaAAD7/images/vertebral-column-vr_alrcnl.jpg",
     video: "https://www.youtube.com/watch?v=BTNumYcCQ3U&t=7s",
     award: "Premio Accésit Cátedra Telefónica a la Innovación Educativa",
-    sourceUrl: "https://samuelrodri.github.io/SamuDev/project/W3LaGTNAzZ901JWaAAD7",
   },
   {
     id: "dTNNhEe8uRbJWdIllmrp",
@@ -105,7 +126,6 @@ export const gameProjects: GameProject[] = [
     image: "https://res.cloudinary.com/djcd2rpvx/image/upload/v1780768138/projects/dTNNhEe8uRbJWdIllmrp/images/metroidvania-unreal_rqhvd1.png",
     video: "https://www.youtube.com/watch?v=FS5Cg6a4TqY",
     github: "https://github.com/SamuelRodri/Plataformas-Unreal",
-    sourceUrl: "https://samuelrodri.github.io/SamuDev/project/dTNNhEe8uRbJWdIllmrp",
   },
   {
     id: "u5OyDzwJBZa9pB0gZ1nI",
@@ -131,6 +151,5 @@ export const gameProjects: GameProject[] = [
     image: "https://img.youtube.com/vi/CblftVzAZXE/maxresdefault.jpg",
     video: `${import.meta.env.BASE_URL}videos/teaser-vandamme.mp4`,
     itch: "https://samuelrodri.itch.io/van-damme",
-    sourceUrl: "https://samuelrodri.github.io/SamuDev/project/u5OyDzwJBZa9pB0gZ1nI",
   },
 ];
