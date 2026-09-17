@@ -1,5 +1,5 @@
 {
-  "title": "Proyecto Van Damme",
+  "title": "Van Damme",
   "publication": {
     "status": "completed",
     "published": true,
@@ -29,8 +29,6 @@
       "C#"
     ],
     "tags": [
-      "Unity",
-      "C#",
       "Strategy",
       "GeoJSON",
       "Event Bus",
