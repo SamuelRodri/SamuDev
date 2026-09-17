@@ -25,14 +25,14 @@ function useInteractiveCard({ label, path, navigate }: InteractiveCardProps) {
   return { role: "link" as const, tabIndex: 0, "aria-label": label, onClick: open, onKeyDown };
 }
 
-export function GameProjectCard({ project, locale, navigate }: { project: GameProject; locale: Locale; navigate: Navigate }) {
+export function GameProjectCard({ project, locale, navigate, featured = false }: { project: GameProject; locale: Locale; navigate: Navigate; featured?: boolean }) {
   const label = `${locale === "es" ? "Ver proyecto" : "View project"}: ${project.title}`;
   const interactiveProps = useInteractiveCard({ label, path: gameProjectPath(project.slug), navigate });
 
   return (
-    <article className="project-card game-project-card" {...interactiveProps}>
+    <article className={`project-card game-project-card${featured ? " primary-featured-project" : ""}`} {...interactiveProps}>
       <div className="project-cover">
-        <img src={project.image} alt={project.title} loading="lazy" />
+        <img src={project.image} alt={project.title} loading={featured ? "eager" : "lazy"} />
         <span className="project-status-badge">{projectStatuses[project.status][locale]}</span>
         <span className="project-link" aria-hidden="true"><ArrowRight size={22} /></span>
       </div>

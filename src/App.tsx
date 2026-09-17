@@ -6,7 +6,7 @@ import { featuredGameProject } from "./featuredGameProject";
 import { gameProjects } from "./gameProjects";
 import { GameProjectCard } from "./components/ProjectCards";
 import { AllGameProjectsPage, GameJamProjectPage, GameProjectPage } from "./pages/GameProjectsPages";
-import { ROUTES, engineFromGameJamsPath, engineFromProjectsPath, gameProjectPath } from "./routing";
+import { ROUTES, engineFromGameJamsPath, engineFromProjectsPath } from "./routing";
 import type { Navigate } from "./types";
 import { usePortfolioNavigation } from "./hooks/usePortfolioNavigation";
 
@@ -252,21 +252,7 @@ function ModePage({ locale, mode, navigate }: { locale: Locale; mode: Mode; navi
       <section className="content-band">
         <h2>{mode === "game" ? t.modePage.featuredProjects : t.modePage.projects}</h2>
         {mode === "game" && featuredGameProject && (
-          <article className="featured-project-showcase">
-            <div className="featured-project-copy">
-              <p className="eyebrow">{t.modePage.featuredProject.label}</p>
-              <h3>{featuredGameProject.title}</h3>
-              <p>{featuredGameProject.summary[locale]}</p>
-              <span>{[featuredGameProject.platform, featuredGameProject.engine].filter(Boolean).join(" · ")}</span>
-              <button className="project-repository-link" type="button" onClick={() => { if (featuredGameProject) navigate(gameProjectPath(featuredGameProject.slug)); }}>
-                {locale === "es" ? "Ver proyecto" : "View project"} <ArrowRight size={17} />
-              </button>
-              {featuredGameProject.itch && <a className="project-repository-link" href={featuredGameProject.itch} target="_blank" rel="noreferrer">
-                <FaItchIo size={17} /> {locale === "es" ? "Jugar en itch.io" : "Play on itch.io"} <ExternalLink size={14} />
-              </a>}
-            </div>
-            <img src={featuredGameProject.image} alt={featuredGameProject.title} />
-          </article>
+          <GameProjectCard project={featuredGameProject} locale={locale} navigate={navigate} featured />
         )}
         <div className={`project-grid${mode === "game" ? " featured-project-grid" : ""}`}>
           {mode === "game" ? featuredProjects.map((project) => (
