@@ -24,7 +24,9 @@
     "year": 2026,
     "engine": "Unity",
     "platform": "HTML5",
-    "language": "C#",
+    "language": [
+      "C#"
+    ],
     "tags": [
       "Roguelike",
       "Cards",

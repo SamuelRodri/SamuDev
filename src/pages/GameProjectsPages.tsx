@@ -190,7 +190,7 @@ function GameProjectDetail({ locale, project, navigate }: PageProps & { project:
           <p className="project-lead">{project.summary[locale]}</p>
           <dl>
             {project.engine && <div><dt>{locale === "es" ? "Motor" : "Engine"}</dt><dd><EngineIcon engine={project.engine} /></dd></div>}
-            {project.language && <div><dt>{locale === "es" ? "Lenguaje" : "Language"}</dt><dd>{project.language}</dd></div>}
+            {project.language?.length && <div><dt>{locale === "es" ? "Lenguajes" : "Languages"}</dt><dd>{project.language.join(" · ")}</dd></div>}
             <div><dt>{locale === "es" ? "Plataforma" : "Platform"}</dt><dd>{project.platform}</dd></div>
             <div><dt>{locale === "es" ? "Rol" : "Role"}</dt><dd>{project.role[locale]}</dd></div>
           </dl>

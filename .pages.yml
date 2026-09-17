@@ -222,9 +222,19 @@
             },
             {
               "name": "language",
-              "label": "Lenguaje de programación (opcional)",
-              "type": "string",
-              "description": "Por ejemplo: C#, C++ o Blueprints."
+              "label": "Lenguajes de programación (opcional)",
+              "type": "select",
+              "description": "Selecciona uno o varios lenguajes utilizados en el proyecto.",
+              "options": {
+                "values": [
+                  "C#",
+                  "C++",
+                  "Blueprints",
+                  "GDScript",
+                  "Python"
+                ],
+                "multiple": true
+              }
             },
             {
               "name": "tags",

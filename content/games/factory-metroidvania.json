@@ -25,7 +25,9 @@
     "year": 2025,
     "engine": "Unreal Engine",
     "platform": "PC",
-    "language": "Blueprints",
+    "language": [
+      "Blueprints"
+    ],
     "tags": [
       "Unreal Engine",
       "Blueprints",

@@ -55,3 +55,7 @@ Documentación: https://pagescms.org/docs/quick-start/
 ## Motor del juego
 
 Selecciona Unity, Unreal Engine o Godot en el desplegable de la ficha (también en game jams). Si un proyecto no tiene motor confirmado, puedes dejarlo sin seleccionar en Proyectos GameDev. La ficha muestra el icono del motor, con su nombre accesible y visible al pasar el cursor.
+
+## Lenguajes de programación
+
+El campo permite seleccionar más de una opción entre C#, C++, Blueprints, GDScript y Python. Las opciones elegidas aparecen juntas en las tarjetas y en la ficha del proyecto.

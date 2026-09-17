@@ -6,6 +6,7 @@ const root = fileURLToPath(new URL("../", import.meta.url));
 const read = (path) => JSON.parse(readFileSync(resolve(root, path), "utf8"));
 const projectStatuses = read("src/projectStatuses.json");
 const gameEngines = read("src/gameEngines.json");
+const programmingLanguages = read("src/programmingLanguages.json");
 const text = (v) => typeof v === "string" && v.trim().length > 0;
 const media = (v) => text(v) && (/^https:\/\//.test(v) || /^\/(images|videos)\//.test(v)) && !v.includes("..");
 
@@ -21,7 +22,9 @@ function normalizeProject(project, kind) {
     base[field] ?? { es: spanish[field], en: english[field] },
   ]));
   for (const field of localizedFields) delete base[field];
-  return { ...base, ...publication, ...mediaFields, ...details, ...links, ...localized };
+  const normalized = { ...base, ...publication, ...mediaFields, ...details, ...links, ...localized };
+  if (kind === "games" && text(normalized.language)) normalized.language = [normalized.language];
+  return normalized;
 }
 
 export function prepareContent(games, jams, settings) {
@@ -37,6 +40,11 @@ export function prepareContent(games, jams, settings) {
       if (typeof p.published !== "boolean") fail("published");
       if (!text(p.title)) fail("title");
       if (p.engine && !gameEngines.includes(p.engine)) fail("engine (choose an available engine)");
+      if (kind === "games" && p.language != null && (
+        !Array.isArray(p.language)
+        || !p.language.every((language) => programmingLanguages.includes(language))
+        || new Set(p.language).size !== p.language.length
+      )) fail("language (choose each available language at most once)");
       if (kind === "games" && p.status != null && !Object.hasOwn(projectStatuses, p.status)) fail("status");
       // Drafts may be incomplete and never enter the generated site data.
       if (!p.published) continue;

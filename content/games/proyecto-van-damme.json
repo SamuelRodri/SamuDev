@@ -25,7 +25,9 @@
     "year": 2025,
     "engine": "Unity",
     "platform": "PC",
-    "language": "C#",
+    "language": [
+      "C#"
+    ],
     "tags": [
       "Unity",
       "C#",

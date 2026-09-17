@@ -44,6 +44,15 @@ for (const collection of config.content.filter((entry) => entry.type === 'collec
   assert.equal(engine.type, 'select');
   assert.deepEqual(engine.options.values, engines);
 }
+const languages = JSON.parse(readFileSync(new URL('../src/programmingLanguages.json', import.meta.url), 'utf8'));
+assert.deepEqual(prepareContent([{ ...game, language: languages }], [], {}).games[0].language, languages);
+assert.deepEqual(prepareContent([{ ...game, language: 'C#' }], [], {}).games[0].language, ['C#']);
+assert.throws(() => prepareContent([{ ...game, language: ['Java'] }], [], {}), /language/);
+assert.throws(() => prepareContent([{ ...game, language: ['C#', 'C#'] }], [], {}), /language/);
+const languageField = config.content[0].fields.find((field) => field.name === 'details').fields.find((field) => field.name === 'language');
+assert.equal(languageField.type, 'select');
+assert.equal(languageField.options.multiple, true);
+assert.deepEqual(languageField.options.values, languages);
 
 const nestedGame = {
   title: game.title, slug: game.slug, id: game.id,

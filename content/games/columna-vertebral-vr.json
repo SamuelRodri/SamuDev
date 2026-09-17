@@ -25,7 +25,9 @@
     "year": 2023,
     "engine": "Unity",
     "platform": "Meta Quest 2",
-    "language": "C#",
+    "language": [
+      "C#"
+    ],
     "tags": [
       "VR",
       "Unity",

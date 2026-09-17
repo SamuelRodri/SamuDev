@@ -36,7 +36,7 @@ export function GameProjectCard({ project, locale, navigate }: { project: GamePr
         <span className="project-status-badge">{projectStatuses[project.status][locale]}</span>
         <span className="project-link" aria-hidden="true"><ArrowRight size={22} /></span>
       </div>
-      <div className="project-meta">{[project.engine, project.language, project.year].filter(Boolean).join(" · ")}</div>
+      <div className="project-meta">{[project.engine, ...(project.language ?? []), project.year].filter(Boolean).join(" · ")}</div>
       <h3>{project.title}</h3>
       <p>{project.summary[locale]}</p>
       <small>{project.role[locale]}</small>

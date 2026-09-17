@@ -11,7 +11,7 @@ export type GameProject = {
   featured: boolean;
   title: string;
   engine?: string;
-  language?: string;
+  language?: string[];
   year: number;
   platform: string;
   status: keyof typeof projectStatuses;
