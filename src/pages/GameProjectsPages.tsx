@@ -1,7 +1,7 @@
 import { EngineIcon } from "../components/EngineIcon";
 import { projectStatuses } from "../gameProjects";
 import { useState } from "react";
-import { ArrowLeft, ExternalLink, Volume2, VolumeX } from "lucide-react";
+import { ArrowLeft, ChevronLeft, ChevronRight, ExternalLink, Volume2, VolumeX } from "lucide-react";
 import { FaGithub, FaItchIo } from "react-icons/fa";
 import { GameJamProjectCard, GameProjectCard } from "../components/ProjectCards";
 import { content, type Locale } from "../content";
@@ -115,10 +115,38 @@ function ProjectStory({ locale, title, description, isJam = false }: { locale: L
 }
 
 function ProjectGallery({ images, title, locale }: { images?: string[]; title: string; locale: Locale }) {
+  const [selectedIndex, setSelectedIndex] = useState(0);
   if (!images?.length) return null;
+  const hasMultipleImages = images.length > 1;
+  const selectPrevious = () => setSelectedIndex((index) => (index - 1 + images.length) % images.length);
+  const selectNext = () => setSelectedIndex((index) => (index + 1) % images.length);
+  const imageLabel = (index: number) => `${title} — ${locale === "es" ? "captura" : "screenshot"} ${index + 1} ${locale === "es" ? "de" : "of"} ${images.length}`;
+
   return <section className="content-band">
     <h2>{locale === "es" ? "Capturas" : "Screenshots"}</h2>
-    <div className="project-gallery">{images.map((src, index) => <img key={`${src}-${index}`} src={src} alt={`${title} — ${index + 1}`} loading="lazy" />)}</div>
+    <div
+      className="project-gallery"
+      tabIndex={hasMultipleImages ? 0 : undefined}
+      onKeyDown={hasMultipleImages ? (event) => {
+        if (event.key === "ArrowLeft") { event.preventDefault(); selectPrevious(); }
+        if (event.key === "ArrowRight") { event.preventDefault(); selectNext(); }
+      } : undefined}
+      aria-label={locale === "es" ? `Galería de ${title}` : `${title} gallery`}
+    >
+      <div className="project-gallery-stage">
+        <img src={images[selectedIndex]} alt={imageLabel(selectedIndex)} loading="lazy" />
+        {hasMultipleImages && <>
+          <button type="button" className="gallery-control previous" onClick={selectPrevious} aria-label={locale === "es" ? "Captura anterior" : "Previous screenshot"}><ChevronLeft size={24} /></button>
+          <button type="button" className="gallery-control next" onClick={selectNext} aria-label={locale === "es" ? "Captura siguiente" : "Next screenshot"}><ChevronRight size={24} /></button>
+          <span className="gallery-counter" aria-hidden="true">{selectedIndex + 1} / {images.length}</span>
+        </>}
+      </div>
+      {hasMultipleImages && <div className="project-gallery-thumbnails" aria-label={locale === "es" ? "Seleccionar captura" : "Select screenshot"}>
+        {images.map((src, index) => <button type="button" key={`${src}-${index}`} className={selectedIndex === index ? "active" : ""} aria-label={imageLabel(index)} aria-pressed={selectedIndex === index} onClick={() => setSelectedIndex(index)}>
+          <img src={src} alt="" loading="lazy" />
+        </button>)}
+      </div>}
+    </div>
   </section>;
 }
 

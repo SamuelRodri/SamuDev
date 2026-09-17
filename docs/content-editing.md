@@ -36,6 +36,7 @@ Las game jams usan la misma estructura adaptada a sus campos. No necesitas relle
 - **Premio o reconocimiento**: es opcional y se escribe por separado dentro de las secciones de español e inglés. Si añades un premio, completa ambos idiomas para poder publicar la ficha.
 - **Imagen de portada** y **Galería de capturas**: subir imágenes o usar URLs HTTPS existentes. Las imágenes subidas se guardan en `public/images/projects`. La web adapta las rutas al prefijo de alojamiento.
 - **Vídeo**: URL HTTPS de un MP4, enlace `https://www.youtube.com/watch?v=...` o ruta de un MP4 existente bajo `/videos/`. Los vídeos nuevos se alojan externamente.
+- **Galería de capturas**: añade entre 3 y 6 imágenes representativas cuando dispongas de ellas. La ficha muestra una galería manual con miniaturas, flechas y navegación por teclado; nunca cambia de imagen automáticamente.
 - **Dirección de la ficha**: usa un valor único y consérvalo tras publicar. El identificador interno está oculto; los proyectos nuevos lo obtienen automáticamente de esta dirección.
 
 Guardar una ficha genera un commit en `main`, pero no publica inmediatamente. Puedes guardar todos los proyectos que necesites y, cuando termines, pulsar **Publicar portfolio** en la barra lateral de Pages CMS. Ese botón ejecuta una sola vez el workflow **Deploy portfolio** con todos los cambios acumulados. Si falla la validación, la versión anterior continúa publicada; revisa el error en Actions, corrige la ficha y vuelve a publicar.
