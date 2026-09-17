@@ -15,7 +15,17 @@ El estado del desarrollo se elige en un selector: Prototipo, En desarrollo, Publ
 
 ## Formulario
 
-Empieza por nombre, estado y visibilidad; sigue con portada, capturas y textos. Los datos del juego vienen después; enlaces opcionales y dirección quedan al final. No necesitas rellenar un identificador interno ni un nombre de archivo.
+Cada ficha está dividida en secciones numeradas:
+
+1. **Publicación**: estado, visibilidad y destacados.
+2. **Imágenes y vídeo**: portada, galería y vídeo.
+3. **Contenido en español**: todos los textos de la versión española.
+4. **Content in English**: todos los textos de la versión inglesa.
+5. **Datos del juego**: año, motor, plataforma, lenguaje y etiquetas.
+6. **Enlaces y reconocimiento**: itch.io, GitHub y premios.
+7. **Dirección de la ficha**: el identificador visible en la URL.
+
+Las game jams usan la misma estructura adaptada a sus campos. No necesitas rellenar un identificador interno ni un nombre de archivo. Pages CMS alojado no ofrece configuración de columnas ni separadores personalizados; estos grupos son las secciones visuales admitidas por su formulario estructurado.
 
 ## Uso diario
 

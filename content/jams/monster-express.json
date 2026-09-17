@@ -1,31 +1,35 @@
 {
-  "slug": "monster-express",
   "title": "Monster Express",
-  "jam": "Gran Canaria Game Island Jam 3",
-  "year": 2024,
-  "engine": "Unity",
-  "genre": {
-    "en": "Arcade",
-    "es": "Arcade"
+  "publication": {
+    "published": true
   },
-  "summary": {
-    "en": "Collect falling dough, avoid troublesome spiders and build three monsters before time runs out.",
-    "es": "Recoge la masa que cae, esquiva a las arañas y construye tres monstruos antes de que acabe el tiempo."
+  "media": {
+    "image": "https://img.itch.zone/aW1nLzE2OTE3NzY0LnBuZw==/508x254%23mb/pvBL8M.png"
   },
-  "description": {
-    "en": "An arcade game developed as a team during Gran Canaria Game Island Jam 3. Players must collect ingredients, avoid hazards and assemble three monsters against the clock in a compact browser experience.",
-    "es": "Un juego arcade desarrollado en equipo durante la Gran Canaria Game Island Jam 3. El jugador debe recoger ingredientes, evitar peligros y montar tres monstruos contrarreloj en una experiencia compacta para navegador."
+  "spanish": {
+    "summary": "Recoge la masa que cae, esquiva a las arañas y construye tres monstruos antes de que acabe el tiempo.",
+    "description": "Un juego arcade desarrollado en equipo durante la Gran Canaria Game Island Jam 3. El jugador debe recoger ingredientes, evitar peligros y montar tres monstruos contrarreloj en una experiencia compacta para navegador.",
+    "role": "Miembro del equipo",
+    "genre": "Arcade"
   },
-  "role": {
-    "en": "Team member",
-    "es": "Miembro del equipo"
+  "english": {
+    "summary": "Collect falling dough, avoid troublesome spiders and build three monsters before time runs out.",
+    "description": "An arcade game developed as a team during Gran Canaria Game Island Jam 3. Players must collect ingredients, avoid hazards and assemble three monsters against the clock in a compact browser experience.",
+    "role": "Team member",
+    "genre": "Arcade"
   },
-  "tags": [
-    "Unity",
-    "HTML5",
-    "Team project"
-  ],
-  "image": "https://img.itch.zone/aW1nLzE2OTE3NzY0LnBuZw==/508x254%23mb/pvBL8M.png",
-  "itch": "https://yamizs.itch.io/monster-express",
-  "published": true
+  "details": {
+    "jam": "Gran Canaria Game Island Jam 3",
+    "year": 2024,
+    "engine": "Unity",
+    "tags": [
+      "Unity",
+      "HTML5",
+      "Team project"
+    ]
+  },
+  "links": {
+    "itch": "https://yamizs.itch.io/monster-express"
+  },
+  "slug": "monster-express"
 }

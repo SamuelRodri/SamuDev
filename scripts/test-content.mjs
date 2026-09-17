@@ -26,22 +26,35 @@ assert.equal(prepareContent([], [], {}).featuredGame, "");
 const config = JSON.parse(readFileSync(new URL("../.pages.yml", import.meta.url), "utf8"));
 assert.deepEqual(config.content.map((item) => item.name), ["games", "jams", "settings"]);
 for (const collection of config.content.filter((item) => item.type === "collection")) {
-  assert.equal(collection.fields.find((item) => item.name === "published").default, false);
+  assert.equal(collection.fields.find((item) => item.name === "publication").fields.find((item) => item.name === "published").default, false);
+  assert.deepEqual(collection.fields.slice(1, 7).map((field) => field.name),
+    ["publication", "media", "spanish", "english", "details", "links"]);
 }
 console.log("Content checks passed: migration, sorting, drafts, validation and CMS configuration.");
 
 const statuses = JSON.parse(readFileSync(new URL('../src/projectStatuses.json', import.meta.url), 'utf8'));
 for (const status of Object.keys(statuses)) assert.equal(prepareContent([{ ...game, status }], [], {}).games[0].status, status);
 for (const status of ['custom', '', null, { es: 'Prototipo', en: 'Prototype' }]) assert.throws(() => prepareContent([{ ...game, status }], [], {}), /status/);
-assert.deepEqual(config.content[0].fields.find((field) => field.name === 'status').options.values, Object.entries(statuses).map(([name, label]) => ({ name, label: label.es })));
+assert.deepEqual(config.content[0].fields.find((field) => field.name === 'publication').fields.find((field) => field.name === 'status').options.values, Object.entries(statuses).map(([name, label]) => ({ name, label: label.es })));
 const engines = JSON.parse(readFileSync(new URL('../src/gameEngines.json', import.meta.url), 'utf8'));
 for (const engine of engines) assert.equal(prepareContent([{ ...game, engine }], [], {}).games[0].engine, engine);
 assert.throws(() => prepareContent([{ ...game, engine: 'Unknown engine' }], [], {}), /engine/);
 for (const collection of config.content.filter((entry) => entry.type === 'collection')) {
-  const engine = collection.fields.find((field) => field.name === 'engine');
+  const engine = collection.fields.find((field) => field.name === 'details').fields.find((field) => field.name === 'engine');
   assert.equal(engine.type, 'select');
   assert.deepEqual(engine.options.values, engines);
 }
+
+const nestedGame = {
+  title: game.title, slug: game.slug, id: game.id,
+  publication: { status: game.status, published: true, featured: true },
+  media: { image: game.image },
+  spanish: { summary: translated.es, caseStudyTitle: translated.es, description: translated.es, role: translated.es },
+  english: { summary: translated.en, caseStudyTitle: translated.en, description: translated.en, role: translated.en },
+  details: { year: game.year, platform: game.platform, tags: [] },
+  links: {},
+};
+assert.deepEqual(prepareContent([nestedGame], [], {}).games[0].summary, translated);
 
 assert.deepEqual(prepareContent([other, game], [], {gameOrder: [game.slug, other.slug]}).games.map(p=>p.slug), [game.slug,other.slug]);
 assert.deepEqual(prepareContent([other, game], [], {gameOrder: [game.slug]}).games.map(p=>p.slug), [game.slug,other.slug]);

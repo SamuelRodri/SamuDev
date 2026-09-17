@@ -9,7 +9,24 @@ const gameEngines = read("src/gameEngines.json");
 const text = (v) => typeof v === "string" && v.trim().length > 0;
 const media = (v) => text(v) && (/^https:\/\//.test(v) || /^\/(images|videos)\//.test(v)) && !v.includes("..");
 
+function normalizeProject(project, kind) {
+  const {
+    publication = {}, media: mediaFields = {}, details = {}, links = {},
+    spanish = {}, english = {}, ...base
+  } = project;
+  const localizedFields = kind === "games"
+    ? ["summary", "caseStudyTitle", "description", "role"]
+    : ["summary", "description", "role", "genre"];
+  const localized = Object.fromEntries(localizedFields.map((field) => [field,
+    base[field] ?? { es: spanish[field], en: english[field] },
+  ]));
+  for (const field of localizedFields) delete base[field];
+  return { ...base, ...publication, ...mediaFields, ...details, ...links, ...localized };
+}
+
 export function prepareContent(games, jams, settings) {
+  games = games.map((project) => normalizeProject(project, "games"));
+  jams = jams.map((project) => normalizeProject(project, "jams"));
   for (const [kind, entries] of [["games", games], ["jams", jams]]) {
     const slugs = new Set();
     const ids = new Set();

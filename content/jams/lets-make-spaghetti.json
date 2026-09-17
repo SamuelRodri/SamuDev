@@ -1,31 +1,35 @@
 {
-  "slug": "lets-make-spaghetti",
   "title": "Let's Make Spaghetti",
-  "jam": "Level Up Game Jam 2025",
-  "year": 2025,
-  "engine": "Godot",
-  "genre": {
-    "en": "Puzzle",
-    "es": "Puzles"
+  "publication": {
+    "published": true
   },
-  "summary": {
-    "en": "Prepare a plate of spaghetti in 120 seconds using the most absurd utensils possible.",
-    "es": "Prepara un plato de espaguetis en 120 segundos usando los utensilios más absurdos posibles."
+  "media": {
+    "image": "https://img.itch.zone/aW1nLzIyMTIwOTIxLnBuZw==/508x254%23mb/pl3K81.png"
   },
-  "description": {
-    "en": "A fast-paced cooking puzzle created during the Level Up Game Jam 2025. The challenge was to turn a deliberately chaotic set of utensils and interactions into a short, readable and entertaining experience under the constraints of a game jam.",
-    "es": "Un puzle de cocina contrarreloj creado durante la Level Up Game Jam 2025. El reto consistió en convertir un conjunto deliberadamente caótico de utensilios e interacciones en una experiencia corta, clara y entretenida dentro de las limitaciones de una game jam."
+  "spanish": {
+    "summary": "Prepara un plato de espaguetis en 120 segundos usando los utensilios más absurdos posibles.",
+    "description": "Un puzle de cocina contrarreloj creado durante la Level Up Game Jam 2025. El reto consistió en convertir un conjunto deliberadamente caótico de utensilios e interacciones en una experiencia corta, clara y entretenida dentro de las limitaciones de una game jam.",
+    "role": "Miembro del equipo",
+    "genre": "Puzles"
   },
-  "role": {
-    "en": "Team member",
-    "es": "Miembro del equipo"
+  "english": {
+    "summary": "Prepare a plate of spaghetti in 120 seconds using the most absurd utensils possible.",
+    "description": "A fast-paced cooking puzzle created during the Level Up Game Jam 2025. The challenge was to turn a deliberately chaotic set of utensils and interactions into a short, readable and entertaining experience under the constraints of a game jam.",
+    "role": "Team member",
+    "genre": "Puzzle"
   },
-  "tags": [
-    "Godot",
-    "Pixel Art",
-    "Cooking"
-  ],
-  "image": "https://img.itch.zone/aW1nLzIyMTIwOTIxLnBuZw==/508x254%23mb/pl3K81.png",
-  "itch": "https://awereplays.itch.io/lets-make-spagu",
-  "published": true
+  "details": {
+    "jam": "Level Up Game Jam 2025",
+    "year": 2025,
+    "engine": "Godot",
+    "tags": [
+      "Godot",
+      "Pixel Art",
+      "Cooking"
+    ]
+  },
+  "links": {
+    "itch": "https://awereplays.itch.io/lets-make-spagu"
+  },
+  "slug": "lets-make-spaghetti"
 }

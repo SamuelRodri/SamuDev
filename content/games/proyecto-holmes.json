@@ -1,35 +1,38 @@
 {
-  "id": "project-holmes",
-  "slug": "proyecto-holmes",
-  "featured": false,
   "title": "Proyecto Holmes",
-  "engine": "Unreal Engine",
-  "language": "Blueprints",
-  "year": 2026,
-  "platform": "PC",
-  "status": "in-development",
-  "summary": {
-    "en": "An Unreal Engine game project currently in development.",
-    "es": "Un proyecto de videojuego en Unreal Engine actualmente en desarrollo."
+  "publication": {
+    "status": "in-development",
+    "published": true,
+    "featured": false
   },
-  "description": {
-    "en": "Proyecto Holmes is a game project in development. Its development focuses on building and refining gameplay in Unreal Engine.",
-    "es": "Proyecto Holmes es un videojuego en desarrollo. Su desarrollo se centra en construir y perfeccionar el gameplay en Unreal Engine."
+  "media": {
+    "image": "/images/featured-game-project-poster.jpg",
+    "video": "/videos/featured-game-project.mp4"
   },
-  "caseStudyTitle": {
-    "en": "Gameplay development in Unreal Engine.",
-    "es": "Desarrollo de gameplay en Unreal Engine."
+  "spanish": {
+    "summary": "Un proyecto de videojuego en Unreal Engine actualmente en desarrollo.",
+    "caseStudyTitle": "Desarrollo de gameplay en Unreal Engine.",
+    "description": "Proyecto Holmes es un videojuego en desarrollo. Su desarrollo se centra en construir y perfeccionar el gameplay en Unreal Engine.",
+    "role": "Solo developer"
   },
-  "role": {
-    "en": "Solo developer",
-    "es": "Solo developer"
+  "english": {
+    "summary": "An Unreal Engine game project currently in development.",
+    "caseStudyTitle": "Gameplay development in Unreal Engine.",
+    "description": "Proyecto Holmes is a game project in development. Its development focuses on building and refining gameplay in Unreal Engine.",
+    "role": "Solo developer"
   },
-  "tags": [
-    "Unreal Engine",
-    "Blueprints",
-    "Gameplay"
-  ],
-  "image": "/images/featured-game-project-poster.jpg",
-  "video": "/videos/featured-game-project.mp4",
-  "published": true
+  "details": {
+    "year": 2026,
+    "engine": "Unreal Engine",
+    "platform": "PC",
+    "language": "Blueprints",
+    "tags": [
+      "Unreal Engine",
+      "Blueprints",
+      "Gameplay"
+    ]
+  },
+  "links": {},
+  "slug": "proyecto-holmes",
+  "id": "project-holmes"
 }

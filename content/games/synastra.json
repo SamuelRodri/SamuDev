@@ -1,36 +1,40 @@
 {
   "title": "Synastra",
-  "status": "prototype",
-  "published": true,
-  "featured": false,
-  "image": "https://img.itch.zone/aW1nLzI5NzIzMjU2LnBuZw==/original/lU%2FeKc.png",
-  "summary": {
-    "es": "Un roguelike de fantasía que transforma las parejas de cartas en un juego de memoria, suerte y estrategia.",
-    "en": "A fantasy roguelike that turns matching pairs into a game of memory, luck and strategy."
+  "publication": {
+    "status": "prototype",
+    "published": true,
+    "featured": false
   },
-  "caseStudyTitle": {
-    "es": "Memoria y estrategia en cada pareja.",
-    "en": "Memory and strategy in every pair."
+  "media": {
+    "image": "https://img.itch.zone/aW1nLzI5NzIzMjU2LnBuZw==/original/lU%2FeKc.png"
   },
-  "description": {
-    "es": "Creado por LuminariaCreations para IndieGG Jam - The Third. Empareja cartas y crea sinergias de puntuación con su rareza, afinidad y familia. Elige potenciadores entre rondas y adapta tu estrategia a jefes que introducen reglas especiales. Puedes jugar al prototipo directamente en el navegador desde itch.io.",
-    "en": "Created by LuminariaCreations for IndieGG Jam - The Third. Match cards and build scoring synergies through their rarity, affinity and family. Choose upgrades between rounds, then adapt your strategy to bosses that introduce special rules. Play the prototype directly in your browser on itch.io."
+  "spanish": {
+    "summary": "Un roguelike de fantasía que transforma las parejas de cartas en un juego de memoria, suerte y estrategia.",
+    "caseStudyTitle": "Memoria y estrategia en cada pareja.",
+    "description": "Creado por LuminariaCreations para IndieGG Jam - The Third. Empareja cartas y crea sinergias de puntuación con su rareza, afinidad y familia. Elige potenciadores entre rondas y adapta tu estrategia a jefes que introducen reglas especiales. Puedes jugar al prototipo directamente en el navegador desde itch.io.",
+    "role": "Proyecto en equipo · LuminariaCreations"
   },
-  "role": {
-    "es": "Proyecto en equipo · LuminariaCreations",
-    "en": "Team project · LuminariaCreations"
+  "english": {
+    "summary": "A fantasy roguelike that turns matching pairs into a game of memory, luck and strategy.",
+    "caseStudyTitle": "Memory and strategy in every pair.",
+    "description": "Created by LuminariaCreations for IndieGG Jam - The Third. Match cards and build scoring synergies through their rarity, affinity and family. Choose upgrades between rounds, then adapt your strategy to bosses that introduce special rules. Play the prototype directly in your browser on itch.io.",
+    "role": "Team project · LuminariaCreations"
   },
-  "year": 2026,
-  "engine": "Unity",
-  "platform": "HTML5",
-  "language": "C#",
-  "tags": [
-    "Roguelike",
-    "Cards",
-    "Game Jam"
-  ],
-  "itch": "https://luminariacreations.itch.io/synastra",
-  "award": "Machanguito Award a mejor juego de la Indie GG Jam GCX26",
+  "details": {
+    "year": 2026,
+    "engine": "Unity",
+    "platform": "HTML5",
+    "language": "C#",
+    "tags": [
+      "Roguelike",
+      "Cards",
+      "Game Jam"
+    ]
+  },
+  "links": {
+    "itch": "https://luminariacreations.itch.io/synastra",
+    "award": "Machanguito Award a mejor juego de la Indie GG Jam GCX26"
+  },
   "slug": "synastra",
   "id": "synastra"
 }
