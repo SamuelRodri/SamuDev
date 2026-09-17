@@ -6,7 +6,7 @@ import { featuredGameProject } from "./featuredGameProject";
 import { gameProjects } from "./gameProjects";
 import { GameProjectCard } from "./components/ProjectCards";
 import { AllGameProjectsPage, GameJamProjectPage, GameProjectPage } from "./pages/GameProjectsPages";
-import { ROUTES, engineFromProjectsPath, gameProjectPath } from "./routing";
+import { ROUTES, engineFromGameJamsPath, engineFromProjectsPath, gameProjectPath } from "./routing";
 import type { Navigate } from "./types";
 import { usePortfolioNavigation } from "./hooks/usePortfolioNavigation";
 
@@ -51,8 +51,13 @@ function App() {
         showPortfolioNavigation={path === ROUTES.home || fromHub}
         labels={t.nav}
       />
-      <main key={path} className="page-transition">{path === ROUTES.gameProjects || engineFromProjectsPath(path) ? (
-        <AllGameProjectsPage locale={locale} navigate={navigate} selectedEngine={engineFromProjectsPath(path)} />
+      <main key={path} className="page-transition">{path === ROUTES.gameProjects || engineFromProjectsPath(path) || engineFromGameJamsPath(path) ? (
+        <AllGameProjectsPage
+          locale={locale}
+          navigate={navigate}
+          selectedEngine={engineFromProjectsPath(path)}
+          selectedJamEngine={engineFromGameJamsPath(path)}
+        />
       ) : path.startsWith("/game/projects/jams/") ? (
         <GameJamProjectPage locale={locale} slug={path.split("/").pop() || ""} navigate={navigate} />
       ) : path.startsWith("/game/projects/") ? (

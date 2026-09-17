@@ -10,7 +10,7 @@ for (const base of ["/SamuDev/", "/"]) {
   const routing = await import(`data:text/javascript;base64,${Buffer.from(outputText).toString("base64")}`);
   const prefix = base.replace(/\/$/, "");
   for (const locale of ["es", "en"]) {
-    for (const path of ["/", "/dotnet", "/game", "/game/projects", "/game/projects/unity", "/game/projects/unreal-engine", "/game/projects/synastra", "/game/projects/jams/monster-express"]) {
+    for (const path of ["/", "/dotnet", "/game", "/game/projects", "/game/projects/unity", "/game/projects/unreal-engine", "/game/projects/synastra", "/game/projects/jams/unity", "/game/projects/jams/godot", "/game/projects/jams/monster-express"]) {
       const url = routing.localizedPath(path, locale);
       assert.deepEqual(routing.parseRoute(url.slice(prefix.length)), { locale, path, search: "", hash: "" });
     }
@@ -19,6 +19,10 @@ for (const base of ["/SamuDev/", "/"]) {
   assert.equal(routing.engineFromProjectsPath("/game/projects/unreal-engine"), "Unreal Engine");
   assert.equal(routing.engineFromProjectsPath("/game/projects/synastra"), undefined);
   assert.equal(routing.gameProjectsByEnginePath("Godot"), "/game/projects/godot");
+  assert.equal(routing.engineFromGameJamsPath("/game/projects/jams/unity"), "Unity");
+  assert.equal(routing.engineFromGameJamsPath("/game/projects/jams/godot"), "Godot");
+  assert.equal(routing.engineFromGameJamsPath("/game/projects/jams/monster-express"), undefined);
+  assert.equal(routing.gameJamsByEnginePath("Unreal Engine"), "/game/projects/jams/unreal-engine");
   let location = new URL(`https://example.com${prefix}/?path=${encodeURIComponent("/es/game/projects/synastra?ref=share#details")}`);
   globalThis.window = {
     get location() { return location; },

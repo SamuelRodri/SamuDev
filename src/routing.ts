@@ -64,8 +64,17 @@ export type ProjectEngine = keyof typeof engineSlugs;
 export const gameProjectsByEnginePath = (engine: ProjectEngine) =>
   `${ROUTES.gameProjects}/${engineSlugs[engine]}`;
 
+export const gameJamsByEnginePath = (engine: ProjectEngine) =>
+  `${ROUTES.gameProjects}/jams/${engineSlugs[engine]}`;
+
 export function engineFromProjectsPath(path: string): ProjectEngine | undefined {
   const slug = path.slice(`${ROUTES.gameProjects}/`.length);
+  return (Object.entries(engineSlugs) as [ProjectEngine, string][])
+    .find(([, engineSlug]) => slug === engineSlug)?.[0];
+}
+
+export function engineFromGameJamsPath(path: string): ProjectEngine | undefined {
+  const slug = path.slice(`${ROUTES.gameProjects}/jams/`.length);
   return (Object.entries(engineSlugs) as [ProjectEngine, string][])
     .find(([, engineSlug]) => slug === engineSlug)?.[0];
 }
