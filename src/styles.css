@@ -868,6 +868,38 @@ p {
 .view-all-projects:hover svg { transform: translateX(3px); }
 .all-projects-page { padding-bottom: 80px; }
 
+.project-engine-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: -8px 0 28px;
+}
+
+.project-engine-filters button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 0.65rem 1rem;
+  border: 1px solid rgba(231, 237, 240, 0.2);
+  background: rgba(8, 20, 27, 0.72);
+  color: rgba(238, 247, 255, 0.7);
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: border-color 160ms ease, background 160ms ease, color 160ms ease;
+}
+
+.project-engine-filters button:hover,
+.project-engine-filters button.active {
+  border-color: var(--line);
+  background: color-mix(in srgb, var(--line) 12%, rgba(8, 20, 27, 0.92));
+  color: #eef7ff;
+}
+
+.project-engine-filters .engine-icon svg { width: 18px; height: 18px; }
+
 .all-projects-page .project-grid {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
@@ -1888,4 +1920,6 @@ h3 { letter-spacing: -0.035em; }
   :root { --page-gutter: 22px; }
   .hero-copy h1 { font-size: 3.5rem; }
   .mode-page .content-band > h2 { align-items: flex-start; flex-direction: column; gap: 0.5rem; }
+  .project-engine-filters { gap: 6px; }
+  .project-engine-filters button { flex: 1 1 calc(50% - 6px); justify-content: center; }
 }

@@ -52,4 +52,21 @@ export function getInitialRoute() {
 
 export const gameProjectPath = (slug: string) => `${ROUTES.gameProjects}/${slug}`;
 export const gameJamProjectPath = (slug: string) => `${ROUTES.gameProjects}/jams/${slug}`;
+
+export const engineSlugs = {
+  Unity: "unity",
+  "Unreal Engine": "unreal-engine",
+  Godot: "godot",
+} as const;
+
+export type ProjectEngine = keyof typeof engineSlugs;
+
+export const gameProjectsByEnginePath = (engine: ProjectEngine) =>
+  `${ROUTES.gameProjects}/${engineSlugs[engine]}`;
+
+export function engineFromProjectsPath(path: string): ProjectEngine | undefined {
+  const slug = path.slice(`${ROUTES.gameProjects}/`.length);
+  return (Object.entries(engineSlugs) as [ProjectEngine, string][])
+    .find(([, engineSlug]) => slug === engineSlug)?.[0];
+}
 import type { Locale } from "./content";

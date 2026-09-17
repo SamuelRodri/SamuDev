@@ -7,7 +7,7 @@ import { GameJamProjectCard, GameProjectCard } from "../components/ProjectCards"
 import { content, type Locale } from "../content";
 import { gameJamProjects, type GameJamProject } from "../gameJamProjects";
 import { gameProjects, type GameProject } from "../gameProjects";
-import { ROUTES } from "../routing";
+import { ROUTES, gameProjectsByEnginePath, type ProjectEngine } from "../routing";
 import type { Navigate } from "../types";
 
 type PageProps = { locale: Locale; navigate: Navigate };
@@ -33,16 +33,43 @@ function ProjectNotFound({ locale, navigate }: PageProps) {
   );
 }
 
-export function AllGameProjectsPage({ locale, navigate }: PageProps) {
+export function AllGameProjectsPage({ locale, navigate, selectedEngine }: PageProps & { selectedEngine?: ProjectEngine }) {
   const labels = content[locale].modePage;
+  const availableEngines = (["Unity", "Unreal Engine", "Godot"] as ProjectEngine[])
+    .filter((engine) => gameProjects.some((project) => project.engine === engine));
+  const visibleProjects = selectedEngine
+    ? gameProjects.filter((project) => project.engine === selectedEngine)
+    : gameProjects;
 
   return (
     <section className="mode-page violet all-projects-page">
       <BackButton locale={locale} navigate={navigate} destination={ROUTES.game} />
       <section className="content-band">
         <h2>{labels.allProjects}</h2>
+        <nav className="project-engine-filters" aria-label={locale === "es" ? "Filtrar proyectos por motor" : "Filter projects by engine"}>
+          <button
+            type="button"
+            className={!selectedEngine ? "active" : ""}
+            aria-pressed={!selectedEngine}
+            onClick={() => navigate(ROUTES.gameProjects)}
+          >
+            {locale === "es" ? "Todos" : "All"}
+          </button>
+          {availableEngines.map((engine) => (
+            <button
+              type="button"
+              key={engine}
+              className={selectedEngine === engine ? "active" : ""}
+              aria-pressed={selectedEngine === engine}
+              onClick={() => navigate(gameProjectsByEnginePath(engine))}
+            >
+              <EngineIcon engine={engine} />
+              <span>{engine}</span>
+            </button>
+          ))}
+        </nav>
         <div className="project-grid">
-          {gameProjects.map((project) => (
+          {visibleProjects.map((project) => (
             <GameProjectCard key={project.id} project={project} locale={locale} navigate={navigate} />
           ))}
         </div>
