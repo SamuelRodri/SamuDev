@@ -1,7 +1,7 @@
 import { EngineIcon } from "../components/EngineIcon";
 import { projectStatuses } from "../gameProjects";
 import { useState } from "react";
-import { ArrowLeft, ChevronLeft, ChevronRight, ExternalLink, Volume2, VolumeX } from "lucide-react";
+import { ArrowLeft, ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 import { FaGithub, FaItchIo } from "react-icons/fa";
 import { GameJamProjectCard, GameProjectCard } from "../components/ProjectCards";
 import { content, type Locale } from "../content";
@@ -154,31 +154,26 @@ function GameJamProjectDetail({ locale, project, navigate }: PageProps & { proje
   return (
     <article className="project-detail-page game">
       <BackButton locale={locale} navigate={navigate} />
-      <section className="project-overview">
-        <div className="project-featured-media"><img src={project.image} alt={project.title} /></div>
-        <div className="project-overview-copy">
-          <div className="project-title-row">
-            <p className="eyebrow">{project.jam} · {project.year}</p>
-            <span className="project-status">Game Jam</span>
-          </div>
-          <h1>{project.title}</h1>
-          <p className="project-lead">{project.summary[locale]}</p>
-          <dl>
-            {project.engine && <div><dt>{locale === "es" ? "Motor" : "Engine"}</dt><dd><EngineIcon engine={project.engine} /></dd></div>}
-            <div><dt>{locale === "es" ? "Género" : "Genre"}</dt><dd>{project.genre[locale]}</dd></div>
-            <div><dt>Game Jam</dt><dd>{project.jam}</dd></div>
-            <div><dt>{locale === "es" ? "Rol" : "Role"}</dt><dd>{project.role[locale]}</dd></div>
-          </dl>
-          <div className="tag-row">{project.tags.map((tag) => <span key={tag}>{tag === project.engine ? <EngineIcon engine={tag} /> : tag}</span>)}</div>
-          <ExternalProjectLink href={project.itch} locale={locale} kind="itch" />
-        </div>
-      </section>
+      <header className="project-detail-header">
+        <div className="project-title-row"><p className="eyebrow">{project.jam} · {project.year}</p><span className="project-status">Game Jam</span></div>
+        <h1>{project.title}</h1>
+        <p className="project-lead">{project.summary[locale]}</p>
+        <div className="project-actions"><ExternalProjectLink href={project.itch} locale={locale} kind="itch" /></div>
+      </header>
+      <div className="project-featured-media"><img src={project.image} alt={project.title} /></div>
+      <dl className="project-facts">
+        {project.engine && <div><dt>{locale === "es" ? "Motor" : "Engine"}</dt><dd><EngineIcon engine={project.engine} /></dd></div>}
+        <div><dt>{locale === "es" ? "Género" : "Genre"}</dt><dd>{project.genre[locale]}</dd></div>
+        <div><dt>Game Jam</dt><dd>{project.jam}</dd></div>
+        <div><dt>{locale === "es" ? "Rol" : "Role"}</dt><dd>{project.role[locale]}</dd></div>
+      </dl>
       <ProjectStory
         locale={locale}
         title={locale === "es" ? "Sobre el proyecto" : "About the project"}
         description={project.description[locale]}
         isJam
       />
+      <div className="project-detail-tags tag-row">{project.tags.map((tag) => <span key={tag}>{tag === project.engine ? <EngineIcon engine={tag} /> : tag}</span>)}</div>
       <ProjectGallery images={project.gallery} title={project.title} locale={locale} />
     </article>
   );
@@ -201,63 +196,47 @@ function ExternalProjectLink({ href, locale, kind }: { href: string; locale: Loc
 
 function GameProjectDetail({ locale, project, navigate }: PageProps & { project: GameProject }) {
   const videoId = project.video?.includes("youtube.com") ? new URL(project.video).searchParams.get("v") : null;
-  const [isMuted, setIsMuted] = useState(true);
-  const usesNativeVideo = Boolean(project.video && !videoId);
 
   return (
     <article className="project-detail-page game">
       <BackButton locale={locale} navigate={navigate} />
-      <section className={`project-overview${usesNativeVideo ? " native-video-overview" : ""}`}>
-        <div className={`project-featured-media${usesNativeVideo ? " native-video" : ""}`}>
+      <header className="project-detail-header">
+        <div className="project-title-row">
+          <p className="eyebrow project-engine-meta">{project.engine && <EngineIcon engine={project.engine} />}<span>{[project.platform, project.year].filter(Boolean).join(" · ")}</span></p>
+          <span className="project-status">{projectStatuses[project.status][locale]}</span>
+        </div>
+        <h1>{project.title}</h1>
+        <p className="project-lead">{project.summary[locale]}</p>
+        {(project.github || project.itch) && <div className="project-actions">
+          {project.github && <ExternalProjectLink href={project.github} locale={locale} kind="github" />}
+          {project.itch && <ExternalProjectLink href={project.itch} locale={locale} kind="itch" />}
+        </div>}
+      </header>
+      <div className="project-featured-media">
           {videoId ? (
             <iframe
-              src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${videoId}&playsinline=1&rel=0`}
+              src={`https://www.youtube-nocookie.com/embed/${videoId}?controls=1&playsinline=1&rel=0`}
               title={`${project.title} gameplay`}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              tabIndex={-1}
+              allowFullScreen
             />
           ) : project.video ? (
-            <video autoPlay muted={isMuted} loop playsInline preload="metadata" disablePictureInPicture poster={project.image}>
+            <video controls playsInline preload="metadata" poster={project.image}>
               <source src={project.video} type="video/mp4" />
             </video>
           ) : (
             <img src={project.image} alt={project.title} />
           )}
-          {usesNativeVideo && (
-            <button
-              className="video-sound-toggle"
-              type="button"
-              onClick={() => setIsMuted((muted) => !muted)}
-              aria-label={isMuted ? (locale === "es" ? "Activar sonido" : "Turn sound on") : (locale === "es" ? "Silenciar vídeo" : "Mute video")}
-            >
-              {isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
-              <span>{isMuted ? (locale === "es" ? "Activar sonido" : "Sound on") : (locale === "es" ? "Silenciar" : "Mute")}</span>
-            </button>
-          )}
-        </div>
-        <div className="project-overview-copy">
-          <div className="project-title-row">
-            <p className="eyebrow project-engine-meta">
-              {project.engine && <EngineIcon engine={project.engine} />}
-              <span>{[project.platform, project.year].filter(Boolean).join(" · ")}</span>
-            </p>
-            <span className="project-status">{projectStatuses[project.status][locale]}</span>
-          </div>
-          <h1>{project.title}</h1>
-          <p className="project-lead">{project.summary[locale]}</p>
-          <dl>
-            {project.engine && <div><dt>{locale === "es" ? "Motor" : "Engine"}</dt><dd><EngineIcon engine={project.engine} /></dd></div>}
-            {project.language?.length && <div><dt>{locale === "es" ? "Lenguajes" : "Languages"}</dt><dd>{project.language.join(" · ")}</dd></div>}
-            <div><dt>{locale === "es" ? "Plataforma" : "Platform"}</dt><dd>{project.platform}</dd></div>
-            <div><dt>{locale === "es" ? "Rol" : "Role"}</dt><dd>{project.role[locale]}</dd></div>
-          </dl>
-          <div className="tag-row">{project.tags.map((tag) => <span key={tag}>{tag === project.engine ? <EngineIcon engine={tag} /> : tag}</span>)}</div>
-          {project.award && <div className="award-card"><span>{locale === "es" ? "Reconocimiento" : "Award"}</span><strong>{project.award[locale]}</strong></div>}
-          {project.github && <ExternalProjectLink href={project.github} locale={locale} kind="github" />}
-          {project.itch && <ExternalProjectLink href={project.itch} locale={locale} kind="itch" />}
-        </div>
-      </section>
+      </div>
+      <dl className="project-facts">
+        {project.engine && <div><dt>{locale === "es" ? "Motor" : "Engine"}</dt><dd><EngineIcon engine={project.engine} /></dd></div>}
+        {project.language?.length && <div><dt>{locale === "es" ? "Lenguajes" : "Languages"}</dt><dd>{project.language.join(" · ")}</dd></div>}
+        <div><dt>{locale === "es" ? "Plataforma" : "Platform"}</dt><dd>{project.platform}</dd></div>
+        <div><dt>{locale === "es" ? "Rol" : "Role"}</dt><dd>{project.role[locale]}</dd></div>
+      </dl>
       <ProjectStory locale={locale} title={project.caseStudyTitle[locale]} description={project.description[locale]} />
+      {project.award && <div className="award-card"><span>{locale === "es" ? "Reconocimiento" : "Award"}</span><strong>{project.award[locale]}</strong></div>}
+      <div className="project-detail-tags tag-row">{project.tags.map((tag) => <span key={tag}>{tag === project.engine ? <EngineIcon engine={tag} /> : tag}</span>)}</div>
       <ProjectGallery images={project.gallery} title={project.title} locale={locale} />
     </article>
   );
