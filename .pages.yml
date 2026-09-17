@@ -158,6 +158,12 @@
               "name": "role",
               "label": "Qué hiciste en el proyecto",
               "type": "string"
+            },
+            {
+              "name": "award",
+              "label": "Premio o reconocimiento (opcional)",
+              "type": "string",
+              "description": "Nombre del premio en español. Si lo completas, añade también su versión inglesa."
             }
           ]
         },
@@ -186,6 +192,12 @@
               "name": "role",
               "label": "Your contribution",
               "type": "string"
+            },
+            {
+              "name": "award",
+              "label": "Award or recognition (optional)",
+              "type": "string",
+              "description": "Award name in English. Complete the Spanish field too."
             }
           ]
         },
@@ -247,9 +259,9 @@
         },
         {
           "name": "links",
-          "label": "6. Enlaces y reconocimiento",
+          "label": "6. Enlaces",
           "type": "object",
-          "description": "Enlaces externos y premios. Deja vacíos los que no correspondan.",
+          "description": "Enlaces externos. Deja vacíos los que no correspondan.",
           "fields": [
             {
               "name": "itch",
@@ -262,12 +274,6 @@
               "label": "Código en GitHub (opcional)",
               "type": "string",
               "description": "Pega la dirección completa del repositorio, empezando por https://."
-            },
-            {
-              "name": "award",
-              "label": "Premio o reconocimiento (opcional)",
-              "type": "string",
-              "description": "Indica el nombre del premio recibido."
             }
           ]
         },

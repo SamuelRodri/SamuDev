@@ -224,7 +224,7 @@ function GameProjectDetail({ locale, project, navigate }: PageProps & { project:
             <div><dt>{locale === "es" ? "Rol" : "Role"}</dt><dd>{project.role[locale]}</dd></div>
           </dl>
           <div className="tag-row">{project.tags.map((tag) => <span key={tag}>{tag === project.engine ? <EngineIcon engine={tag} /> : tag}</span>)}</div>
-          {project.award && <div className="award-card"><span>{locale === "es" ? "Reconocimiento" : "Award"}</span><strong>{project.award}</strong></div>}
+          {project.award && <div className="award-card"><span>{locale === "es" ? "Reconocimiento" : "Award"}</span><strong>{project.award[locale]}</strong></div>}
           {project.github && <ExternalProjectLink href={project.github} locale={locale} kind="github" />}
           {project.itch && <ExternalProjectLink href={project.itch} locale={locale} kind="itch" />}
         </div>

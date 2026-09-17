@@ -25,7 +25,7 @@ export type GameProject = {
   video?: string;
   github?: string;
   itch?: string;
-  award?: string;
+  award?: LocalizedText;
 };
 
 export const gameProjects: GameProject[] = (data.games as GameProject[]).map((project) => ({ ...project, image: resolveMedia(project.image), gallery: project.gallery?.map(resolveMedia), video: project.video ? resolveMedia(project.video) : undefined, }));

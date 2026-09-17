@@ -12,13 +12,15 @@
     "summary": "Un roguelike de fantasía que transforma las parejas de cartas en un juego de memoria, suerte y estrategia.",
     "caseStudyTitle": "Memoria y estrategia en cada pareja.",
     "description": "Creado por LuminariaCreations para IndieGG Jam - The Third. Empareja cartas y crea sinergias de puntuación con su rareza, afinidad y familia. Elige potenciadores entre rondas y adapta tu estrategia a jefes que introducen reglas especiales. Puedes jugar al prototipo directamente en el navegador desde itch.io.",
-    "role": "Proyecto en equipo · LuminariaCreations"
+    "role": "Proyecto en equipo · LuminariaCreations",
+    "award": "Machanguito Award a mejor juego de la Indie GG Jam GCX26"
   },
   "english": {
     "summary": "A fantasy roguelike that turns matching pairs into a game of memory, luck and strategy.",
     "caseStudyTitle": "Memory and strategy in every pair.",
     "description": "Created by LuminariaCreations for IndieGG Jam - The Third. Match cards and build scoring synergies through their rarity, affinity and family. Choose upgrades between rounds, then adapt your strategy to bosses that introduce special rules. Play the prototype directly in your browser on itch.io.",
-    "role": "Team project · LuminariaCreations"
+    "role": "Team project · LuminariaCreations",
+    "award": "Machanguito Award for Best Game at Indie GG Jam GCX26"
   },
   "details": {
     "year": 2026,
@@ -34,8 +36,7 @@
     ]
   },
   "links": {
-    "itch": "https://luminariacreations.itch.io/synastra",
-    "award": "Machanguito Award a mejor juego de la Indie GG Jam GCX26"
+    "itch": "https://luminariacreations.itch.io/synastra"
   },
   "slug": "synastra",
   "id": "synastra"
