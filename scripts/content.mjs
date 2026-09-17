@@ -69,7 +69,6 @@ export function prepareContent(games, jams, settings) {
       if (p.gallery && (!Array.isArray(p.gallery) || !p.gallery.every(media))) fail("gallery");
     }
   }
-  if (settings.featuredGame && !games.some((p) => p.slug === settings.featuredGame)) throw new Error("Selected featured game does not exist; clear or update it in settings first.");
   const published = (entries, key) => {
     const order = settings[key] ?? [];
     if (!Array.isArray(order) || !order.every(text) || new Set(order).size !== order.length) {
@@ -80,7 +79,7 @@ export function prepareContent(games, jams, settings) {
     return entries.filter((p) => p.published).sort((a, b) =>
       (rank.get(a.slug) ?? Infinity) - (rank.get(b.slug) ?? Infinity) || a.slug.localeCompare(b.slug));
   };
-  return { games: published(games, "gameOrder").map((project) => ({ ...project, id: project.id || project.slug })), jams: published(jams, "jamOrder"), featuredGame: settings.featuredGame || "" };
+  return { games: published(games, "gameOrder").map((project) => ({ ...project, id: project.id || project.slug })), jams: published(jams, "jamOrder") };
 }
 
 export function generateContent() {

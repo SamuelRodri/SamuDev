@@ -102,7 +102,7 @@
               "label": "Mostrar entre los destacados",
               "type": "boolean",
               "default": false,
-              "description": "Aparecerá en la selección de GameDev. El proyecto principal se elige en Organizar portfolio."
+              "description": "Aparecerá en la selección de GameDev. El primero según el orden del portfolio ocupará el espacio principal."
             }
           ]
         },
@@ -497,18 +497,6 @@
       "path": "content/settings.json",
       "format": "json",
       "fields": [
-        {
-          "name": "featuredGame",
-          "label": "Proyecto principal",
-          "type": "reference",
-          "options": {
-            "collection": "games",
-            "value": "{fields.slug}",
-            "label": "{fields.title}",
-            "search": "title"
-          },
-          "description": "Elige la ficha que ocupará el espacio principal. Sus textos e imagen se actualizan al editar el proyecto. Debe tener activado Mostrar en mi portfolio."
-        },
         {
           "name": "gameOrder",
           "label": "Orden de los proyectos",
