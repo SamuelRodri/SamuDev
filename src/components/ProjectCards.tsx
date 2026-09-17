@@ -1,6 +1,6 @@
 import { projectStatuses } from "../gameProjects";
 import { ArrowRight } from "lucide-react";
-import type { KeyboardEvent } from "react";
+import { useEffect, useRef, useState, type KeyboardEvent } from "react";
 import type { Locale } from "../content";
 import type { GameJamProject } from "../gameJamProjects";
 import type { GameProject } from "../gameProjects";
@@ -25,14 +25,54 @@ function useInteractiveCard({ label, path, navigate }: InteractiveCardProps) {
   return { role: "link" as const, tabIndex: 0, "aria-label": label, onClick: open, onKeyDown };
 }
 
-export function GameProjectCard({ project, locale, navigate, featured = false }: { project: GameProject; locale: Locale; navigate: Navigate; featured?: boolean }) {
+function ProjectCover({ project, eager, previewVideo }: { project: GameProject; eager: boolean; previewVideo: boolean }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoFailed, setVideoFailed] = useState(false);
+  const [reduceMotion, setReduceMotion] = useState(() => window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  const isDirectVideo = Boolean(project.video && /\.mp4(?:[?#]|$)/i.test(project.video));
+  const showVideo = previewVideo && isDirectVideo && !reduceMotion && !videoFailed;
+
+  useEffect(() => {
+    const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const updatePreference = () => setReduceMotion(preference.matches);
+    preference.addEventListener("change", updatePreference);
+    return () => preference.removeEventListener("change", updatePreference);
+  }, []);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || !showVideo) return;
+
+    const updatePlayback = (isVisible: boolean) => {
+      if (isVisible && !document.hidden) void video.play().catch(() => undefined);
+      else video.pause();
+    };
+    const observer = new IntersectionObserver(([entry]) => updatePlayback(entry.isIntersecting), { threshold: 0.2 });
+    const onVisibilityChange = () => updatePlayback(!document.hidden && video.getBoundingClientRect().bottom > 0 && video.getBoundingClientRect().top < window.innerHeight);
+    observer.observe(video);
+    document.addEventListener("visibilitychange", onVisibilityChange);
+    return () => {
+      observer.disconnect();
+      document.removeEventListener("visibilitychange", onVisibilityChange);
+      video.pause();
+    };
+  }, [showVideo]);
+
+  return showVideo
+    ? <video ref={videoRef} muted loop playsInline preload="metadata" poster={project.image} aria-hidden="true" onError={() => setVideoFailed(true)}>
+        <source src={project.video} type="video/mp4" />
+      </video>
+    : <img src={project.image} alt={project.title} loading={eager ? "eager" : "lazy"} />;
+}
+
+export function GameProjectCard({ project, locale, navigate, featured = false, previewVideo = false }: { project: GameProject; locale: Locale; navigate: Navigate; featured?: boolean; previewVideo?: boolean }) {
   const label = `${locale === "es" ? "Ver proyecto" : "View project"}: ${project.title}`;
   const interactiveProps = useInteractiveCard({ label, path: gameProjectPath(project.slug), navigate });
 
   return (
     <article className={`project-card game-project-card${featured ? " primary-featured-project" : ""}`} {...interactiveProps}>
       <div className="project-cover">
-        <img src={project.image} alt={project.title} loading={featured ? "eager" : "lazy"} />
+        <ProjectCover project={project} eager={featured} previewVideo={previewVideo} />
         <span className="project-status-badge">{projectStatuses[project.status][locale]}</span>
         <span className="project-link" aria-hidden="true"><ArrowRight size={22} /></span>
       </div>

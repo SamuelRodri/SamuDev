@@ -252,11 +252,11 @@ function ModePage({ locale, mode, navigate }: { locale: Locale; mode: Mode; navi
       <section className="content-band">
         <h2>{mode === "game" ? t.modePage.featuredProjects : t.modePage.projects}</h2>
         {mode === "game" && featuredGameProject && (
-          <GameProjectCard project={featuredGameProject} locale={locale} navigate={navigate} featured />
+          <GameProjectCard project={featuredGameProject} locale={locale} navigate={navigate} featured previewVideo />
         )}
         <div className={`project-grid${mode === "game" ? " featured-project-grid" : ""}`}>
           {mode === "game" ? featuredProjects.map((project) => (
-            <GameProjectCard key={project.id} project={project} locale={locale} navigate={navigate} />
+            <GameProjectCard key={project.id} project={project} locale={locale} navigate={navigate} previewVideo />
           )) : t.projectSlots[mode].map((project, index) => (
             <article className="project-card" key={project.title}>
               <span>0{index + 1}</span>

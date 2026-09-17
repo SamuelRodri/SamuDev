@@ -786,14 +786,17 @@ p {
   background: rgba(255, 255, 255, 0.06);
 }
 
-.project-cover img {
+.project-cover img,
+.project-cover video {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 300ms ease;
 }
 
-.game-project-card:hover .project-cover img {
+.game-project-card:hover .project-cover img,
+.game-project-card:hover .project-cover video {
   transform: scale(1.035);
 }
 
