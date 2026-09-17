@@ -3,7 +3,15 @@ name: Deploy portfolio
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - "content/**"
+      - "public/images/projects/**"
   workflow_dispatch:
+    inputs:
+      payload:
+        description: Context sent by Pages CMS
+        required: false
+        type: string
 
 permissions:
   contents: read
@@ -12,7 +20,7 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build:

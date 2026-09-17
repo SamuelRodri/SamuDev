@@ -25,6 +25,8 @@ assert.throws(() => prepareContent([game], [], { featuredGame: "missing" }), /do
 assert.equal(prepareContent([], [], {}).featuredGame, "");
 const config = JSON.parse(readFileSync(new URL("../.pages.yml", import.meta.url), "utf8"));
 assert.deepEqual(config.content.map((item) => item.name), ["games", "jams", "settings"]);
+assert.deepEqual(config.actions?.map((action) => action.name), ["publish-portfolio"]);
+assert.equal(config.actions[0].workflow, "deploy.yml");
 for (const collection of config.content.filter((item) => item.type === "collection")) {
   assert.equal(collection.fields.find((item) => item.name === "publication").fields.find((item) => item.name === "published").default, false);
   assert.deepEqual(collection.fields.slice(1, 7).map((field) => field.name),

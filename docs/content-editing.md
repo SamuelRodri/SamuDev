@@ -38,7 +38,9 @@ Las game jams usan la misma estructura adaptada a sus campos. No necesitas relle
 - **Vídeo**: URL HTTPS de un MP4, enlace `https://www.youtube.com/watch?v=...` o ruta de un MP4 existente bajo `/videos/`. Los vídeos nuevos se alojan externamente.
 - **Dirección de la ficha**: usa un valor único y consérvalo tras publicar. El identificador interno está oculto; los proyectos nuevos lo obtienen automáticamente de esta dirección.
 
-Guardar en `main` genera un commit y activa GitHub Actions. La web cambia cuando termina el workflow **Deploy portfolio**. Si falla la validación, la versión anterior continúa publicada; revisa el error en Actions, corrige la ficha y guarda de nuevo.
+Guardar una ficha genera un commit en `main`, pero no publica inmediatamente. Puedes guardar todos los proyectos que necesites y, cuando termines, pulsar **Publicar portfolio** en la barra lateral de Pages CMS. Ese botón ejecuta una sola vez el workflow **Deploy portfolio** con todos los cambios acumulados. Si falla la validación, la versión anterior continúa publicada; revisa el error en Actions, corrige la ficha y vuelve a publicar.
+
+Los cambios de código siguen activando el despliegue automáticamente. Si vuelves a pulsar **Publicar portfolio** mientras hay otro despliegue en curso, GitHub cancela el anterior y conserva el más reciente.
 
 Los borradores se excluyen del contenido generado y del JavaScript publicado. El repositorio y su historial pueden seguir mostrándolos si son públicos: no son un espacio para información confidencial.
 

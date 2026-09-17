@@ -537,5 +537,19 @@
         }
       ]
     }
+  ],
+  "actions": [
+    {
+      "name": "publish-portfolio",
+      "label": "Publicar portfolio",
+      "workflow": "deploy.yml",
+      "ref": "current",
+      "cancelable": false,
+      "confirm": {
+        "title": "¿Publicar todos los cambios?",
+        "message": "Se publicará en la web el contenido guardado hasta este momento.",
+        "button": "Publicar ahora"
+      }
+    }
   ]
 }
