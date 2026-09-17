@@ -9,6 +9,7 @@ import { AllGameProjectsPage, GameJamProjectPage, GameProjectPage } from "./page
 import { ROUTES, engineFromGameJamsPath, engineFromProjectsPath } from "./routing";
 import type { Navigate } from "./types";
 import { usePortfolioNavigation } from "./hooks/usePortfolioNavigation";
+import { cvDocuments, cvUrl } from "./cvDocuments";
 
 const featuredProjects = gameProjects.filter((project) => project.featured && project.slug !== featuredGameProject?.slug);
 
@@ -184,6 +185,7 @@ function ModePage({ locale, mode, navigate }: { locale: Locale; mode: Mode; navi
   const details = modeDetails[mode];
   const copy = t.modes[mode];
   const Icon = details.icon;
+  const cv = cvDocuments[locale];
   const skillsSection = (
     <section className="content-band">
       <h2>{t.modePage.skills}</h2>
@@ -355,10 +357,17 @@ function ModePage({ locale, mode, navigate }: { locale: Locale; mode: Mode; navi
               itch.io
             </a>
           )}
-          <a className="disabled-link" aria-disabled="true">
-            <Download size={17} />
-            {t.modePage.placeholders.cv}
-          </a>
+          {cv.available ? (
+            <a href={cvUrl(locale)} download={cv.fileName}>
+              <Download size={17} />
+              {locale === "es" ? "Descargar CV" : "Download CV"}
+            </a>
+          ) : (
+            <span className="disabled-link" aria-disabled="true">
+              <Download size={17} />
+              {locale === "es" ? "CV próximamente" : "CV coming soon"}
+            </span>
+          )}
         </div>
       </section>
     </section>

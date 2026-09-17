@@ -45,6 +45,10 @@ Los borradores se excluyen del contenido generado y del JavaScript publicado. El
 
 La integración cubre los proyectos GameDev y las game jams existentes. Los bloques de ejemplo de .NET y los textos generales del portfolio siguen en código.
 
+## Currículums
+
+La versión española e inglesa del portfolio tienen descargas independientes. Los archivos se guardan en `public/cv/` con los nombres `CV-Samuel-Rodriguez-ES.pdf` y `CV-Samuel-Rodriguez-EN.pdf`. Hasta que exista cada documento, su botón aparece desactivado. Al añadirlo, activa la entrada correspondiente en `src/cvDocuments.ts`.
+
 ## Desarrollo
 
 `npm run dev`, `npm run build` y `npm run typecheck` generan primero los datos públicos desde `content/`. Tras editar JSON localmente con el servidor abierto, ejecuta `npm run content:build` para actualizar la vista. `src/generated/` no se versiona. Ejecuta `npm test` para comprobar rutas y reglas de contenido.
