@@ -15,12 +15,6 @@
     "description": "Proyecto Holmes es un videojuego en desarrollo. Su desarrollo se centra en construir y perfeccionar el gameplay en Unreal Engine.",
     "role": "Solo developer"
   },
-  "english": {
-    "summary": "An Unreal Engine game project currently in development.",
-    "caseStudyTitle": "Gameplay development in Unreal Engine.",
-    "description": "Proyecto Holmes is a game project in development. Its development focuses on building and refining gameplay in Unreal Engine.",
-    "role": "Solo developer"
-  },
   "details": {
     "year": 2026,
     "engine": "Unreal Engine",

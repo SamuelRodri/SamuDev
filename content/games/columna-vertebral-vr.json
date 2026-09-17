@@ -19,13 +19,6 @@
     "role": "Solo developer · TFG de Ingeniería Informática",
     "award": "Premio Accésit Cátedra Telefónica a la Innovación Educativa"
   },
-  "english": {
-    "summary": "A virtual reality application for physiotherapy students to study the human spine.",
-    "caseStudyTitle": "Immersive learning applied to anatomy.",
-    "description": "A virtual reality application created for physiotherapy students to explore and study the human spine in an immersive environment. It was developed as a Computer Engineering final project at the University of Las Palmas de Gran Canaria, in collaboration with the School of Physiotherapy.",
-    "role": "Solo developer · Computer Engineering final project",
-    "award": "Runner-up Award from the Telefónica Chair for Educational Innovation"
-  },
   "details": {
     "year": 2023,
     "engine": "Unity",

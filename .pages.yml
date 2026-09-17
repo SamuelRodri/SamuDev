@@ -274,32 +274,38 @@
       "name": "game_translations",
       "label": "Traducciones · Proyectos",
       "type": "collection",
-      "path": "content/games",
+      "path": "content/translations/games",
       "format": "json",
       "operations": {
-        "create": false,
+        "create": true,
         "rename": false,
         "delete": false
       },
       "view": {
-        "primary": "title",
+        "primary": "slug",
         "fields": [
-          "title"
+          "slug"
         ],
         "sort": [
-          "title"
+          "slug"
         ],
         "search": [
-          "title",
+          "slug",
           "english.summary"
         ]
       },
       "fields": [
         {
-          "name": "title",
+          "name": "slug",
           "label": "Proyecto",
-          "type": "string",
-          "readonly": true
+          "type": "reference",
+          "required": true,
+          "options": {
+            "collection": "games",
+            "value": "{fields.slug}",
+            "label": "{fields.title}",
+            "search": "title"
+          }
         },
         {
           "name": "english",
@@ -343,7 +349,11 @@
             }
           ]
         }
-      ]
+      ],
+      "filename": {
+        "template": "{fields.slug}.json",
+        "field": false
+      }
     },
     {
       "name": "jams",
@@ -521,32 +531,38 @@
       "name": "jam_translations",
       "label": "Traducciones · Game jams",
       "type": "collection",
-      "path": "content/jams",
+      "path": "content/translations/jams",
       "format": "json",
       "operations": {
-        "create": false,
+        "create": true,
         "rename": false,
         "delete": false
       },
       "view": {
-        "primary": "title",
+        "primary": "slug",
         "fields": [
-          "title"
+          "slug"
         ],
         "sort": [
-          "title"
+          "slug"
         ],
         "search": [
-          "title",
+          "slug",
           "english.summary"
         ]
       },
       "fields": [
         {
-          "name": "title",
+          "name": "slug",
           "label": "Proyecto",
-          "type": "string",
-          "readonly": true
+          "type": "reference",
+          "required": true,
+          "options": {
+            "collection": "jams",
+            "value": "{fields.slug}",
+            "label": "{fields.title}",
+            "search": "title"
+          }
         },
         {
           "name": "english",
@@ -576,7 +592,11 @@
             }
           ]
         }
-      ]
+      ],
+      "filename": {
+        "template": "{fields.slug}.json",
+        "field": false
+      }
     },
     {
       "name": "settings",

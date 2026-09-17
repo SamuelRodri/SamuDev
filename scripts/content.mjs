@@ -92,7 +92,15 @@ export function prepareContent(games, jams, settings) {
 
 export function generateContent() {
   const collection = (folder) => readdirSync(resolve(root, `content/${folder}`)).filter((file) => file.endsWith(".json")).map((file) => read(`content/${folder}/${file}`));
-  const result = prepareContent(collection("games"), collection("jams"), read("content/settings.json"));
+  const withTranslations = (entries, kind) => {
+    const translations = new Map(collection(`translations/${kind}`).map((entry) => [entry.slug, entry.english]));
+    return entries.map((entry) => ({ ...entry, english: translations.get(entry.slug) }));
+  };
+  const result = prepareContent(
+    withTranslations(collection("games"), "games"),
+    withTranslations(collection("jams"), "jams"),
+    read("content/settings.json"),
+  );
   mkdirSync(resolve(root, "src/generated"), { recursive: true });
   writeFileSync(resolve(root, "src/generated/projects.json"), JSON.stringify(result, null, 2) + "\n");
   return result;

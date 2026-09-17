@@ -12,12 +12,6 @@
     "role": "Miembro del equipo",
     "genre": "Arcade"
   },
-  "english": {
-    "summary": "Collect falling dough, avoid troublesome spiders and build three monsters before time runs out.",
-    "description": "An arcade game developed as a team during Gran Canaria Game Island Jam 3. Players must collect ingredients, avoid hazards and assemble three monsters against the clock in a compact browser experience.",
-    "role": "Team member",
-    "genre": "Arcade"
-  },
   "details": {
     "jam": "Gran Canaria Game Island Jam 3",
     "year": 2024,

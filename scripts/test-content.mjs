@@ -34,9 +34,10 @@ for (const collection of config.content.filter((item) => ["games", "jams"].inclu
     ["publication", "media", "spanish", "details", "links", "slug"]);
 }
 for (const translation of config.content.filter((item) => item.name.endsWith("_translations"))) {
-  assert.deepEqual(translation.operations, { create: false, rename: false, delete: false });
-  assert.deepEqual(translation.fields.map((field) => field.name), ["title", "english"]);
-  assert.equal(translation.fields[0].readonly, true);
+  assert.deepEqual(translation.operations, { create: true, rename: false, delete: false });
+  assert.deepEqual(translation.fields.map((field) => field.name), ["slug", "english"]);
+  assert.ok(translation.path.startsWith("content/translations/"));
+  assert.equal(translation.fields[0].type, "reference");
 }
 console.log("Content checks passed: migration, sorting, drafts, validation and CMS configuration.");
 

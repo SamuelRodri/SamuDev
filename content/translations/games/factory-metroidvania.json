@@ -1,0 +1,9 @@
+{
+  "slug": "factory-metroidvania",
+  "english": {
+    "summary": "Escape a burning factory by finding new abilities and opening the path to previously unreachable areas.",
+    "caseStudyTitle": "Abilities turn the factory into an interconnected challenge.",
+    "description": "A small metroidvania prototype developed in Unreal Engine as part of the Master's Degree in Video Game Design and Development. The player controls a robot trapped inside a burning factory and must find the emergency exit key. Power-ups unlock new areas, while enemy turrets can be destroyed with ranged attacks or avoided.",
+    "role": "Solo developer · Master's project"
+  }
+}
