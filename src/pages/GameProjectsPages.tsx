@@ -180,7 +180,10 @@ function GameProjectDetail({ locale, project, navigate }: PageProps & { project:
         </div>
         <div className="project-overview-copy">
           <div className="project-title-row">
-            <p className="eyebrow">{[project.platform, project.year].filter(Boolean).join(" · ")}</p>
+            <p className="eyebrow project-engine-meta">
+              {project.engine && <EngineIcon engine={project.engine} />}
+              <span>{[project.platform, project.year].filter(Boolean).join(" · ")}</span>
+            </p>
             <span className="project-status">{projectStatuses[project.status][locale]}</span>
           </div>
           <h1>{project.title}</h1>
