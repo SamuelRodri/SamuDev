@@ -1,5 +1,5 @@
 {
-  "title": "Proyecto Holmes",
+  "title": "Holmes",
   "publication": {
     "status": "in-development",
     "published": true,
@@ -29,12 +29,9 @@
       "Blueprints"
     ],
     "tags": [
-      "Unreal Engine",
-      "Blueprints",
       "Gameplay"
     ]
   },
-  "links": {},
   "slug": "proyecto-holmes",
   "id": "project-holmes"
 }
