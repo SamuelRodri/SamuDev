@@ -16,7 +16,7 @@ function normalizeProject(project, kind) {
     spanish = {}, english = {}, ...base
   } = project;
   const localizedFields = kind === "games"
-    ? ["summary", "caseStudyTitle", "description", "role", "award"]
+    ? ["summary", "caseStudyTitle", "description", "role", "development", "award"]
     : ["summary", "description", "role", "genre"];
   const localized = Object.fromEntries(localizedFields.map((field) => {
     const previousValue = base[field];
@@ -26,7 +26,9 @@ function normalizeProject(project, kind) {
   }));
   for (const field of localizedFields) delete base[field];
   const normalized = { ...base, ...publication, ...mediaFields, ...details, ...links, ...localized };
-  if (kind === "games" && !text(normalized.award?.es) && !text(normalized.award?.en)) delete normalized.award;
+  if (kind === "games") for (const field of ["development", "award"]) {
+    if (!text(normalized[field]?.es) && !text(normalized[field]?.en)) delete normalized[field];
+  }
   if (kind === "games" && text(normalized.language)) normalized.language = [normalized.language];
   return normalized;
 }
@@ -57,6 +59,7 @@ export function prepareContent(games, jams, settings) {
         if (!["es", "en"].every((locale) => text(p[field]?.[locale]))) fail(`${field} (es/en)`);
       }
       if (kind === "games" && p.award && !["es", "en"].every((locale) => text(p.award[locale]))) fail("award (es/en)");
+      if (kind === "games" && p.development && !["es", "en"].every((locale) => text(p.development[locale]))) fail("development (es/en)");
       for (const field of kind === "games" ? ["platform"] : ["jam", "engine", "itch"]) if (!text(p[field])) fail(field);
       if (kind === "games") {
         const id = p.id || p.slug;

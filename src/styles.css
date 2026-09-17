@@ -1060,9 +1060,14 @@ p {
   text-transform: uppercase;
 }
 
-.project-story { display: grid; grid-template-columns: .7fr 1.3fr; gap: 40px; margin-top: 20px; padding: 30px; border: 1px solid rgba(255,255,255,.1); border-radius: 14px; background: rgba(255,255,255,.045); }
+.project-story { display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(30px, 5vw, 64px); margin-top: 20px; padding: 30px; border: 1px solid rgba(255,255,255,.1); border-radius: 14px; background: rgba(255,255,255,.045); }
 .project-story h2 { margin: 0.45rem 0 0; }
-.project-story > p:last-child { color: rgba(238,247,255,.7); line-height: 1.8; }
+.project-story-main > p:last-child,
+.project-story-sections p { color: rgba(238,247,255,.7); line-height: 1.8; }
+.project-story-sections { display: grid; align-content: start; gap: 26px; }
+.project-story-sections article { padding-top: 18px; border-top: 1px solid rgba(255,255,255,.12); }
+.project-story-sections h3 { margin: 0 0 8px; color: var(--line); font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; }
+.project-story-sections p { margin: 0; }
 .award-card { display: grid; gap: 7px; margin-top: 22px; padding: 16px; border: 1px solid rgba(255,211,105,.28); border-radius: 8px; background: rgba(255,211,105,.07); }
 .award-card span { color: #ffd369; font-size: .72rem; font-weight: 850; text-transform: uppercase; }
 .project-repository-link { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 24px; padding: .75rem 1rem; border: 1px solid rgba(255,255,255,.13); border-radius: 8px; background: rgba(255,255,255,.07); color: #eef7ff; font-size: .88rem; font-weight: 750; }
@@ -1160,7 +1165,7 @@ p {
 }
 .project-facts {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
   width: min(1120px, 100%);
   margin: 0 auto;
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -1177,7 +1182,7 @@ p {
   padding: clamp(26px, 4vw, 46px);
   border-radius: 2px;
 }
-.project-detail-page .project-story > p:last-child { max-width: 68ch; margin: 0; font-size: 1.02rem; line-height: 1.85; }
+.project-detail-page .project-story-main > p:last-child { max-width: 68ch; margin: 22px 0 0; font-size: 1.02rem; line-height: 1.85; }
 .project-detail-page > .award-card {
   width: min(1000px, 100%);
   margin: 16px auto 0;
@@ -1190,9 +1195,6 @@ p {
 
 @media (max-width: 820px) {
   .project-story { grid-template-columns: 1fr; gap: 16px; }
-  .project-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .project-facts > div:nth-child(2) { border-right: 0; }
-  .project-facts > div:nth-child(-n + 2) { border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
 }
 
 @media (max-width: 520px) {

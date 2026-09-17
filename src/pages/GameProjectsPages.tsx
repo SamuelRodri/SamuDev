@@ -102,14 +102,18 @@ export function GameJamProjectPage({ locale, slug, navigate }: SlugPageProps) {
     : <ProjectNotFound locale={locale} navigate={navigate} />;
 }
 
-function ProjectStory({ locale, title, description, isJam = false }: { locale: Locale; title: string; description: string; isJam?: boolean }) {
+function ProjectStory({ locale, title, description, role, development, isJam = false }: { locale: Locale; title: string; description: string; role: string; development?: string; isJam?: boolean }) {
   return (
     <section className="project-story">
-      <div>
+      <div className="project-story-main">
         <p className="eyebrow">{isJam ? "Game Jam" : (locale === "es" ? "El proyecto" : "The project")}</p>
         <h2>{title}</h2>
+        <p>{description}</p>
       </div>
-      <p>{description}</p>
+      <div className="project-story-sections">
+        <article><h3>{locale === "es" ? "Mi rol" : "My role"}</h3><p>{role}</p></article>
+        {development && <article><h3>{locale === "es" ? "Desarrollo y aprendizajes" : "Development and learnings"}</h3><p>{development}</p></article>}
+      </div>
     </section>
   );
 }
@@ -171,6 +175,7 @@ function GameJamProjectDetail({ locale, project, navigate }: PageProps & { proje
         locale={locale}
         title={locale === "es" ? "Sobre el proyecto" : "About the project"}
         description={project.description[locale]}
+        role={project.role[locale]}
         isJam
       />
       <div className="project-detail-tags tag-row">{project.tags.map((tag) => <span key={tag}>{tag === project.engine ? <EngineIcon engine={tag} /> : tag}</span>)}</div>
@@ -232,9 +237,8 @@ function GameProjectDetail({ locale, project, navigate }: PageProps & { project:
         {project.engine && <div><dt>{locale === "es" ? "Motor" : "Engine"}</dt><dd><EngineIcon engine={project.engine} /></dd></div>}
         {project.language?.length && <div><dt>{locale === "es" ? "Lenguajes" : "Languages"}</dt><dd>{project.language.join(" · ")}</dd></div>}
         <div><dt>{locale === "es" ? "Plataforma" : "Platform"}</dt><dd>{project.platform}</dd></div>
-        <div><dt>{locale === "es" ? "Rol" : "Role"}</dt><dd>{project.role[locale]}</dd></div>
       </dl>
-      <ProjectStory locale={locale} title={project.caseStudyTitle[locale]} description={project.description[locale]} />
+      <ProjectStory locale={locale} title={project.caseStudyTitle[locale]} description={project.description[locale]} role={project.role[locale]} development={project.development?.[locale]} />
       {project.award && <div className="award-card"><span>{locale === "es" ? "Reconocimiento" : "Award"}</span><strong>{project.award[locale]}</strong></div>}
       <div className="project-detail-tags tag-row">{project.tags.map((tag) => <span key={tag}>{tag === project.engine ? <EngineIcon engine={tag} /> : tag}</span>)}</div>
       <ProjectGallery images={project.gallery} title={project.title} locale={locale} />

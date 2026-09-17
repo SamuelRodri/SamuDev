@@ -69,10 +69,15 @@ assert.deepEqual(prepareContent([nestedGame], [], {}).games[0].summary, translat
 const localizedAward = prepareContent([{ ...nestedGame, spanish: { ...nestedGame.spanish, award: "Premio" }, english: { ...nestedGame.english, award: "Award" } }], [], {}).games[0].award;
 assert.deepEqual(localizedAward, { es: "Premio", en: "Award" });
 assert.throws(() => prepareContent([{ ...nestedGame, spanish: { ...nestedGame.spanish, award: "Premio" } }], [], {}), /award \(es\/en\)/);
+const localizedDevelopment = prepareContent([{ ...nestedGame, spanish: { ...nestedGame.spanish, development: "Aprendizaje" }, english: { ...nestedGame.english, development: "Learning" } }], [], {}).games[0].development;
+assert.deepEqual(localizedDevelopment, { es: "Aprendizaje", en: "Learning" });
+assert.throws(() => prepareContent([{ ...nestedGame, spanish: { ...nestedGame.spanish, development: "Aprendizaje" } }], [], {}), /development \(es\/en\)/);
 assert.deepEqual(prepareContent([{ ...game, award: "Legacy award" }], [], {}).games[0].award, { es: "Legacy award", en: "Legacy award" });
 const gameFields = config.content.find((entry) => entry.name === "games").fields;
 assert.ok(gameFields.find((field) => field.name === "spanish").fields.some((field) => field.name === "award"));
 assert.ok(gameFields.find((field) => field.name === "english").fields.some((field) => field.name === "award"));
+assert.ok(gameFields.find((field) => field.name === "spanish").fields.some((field) => field.name === "development"));
+assert.ok(gameFields.find((field) => field.name === "english").fields.some((field) => field.name === "development"));
 assert.ok(!gameFields.find((field) => field.name === "links").fields.some((field) => field.name === "award"));
 
 assert.deepEqual(prepareContent([other, game], [], {gameOrder: [game.slug, other.slug]}).games.map(p=>p.slug), [game.slug,other.slug]);

@@ -19,6 +19,7 @@ export type GameProject = {
   description: LocalizedText;
   caseStudyTitle: LocalizedText;
   role: LocalizedText;
+  development?: LocalizedText;
   tags: string[];
   image: string;
   gallery?: string[];

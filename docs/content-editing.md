@@ -19,8 +19,8 @@ Cada ficha está dividida en secciones numeradas:
 
 1. **Publicación**: estado, visibilidad y destacados.
 2. **Imágenes y vídeo**: portada, galería y vídeo.
-3. **Contenido en español**: todos los textos de la versión española.
-4. **Content in English**: todos los textos de la versión inglesa.
+3. **Contenido en español**: descripción, rol, aprendizajes y demás textos de la versión española.
+4. **Content in English**: los mismos textos adaptados para la versión inglesa.
 5. **Datos del juego**: año, motor, plataforma, lenguaje y etiquetas.
 6. **Enlaces**: itch.io y GitHub.
 7. **Dirección de la ficha**: el identificador visible en la URL.
@@ -34,6 +34,8 @@ Las game jams usan la misma estructura adaptada a sus campos. No necesitas relle
 - **Organizar portfolio**: usa las listas Orden de los proyectos y Orden de las game jams para definir la secuencia de arriba abajo, sin editar cada ficha. Los proyectos nuevos que no estén en la lista aparecen al final por su dirección; los borradores permanecen ocultos. El listado del editor se ordena por nombre, independientemente del orden de la web.
 - **Mostrar entre los destacados**: añade la ficha a los destacados de GameDev. El primer proyecto destacado según **Orden de los proyectos** ocupa el espacio principal; los demás aparecen a continuación. Si lo desactivas, el proyecto no aparecerá en ninguna zona de destacados.
 - **Premio o reconocimiento**: es opcional y se escribe por separado dentro de las secciones de español e inglés. Si añades un premio, completa ambos idiomas para poder publicar la ficha.
+- **Mi rol en el proyecto**: describe tus responsabilidades y aportaciones concretas. Se muestra como una sección propia dentro de la ficha.
+- **Desarrollo y aprendizajes**: campo opcional para explicar qué aprendiste y qué herramientas, técnicas o patrones utilizaste. Si lo rellenas, completa sus versiones española e inglesa.
 - **Imagen de portada** y **Galería de capturas**: subir imágenes o usar URLs HTTPS existentes. Las imágenes subidas se guardan en `public/images/projects`. La web adapta las rutas al prefijo de alojamiento.
 - **Vídeo**: URL HTTPS de un MP4, enlace `https://www.youtube.com/watch?v=...` o ruta de un MP4 existente bajo `/videos/`. Los vídeos nuevos se alojan externamente.
 - **Galería de capturas**: añade entre 3 y 6 imágenes representativas cuando dispongas de ellas. La ficha muestra una galería manual con miniaturas, flechas y navegación por teclado; nunca cambia de imagen automáticamente.

@@ -151,13 +151,21 @@
             },
             {
               "name": "description",
-              "label": "Sobre el proyecto",
-              "type": "text"
+              "label": "Descripción del proyecto",
+              "type": "text",
+              "description": "Explica qué es el proyecto, su objetivo y sus mecánicas o características principales."
             },
             {
               "name": "role",
-              "label": "Qué hiciste en el proyecto",
-              "type": "string"
+              "label": "Mi rol en el proyecto",
+              "type": "text",
+              "description": "Explica tus responsabilidades y aportaciones concretas."
+            },
+            {
+              "name": "development",
+              "label": "Desarrollo y aprendizajes (opcional)",
+              "type": "text",
+              "description": "Cuenta qué aprendiste y qué técnicas, patrones o herramientas empleaste."
             },
             {
               "name": "award",
@@ -185,13 +193,21 @@
             },
             {
               "name": "description",
-              "label": "About the project",
-              "type": "text"
+              "label": "Project description",
+              "type": "text",
+              "description": "Explain the project, its goal and its main mechanics or features."
             },
             {
               "name": "role",
-              "label": "Your contribution",
-              "type": "string"
+              "label": "My role in the project",
+              "type": "text",
+              "description": "Explain your responsibilities and concrete contributions."
+            },
+            {
+              "name": "development",
+              "label": "Development and learnings (optional)",
+              "type": "text",
+              "description": "Describe what you learned and the techniques, patterns or tools you used."
             },
             {
               "name": "award",
