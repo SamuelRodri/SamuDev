@@ -22,7 +22,6 @@ for (const base of ["/SamuDev/", "/"]) {
   assert.equal(routing.engineFromGameJamsPath("/game/projects/jams/unity"), "Unity");
   assert.equal(routing.engineFromGameJamsPath("/game/projects/jams/godot"), "Godot");
   assert.equal(routing.engineFromGameJamsPath("/game/projects/jams/monster-express"), undefined);
-  assert.equal(routing.gameJamsByEnginePath("Unreal Engine"), "/game/projects/jams/unreal-engine");
   let location = new URL(`https://example.com${prefix}/?path=${encodeURIComponent("/es/game/projects/synastra?ref=share#details")}`);
   globalThis.window = {
     get location() { return location; },

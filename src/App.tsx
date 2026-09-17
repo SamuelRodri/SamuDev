@@ -55,8 +55,7 @@ function App() {
         <AllGameProjectsPage
           locale={locale}
           navigate={navigate}
-          selectedEngine={engineFromProjectsPath(path)}
-          selectedJamEngine={engineFromGameJamsPath(path)}
+          selectedEngine={engineFromProjectsPath(path) ?? engineFromGameJamsPath(path)}
         />
       ) : path.startsWith("/game/projects/jams/") ? (
         <GameJamProjectPage locale={locale} slug={path.split("/").pop() || ""} navigate={navigate} />
