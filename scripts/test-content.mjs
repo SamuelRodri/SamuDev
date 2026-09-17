@@ -23,14 +23,20 @@ assert.throws(() => prepareContent([{ ...game, image: "javascript:alert(1)" }], 
 assert.throws(() => prepareContent([{ ...game, itch: "javascript:alert(1)" }], [], {}), /itch/);
 assert.equal(Object.hasOwn(prepareContent([], [], {}), "featuredGame"), false);
 const config = JSON.parse(readFileSync(new URL("../.pages.yml", import.meta.url), "utf8"));
-assert.deepEqual(config.content.map((item) => item.name), ["games", "jams", "settings"]);
+assert.deepEqual(config.content.map((item) => item.name), ["games", "game_translations", "jams", "jam_translations", "settings"]);
+assert.equal(config.settings?.content?.merge, true);
 assert.deepEqual(config.actions?.map((action) => action.name), ["publish-portfolio"]);
 assert.equal(config.actions[0].workflow, "deploy.yml");
 assert.deepEqual(config.content.find((item) => item.name === "settings").fields.map((field) => field.name), ["gameOrder", "jamOrder"]);
-for (const collection of config.content.filter((item) => item.type === "collection")) {
+for (const collection of config.content.filter((item) => ["games", "jams"].includes(item.name))) {
   assert.equal(collection.fields.find((item) => item.name === "publication").fields.find((item) => item.name === "published").default, false);
   assert.deepEqual(collection.fields.slice(1, 7).map((field) => field.name),
-    ["publication", "media", "spanish", "english", "details", "links"]);
+    ["publication", "media", "spanish", "details", "links", "slug"]);
+}
+for (const translation of config.content.filter((item) => item.name.endsWith("_translations"))) {
+  assert.deepEqual(translation.operations, { create: false, rename: false, delete: false });
+  assert.deepEqual(translation.fields.map((field) => field.name), ["title", "english"]);
+  assert.equal(translation.fields[0].readonly, true);
 }
 console.log("Content checks passed: migration, sorting, drafts, validation and CMS configuration.");
 
@@ -41,7 +47,7 @@ assert.deepEqual(config.content[0].fields.find((field) => field.name === 'public
 const engines = JSON.parse(readFileSync(new URL('../src/gameEngines.json', import.meta.url), 'utf8'));
 for (const engine of engines) assert.equal(prepareContent([{ ...game, engine }], [], {}).games[0].engine, engine);
 assert.throws(() => prepareContent([{ ...game, engine: 'Unknown engine' }], [], {}), /engine/);
-for (const collection of config.content.filter((entry) => entry.type === 'collection')) {
+for (const collection of config.content.filter((entry) => ['games', 'jams'].includes(entry.name))) {
   const engine = collection.fields.find((field) => field.name === 'details').fields.find((field) => field.name === 'engine');
   assert.equal(engine.type, 'select');
   assert.deepEqual(engine.options.values, engines);
@@ -74,10 +80,11 @@ assert.deepEqual(localizedDevelopment, { es: "Aprendizaje", en: "Learning" });
 assert.throws(() => prepareContent([{ ...nestedGame, spanish: { ...nestedGame.spanish, development: "Aprendizaje" } }], [], {}), /development \(es\/en\)/);
 assert.deepEqual(prepareContent([{ ...game, award: "Legacy award" }], [], {}).games[0].award, { es: "Legacy award", en: "Legacy award" });
 const gameFields = config.content.find((entry) => entry.name === "games").fields;
+const gameTranslationFields = config.content.find((entry) => entry.name === "game_translations").fields;
 assert.ok(gameFields.find((field) => field.name === "spanish").fields.some((field) => field.name === "award"));
-assert.ok(gameFields.find((field) => field.name === "english").fields.some((field) => field.name === "award"));
+assert.ok(gameTranslationFields.find((field) => field.name === "english").fields.some((field) => field.name === "award"));
 assert.ok(gameFields.find((field) => field.name === "spanish").fields.some((field) => field.name === "development"));
-assert.ok(gameFields.find((field) => field.name === "english").fields.some((field) => field.name === "development"));
+assert.ok(gameTranslationFields.find((field) => field.name === "english").fields.some((field) => field.name === "development"));
 assert.ok(!gameFields.find((field) => field.name === "links").fields.some((field) => field.name === "award"));
 
 assert.deepEqual(prepareContent([other, game], [], {gameOrder: [game.slug, other.slug]}).games.map(p=>p.slug), [game.slug,other.slug]);

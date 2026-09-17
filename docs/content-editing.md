@@ -29,7 +29,8 @@ Las game jams usan la misma estructura adaptada a sus campos. No necesitas relle
 
 ## Uso diario
 
-- **Mis proyectos GameDev** y **Mis game jams**: crear o editar una ficha. Cada ficha tiene textos en español e inglés. Los textos largos son texto plano.
+- **Proyectos · Español** y **Game jams · Español**: crear o editar las fichas y todos sus datos. Estos formularios contienen únicamente los textos en español.
+- **Traducciones · Proyectos** y **Traducciones · Game jams**: editar únicamente la versión inglesa de una ficha existente. La traducción continúa siendo manual, pero queda separada del formulario principal.
 - **Mostrar en mi portfolio**: desactivado permite guardar un borrador incompleto. Activarlo requiere completar los campos de ambas lenguas. Desactivarlo retira la ficha de la web tras el despliegue.
 - **Organizar portfolio**: usa las listas Orden de los proyectos y Orden de las game jams para definir la secuencia de arriba abajo, sin editar cada ficha. Los proyectos nuevos que no estén en la lista aparecen al final por su dirección; los borradores permanecen ocultos. El listado del editor se ordena por nombre, independientemente del orden de la web.
 - **Mostrar entre los destacados**: añade la ficha a los destacados de GameDev. El primer proyecto destacado según **Orden de los proyectos** ocupa el espacio principal; los demás aparecen a continuación. Si lo desactivas, el proyecto no aparecerá en ninguna zona de destacados.

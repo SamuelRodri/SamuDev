@@ -14,7 +14,7 @@
   "content": [
     {
       "name": "games",
-      "label": "Mis proyectos GameDev",
+      "label": "Proyectos · Español",
       "type": "collection",
       "path": "content/games",
       "format": "json",
@@ -176,48 +176,6 @@
           ]
         },
         {
-          "name": "english",
-          "label": "4. Content in English",
-          "type": "object",
-          "description": "English copy shown on the English version of the portfolio.",
-          "fields": [
-            {
-              "name": "summary",
-              "label": "Short introduction",
-              "type": "text"
-            },
-            {
-              "name": "caseStudyTitle",
-              "label": "Project headline",
-              "type": "string"
-            },
-            {
-              "name": "description",
-              "label": "Project description",
-              "type": "text",
-              "description": "Explain the project, its goal and its main mechanics or features."
-            },
-            {
-              "name": "role",
-              "label": "My role in the project",
-              "type": "text",
-              "description": "Explain your responsibilities and concrete contributions."
-            },
-            {
-              "name": "development",
-              "label": "Development and learnings (optional)",
-              "type": "text",
-              "description": "Describe what you learned and the techniques, patterns or tools you used."
-            },
-            {
-              "name": "award",
-              "label": "Award or recognition (optional)",
-              "type": "string",
-              "description": "Award name in English. Complete the Spanish field too."
-            }
-          ]
-        },
-        {
           "name": "details",
           "label": "5. Datos del juego",
           "type": "object",
@@ -313,8 +271,83 @@
       ]
     },
     {
+      "name": "game_translations",
+      "label": "Traducciones · Proyectos",
+      "type": "collection",
+      "path": "content/games",
+      "format": "json",
+      "operations": {
+        "create": false,
+        "rename": false,
+        "delete": false
+      },
+      "view": {
+        "primary": "title",
+        "fields": [
+          "title"
+        ],
+        "sort": [
+          "title"
+        ],
+        "search": [
+          "title",
+          "english.summary"
+        ]
+      },
+      "fields": [
+        {
+          "name": "title",
+          "label": "Proyecto",
+          "type": "string",
+          "readonly": true
+        },
+        {
+          "name": "english",
+          "label": "English translation",
+          "type": "object",
+          "description": "English copy shown on the English version of the portfolio.",
+          "fields": [
+            {
+              "name": "summary",
+              "label": "Short introduction",
+              "type": "text"
+            },
+            {
+              "name": "caseStudyTitle",
+              "label": "Project headline",
+              "type": "string"
+            },
+            {
+              "name": "description",
+              "label": "Project description",
+              "type": "text",
+              "description": "Explain the project, its goal and its main mechanics or features."
+            },
+            {
+              "name": "role",
+              "label": "My role in the project",
+              "type": "text",
+              "description": "Explain your responsibilities and concrete contributions."
+            },
+            {
+              "name": "development",
+              "label": "Development and learnings (optional)",
+              "type": "text",
+              "description": "Describe what you learned and the techniques, patterns or tools you used."
+            },
+            {
+              "name": "award",
+              "label": "Award or recognition (optional)",
+              "type": "string",
+              "description": "Award name in English. Complete the Spanish field too."
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "jams",
-      "label": "Mis game jams",
+      "label": "Game jams · Español",
       "type": "collection",
       "path": "content/jams",
       "format": "json",
@@ -417,34 +450,6 @@
           ]
         },
         {
-          "name": "english",
-          "label": "4. Content in English",
-          "type": "object",
-          "description": "English copy shown on the English version of the portfolio.",
-          "fields": [
-            {
-              "name": "summary",
-              "label": "Short introduction",
-              "type": "text"
-            },
-            {
-              "name": "description",
-              "label": "About the project",
-              "type": "text"
-            },
-            {
-              "name": "role",
-              "label": "Your contribution",
-              "type": "string"
-            },
-            {
-              "name": "genre",
-              "label": "Game genre",
-              "type": "string"
-            }
-          ]
-        },
-        {
           "name": "details",
           "label": "5. Datos del juego",
           "type": "object",
@@ -513,6 +518,67 @@
       ]
     },
     {
+      "name": "jam_translations",
+      "label": "Traducciones · Game jams",
+      "type": "collection",
+      "path": "content/jams",
+      "format": "json",
+      "operations": {
+        "create": false,
+        "rename": false,
+        "delete": false
+      },
+      "view": {
+        "primary": "title",
+        "fields": [
+          "title"
+        ],
+        "sort": [
+          "title"
+        ],
+        "search": [
+          "title",
+          "english.summary"
+        ]
+      },
+      "fields": [
+        {
+          "name": "title",
+          "label": "Proyecto",
+          "type": "string",
+          "readonly": true
+        },
+        {
+          "name": "english",
+          "label": "English translation",
+          "type": "object",
+          "description": "English copy shown on the English version of the portfolio.",
+          "fields": [
+            {
+              "name": "summary",
+              "label": "Short introduction",
+              "type": "text"
+            },
+            {
+              "name": "description",
+              "label": "About the project",
+              "type": "text"
+            },
+            {
+              "name": "role",
+              "label": "Your contribution",
+              "type": "string"
+            },
+            {
+              "name": "genre",
+              "label": "Game genre",
+              "type": "string"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "settings",
       "label": "Organizar portfolio",
       "type": "file",
@@ -561,5 +627,10 @@
         "button": "Publicar ahora"
       }
     }
-  ]
+  ],
+  "settings": {
+    "content": {
+      "merge": true
+    }
+  }
 }
