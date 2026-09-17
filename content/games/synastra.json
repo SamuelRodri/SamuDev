@@ -21,11 +21,12 @@
     "en": "Team project · LuminariaCreations"
   },
   "year": 2026,
+  "engine": "Unity",
   "platform": "HTML5",
+  "language": "C#",
   "tags": [
     "Roguelike",
     "Cards",
-    "HTML5",
     "Game Jam"
   ],
   "itch": "https://luminariacreations.itch.io/synastra",
