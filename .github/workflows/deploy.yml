@@ -6,7 +6,6 @@ on:
     paths-ignore:
       - "content/**"
       - "public/images/projects/**"
-      - "public/videos/**"
   workflow_dispatch:
     inputs:
       payload:

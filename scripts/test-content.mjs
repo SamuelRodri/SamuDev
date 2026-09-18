@@ -23,11 +23,8 @@ assert.throws(() => prepareContent([{ ...game, image: "javascript:alert(1)" }], 
 assert.throws(() => prepareContent([{ ...game, itch: "javascript:alert(1)" }], [], {}), /itch/);
 assert.equal(Object.hasOwn(prepareContent([], [], {}), "featuredGame"), false);
 const config = JSON.parse(readFileSync(new URL("../.pages.yml", import.meta.url), "utf8"));
-assert.deepEqual(config.media.map((item) => item.name), ["images", "videos"]);
-const videoLibrary = config.media.find((item) => item.name === "videos");
-assert.equal(videoLibrary.input, "public/videos");
-assert.equal(videoLibrary.output, "/videos");
-assert.deepEqual(videoLibrary.extensions, ["mp4"]);
+assert.equal(config.media.input, "public/images/projects");
+assert.equal(config.media.output, "/images/projects");
 assert.deepEqual(config.content.map((item) => item.name), ["games", "game_translations", "jams", "jam_translations", "settings"]);
 assert.equal(config.settings?.content?.merge, true);
 assert.deepEqual(config.actions?.map((action) => action.name), ["publish-portfolio"]);
@@ -88,9 +85,7 @@ assert.deepEqual(prepareContent([{ ...game, award: "Legacy award" }], [], {}).ga
 const gameFields = config.content.find((entry) => entry.name === "games").fields;
 const gameMediaFields = gameFields.find((field) => field.name === "media").fields;
 const previewVideoField = gameMediaFields.find((field) => field.name === "previewVideo");
-assert.equal(previewVideoField.type, "file");
-assert.equal(previewVideoField.options.media, "videos");
-assert.deepEqual(previewVideoField.options.extensions, ["mp4"]);
+assert.equal(previewVideoField.type, "string");
 const gameTranslationFields = config.content.find((entry) => entry.name === "game_translations").fields;
 assert.ok(gameFields.find((field) => field.name === "spanish").fields.some((field) => field.name === "award"));
 assert.ok(gameTranslationFields.find((field) => field.name === "english").fields.some((field) => field.name === "award"));

@@ -1,30 +1,16 @@
 {
-  "media": [
-    {
-      "name": "images",
-      "label": "Imágenes",
-      "input": "public/images/projects",
-      "output": "/images/projects",
-      "extensions": [
-        "png",
-        "jpg",
-        "jpeg",
-        "webp",
-        "gif"
-      ],
-      "rename": "safe"
-    },
-    {
-      "name": "videos",
-      "label": "Vídeos",
-      "input": "public/videos",
-      "output": "/videos",
-      "extensions": [
-        "mp4"
-      ],
-      "rename": "safe"
-    }
-  ],
+  "media": {
+    "input": "public/images/projects",
+    "output": "/images/projects",
+    "extensions": [
+      "png",
+      "jpg",
+      "jpeg",
+      "webp",
+      "gif"
+    ],
+    "rename": "safe"
+  },
   "content": [
     {
       "name": "games",
@@ -130,32 +116,20 @@
               "name": "image",
               "label": "Imagen de portada",
               "type": "image",
-              "description": "Sube una imagen o pega su enlace. Se utiliza en la tarjeta y en la ficha.",
-              "options": {
-                "media": "images"
-              }
+              "description": "Sube una imagen o pega su enlace. Se utiliza en la tarjeta y en la ficha."
             },
             {
               "name": "gallery",
               "label": "Galería de capturas (opcional)",
               "type": "image",
               "list": true,
-              "description": "Añade las capturas en el orden en que quieres mostrarlas.",
-              "options": {
-                "media": "images"
-              }
+              "description": "Añade las capturas en el orden en que quieres mostrarlas."
             },
             {
               "name": "previewVideo",
-              "label": "Vídeo corto de portada (opcional)",
-              "type": "file",
-              "description": "Sube un MP4 corto, sin audio y en 16:9 para las tarjetas destacadas.",
-              "options": {
-                "media": "videos",
-                "extensions": [
-                  "mp4"
-                ]
-              }
+              "label": "URL del vídeo corto de portada (opcional)",
+              "type": "string",
+              "description": "Sube el MP4 a Cloudinary y pega aquí su URL segura. Debe terminar en .mp4."
             },
             {
               "name": "video",
@@ -452,20 +426,14 @@
               "name": "image",
               "label": "Imagen de portada",
               "type": "image",
-              "description": "Sube una imagen o pega su enlace. Se utiliza en la tarjeta y en la ficha.",
-              "options": {
-                "media": "images"
-              }
+              "description": "Sube una imagen o pega su enlace. Se utiliza en la tarjeta y en la ficha."
             },
             {
               "name": "gallery",
               "label": "Galería de capturas (opcional)",
               "type": "image",
               "list": true,
-              "description": "Añade las capturas en el orden en que quieres mostrarlas.",
-              "options": {
-                "media": "images"
-              }
+              "description": "Añade las capturas en el orden en que quieres mostrarlas."
             }
           ]
         },
