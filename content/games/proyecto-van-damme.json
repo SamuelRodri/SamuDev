@@ -7,7 +7,8 @@
   },
   "media": {
     "image": "https://img.youtube.com/vi/CblftVzAZXE/maxresdefault.jpg",
-    "video": "/videos/teaser-vandamme.mp4"
+    "video": "/videos/teaser-vandamme.mp4",
+    "previewVideo": "https://res.cloudinary.com/djcd2rpvx/video/upload/v1789732009/vandamme-short_ggvkvm.mp4"
   },
   "spanish": {
     "summary": "Videojuego de estrategia y combate con cartas en el que puedes fusionar y dividir países para alterar el mapa.",
