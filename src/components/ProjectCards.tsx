@@ -29,7 +29,8 @@ function ProjectCover({ project, eager, previewVideo }: { project: GameProject; 
   const videoRef = useRef<HTMLVideoElement>(null);
   const [videoFailed, setVideoFailed] = useState(false);
   const [reduceMotion, setReduceMotion] = useState(() => window.matchMedia("(prefers-reduced-motion: reduce)").matches);
-  const isDirectVideo = Boolean(project.video && /\.mp4(?:[?#]|$)/i.test(project.video));
+  const videoSource = project.previewVideo ?? project.video;
+  const isDirectVideo = Boolean(videoSource && /\.mp4(?:[?#]|$)/i.test(videoSource));
   const showVideo = previewVideo && isDirectVideo && !reduceMotion && !videoFailed;
 
   useEffect(() => {
@@ -60,7 +61,7 @@ function ProjectCover({ project, eager, previewVideo }: { project: GameProject; 
 
   return showVideo
     ? <video ref={videoRef} muted loop playsInline preload="metadata" poster={project.image} aria-hidden="true" onError={() => setVideoFailed(true)}>
-        <source src={project.video} type="video/mp4" />
+        <source src={videoSource} type="video/mp4" />
       </video>
     : <img src={project.image} alt={project.title} loading={eager ? "eager" : "lazy"} />;
 }

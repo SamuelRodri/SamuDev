@@ -71,6 +71,7 @@ export function prepareContent(games, jams, settings) {
       if (kind === "games" && typeof p.featured !== "boolean") fail("featured");
       if (!media(p.image)) fail("image");
       if (p.video && (!media(p.video) || !(/\.mp4(?:[?#]|$)/i.test(p.video) || /^https:\/\/(www\.)?youtube\.com\/watch\?/.test(p.video)))) fail("video (MP4 or YouTube watch URL)");
+      if (p.previewVideo && (!media(p.previewVideo) || !/\.mp4(?:[?#]|$)/i.test(p.previewVideo))) fail("previewVideo (MP4)");
       for (const field of ["github", "itch"]) {
         if (p[field] && (!text(p[field]) || !/^https:\/\//.test(p[field]))) fail(field);
       }

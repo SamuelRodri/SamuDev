@@ -23,10 +23,17 @@ export type GameProject = {
   tags: string[];
   image: string;
   gallery?: string[];
+  previewVideo?: string;
   video?: string;
   github?: string;
   itch?: string;
   award?: LocalizedText;
 };
 
-export const gameProjects: GameProject[] = (data.games as GameProject[]).map((project) => ({ ...project, image: resolveMedia(project.image), gallery: project.gallery?.map(resolveMedia), video: project.video ? resolveMedia(project.video) : undefined, }));
+export const gameProjects: GameProject[] = (data.games as GameProject[]).map((project) => ({
+  ...project,
+  image: resolveMedia(project.image),
+  gallery: project.gallery?.map(resolveMedia),
+  previewVideo: project.previewVideo ? resolveMedia(project.previewVideo) : undefined,
+  video: project.video ? resolveMedia(project.video) : undefined,
+}));

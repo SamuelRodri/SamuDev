@@ -38,7 +38,8 @@ Las game jams usan la misma estructura adaptada a sus campos. No necesitas relle
 - **Mi rol en el proyecto**: describe tus responsabilidades y aportaciones concretas. Se muestra como una sección propia dentro de la ficha.
 - **Desarrollo y aprendizajes**: campo opcional para explicar qué aprendiste y qué herramientas, técnicas o patrones utilizaste. Si lo rellenas, completa sus versiones española e inglesa.
 - **Imagen de portada** y **Galería de capturas**: subir imágenes o usar URLs HTTPS existentes. Las imágenes subidas se guardan en `public/images/projects`. La web adapta las rutas al prefijo de alojamiento.
-- **Vídeo**: URL HTTPS de un MP4, enlace `https://www.youtube.com/watch?v=...` o ruta de un MP4 existente bajo `/videos/`. Los vídeos nuevos se alojan externamente.
+- **Vídeo corto de portada**: sube desde el CMS un MP4 de 720p, 16:9, sin audio y optimizado. Se reproduce automáticamente en las tarjetas destacadas.
+- **Vídeo principal de la ficha**: URL HTTPS de un MP4, enlace `https://www.youtube.com/watch?v=...` o ruta de un MP4 existente bajo `/videos/`. Aparece con controles dentro de la página del proyecto.
 - **Galería de capturas**: añade entre 3 y 6 imágenes representativas cuando dispongas de ellas. La ficha muestra una galería manual con miniaturas, flechas y navegación por teclado; nunca cambia de imagen automáticamente.
 - **Dirección de la ficha**: usa un valor único y consérvalo tras publicar. El identificador interno está oculto; los proyectos nuevos lo obtienen automáticamente de esta dirección.
 
