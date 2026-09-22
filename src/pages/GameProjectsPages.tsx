@@ -217,18 +217,6 @@ function GameProjectDetail({ locale, project, navigate }: PageProps & { project:
   return (
     <article className="project-detail-page game">
       <BackButton locale={locale} navigate={navigate} />
-      <header className="project-detail-header">
-        <div className="project-title-row">
-          <p className="eyebrow project-engine-meta">{project.engine && <EngineIcon engine={project.engine} />}<span>{[project.platform, project.year].filter(Boolean).join(" · ")}</span></p>
-          <span className="project-status">{projectStatuses[project.status][locale]}</span>
-        </div>
-        <h1>{project.title}</h1>
-        <p className="project-lead">{project.summary[locale]}</p>
-        {(project.github || project.itch) && <div className="project-actions">
-          {project.github && <ExternalProjectLink href={project.github} locale={locale} kind="github" />}
-          {project.itch && <ExternalProjectLink href={project.itch} locale={locale} kind="itch" />}
-        </div>}
-      </header>
       <div className="project-overview">
         <div className="project-featured-media">
           {videoId ? (
@@ -246,7 +234,25 @@ function GameProjectDetail({ locale, project, navigate }: PageProps & { project:
             <img src={project.image} alt={project.title} />
           )}
         </div>
-        <ProjectStory locale={locale} title={project.caseStudyTitle[locale]} description={project.description[locale]} role={project.role[locale]} />
+        <div className="project-overview-info">
+          <div className="project-title-row">
+            <p className="eyebrow project-engine-meta">{project.engine && <EngineIcon engine={project.engine} />}<span>{[project.platform, project.year].filter(Boolean).join(" · ")}</span></p>
+            <span className="project-status">{projectStatuses[project.status][locale]}</span>
+          </div>
+          <h1>{project.title}</h1>
+          <p className="project-lead">{project.summary[locale]}</p>
+          {(project.github || project.itch) && <div className="project-actions">
+            {project.github && <ExternalProjectLink href={project.github} locale={locale} kind="github" />}
+            {project.itch && <ExternalProjectLink href={project.itch} locale={locale} kind="itch" />}
+          </div>}
+          <div className="project-overview-copy">
+            <p className="eyebrow">{locale === "es" ? "El proyecto" : "The project"}</p>
+            <h2>{project.caseStudyTitle[locale]}</h2>
+            <p>{project.description[locale]}</p>
+            <h3>{locale === "es" ? "Mi rol" : "My role"}</h3>
+            <p>{project.role[locale]}</p>
+          </div>
+        </div>
       </div>
       <ProjectDevelopment locale={locale} development={project.development?.[locale]} />
       <dl className="project-facts">
