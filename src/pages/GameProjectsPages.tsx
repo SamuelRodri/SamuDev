@@ -3,6 +3,7 @@ import { projectStatuses } from "../gameProjects";
 import { useState } from "react";
 import { ArrowLeft, ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 import { FaGithub, FaItchIo } from "react-icons/fa";
+import ReactMarkdown from "react-markdown";
 import { GameJamProjectCard, GameProjectCard } from "../components/ProjectCards";
 import { content, type Locale } from "../content";
 import { gameJamProjects, type GameJamProject } from "../gameJamProjects";
@@ -112,7 +113,10 @@ function ProjectStory({ locale, title, description, role, development, isJam = f
       </div>
       <div className="project-story-sections">
         <article><h3>{locale === "es" ? "Mi rol" : "My role"}</h3><p>{role}</p></article>
-        {development && <article><h3>{locale === "es" ? "Desarrollo y aprendizajes" : "Development and learnings"}</h3><p>{development}</p></article>}
+        {development && <article>
+          <h3>{locale === "es" ? "Desarrollo y aprendizajes" : "Development and learnings"}</h3>
+          <div className="project-rich-text"><ReactMarkdown>{development}</ReactMarkdown></div>
+        </article>}
       </div>
     </section>
   );

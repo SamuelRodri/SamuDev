@@ -1068,6 +1068,14 @@ p {
 .project-story-sections article { padding-top: 18px; border-top: 1px solid rgba(255,255,255,.12); }
 .project-story-sections h3 { margin: 0 0 8px; color: var(--line); font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; }
 .project-story-sections p { margin: 0; }
+.project-story-sections .project-rich-text { color: rgba(238,247,255,.7); line-height: 1.8; }
+.project-rich-text > :first-child { margin-top: 0; }
+.project-rich-text > :last-child { margin-bottom: 0; }
+.project-rich-text ul,
+.project-rich-text ol { margin: .65rem 0 0; padding-left: 1.35rem; }
+.project-rich-text li + li { margin-top: .35rem; }
+.project-rich-text a { color: var(--line); text-underline-offset: 3px; }
+.project-rich-text strong { color: rgba(238,247,255,.92); }
 .award-card { display: grid; gap: 7px; margin-top: 22px; padding: 16px; border: 1px solid rgba(255,211,105,.28); border-radius: 8px; background: rgba(255,211,105,.07); }
 .award-card span { color: #ffd369; font-size: .72rem; font-weight: 850; text-transform: uppercase; }
 .project-repository-link { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 24px; padding: .75rem 1rem; border: 1px solid rgba(255,255,255,.13); border-radius: 8px; background: rgba(255,255,255,.07); color: #eef7ff; font-size: .88rem; font-weight: 750; }

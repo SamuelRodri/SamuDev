@@ -170,8 +170,12 @@
             {
               "name": "development",
               "label": "Desarrollo y aprendizajes (opcional)",
-              "type": "text",
-              "description": "Cuenta qué aprendiste y qué técnicas, patrones o herramientas empleaste."
+              "type": "rich-text",
+              "description": "Cuenta qué aprendiste y qué técnicas, patrones o herramientas empleaste. Puedes usar párrafos, listas, negrita, cursiva y enlaces.",
+              "options": {
+                "format": "markdown",
+                "media": false
+              }
             },
             {
               "name": "award",
@@ -344,8 +348,12 @@
             {
               "name": "development",
               "label": "Development and learnings (optional)",
-              "type": "text",
-              "description": "Describe what you learned and the techniques, patterns or tools you used."
+              "type": "rich-text",
+              "description": "Describe what you learned and the techniques, patterns or tools you used. You can use paragraphs, lists, bold, italics and links.",
+              "options": {
+                "format": "markdown",
+                "media": false
+              }
             },
             {
               "name": "award",

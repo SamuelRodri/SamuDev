@@ -91,6 +91,13 @@ assert.ok(gameFields.find((field) => field.name === "spanish").fields.some((fiel
 assert.ok(gameTranslationFields.find((field) => field.name === "english").fields.some((field) => field.name === "award"));
 assert.ok(gameFields.find((field) => field.name === "spanish").fields.some((field) => field.name === "development"));
 assert.ok(gameTranslationFields.find((field) => field.name === "english").fields.some((field) => field.name === "development"));
+for (const developmentField of [
+  gameFields.find((field) => field.name === "spanish").fields.find((field) => field.name === "development"),
+  gameTranslationFields.find((field) => field.name === "english").fields.find((field) => field.name === "development"),
+]) {
+  assert.equal(developmentField.type, "rich-text");
+  assert.deepEqual(developmentField.options, { format: "markdown", media: false });
+}
 assert.ok(!gameFields.find((field) => field.name === "links").fields.some((field) => field.name === "award"));
 
 assert.deepEqual(prepareContent([other, game], [], {gameOrder: [game.slug, other.slug]}).games.map(p=>p.slug), [game.slug,other.slug]);
