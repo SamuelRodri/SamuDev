@@ -32,7 +32,8 @@
       "Strategy",
       "GeoJSON",
       "Event Bus",
-      "VContainer"
+      "VContainer",
+      "Command"
     ]
   },
   "links": {
