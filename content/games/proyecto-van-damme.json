@@ -17,8 +17,9 @@
   "spanish": {
     "summary": "Videojuego de estrategia y combate con cartas en el que puedes fusionar y dividir países para alterar el mapa.",
     "caseStudyTitle": "Transformar la geografía mediante estrategia y sistemas.",
-    "description": "La estrategia guía cada decisión: el jugador puede modificar la geografía fusionando y dividiendo países, mientras un sistema dinámico de combate con cartas decide las conquistas y derrotas. Los territorios se generan proceduralmente desde datos GeoJSON. La arquitectura utiliza el patrón Command para las acciones, un Event Bus para comunicar sistemas y VContainer para la inyección de dependencias.",
-    "role": "Solo developer"
+    "description": "La estrategia guía cada decisión: el jugador puede modificar la geografía fusionando y dividiendo países, mientras un sistema dinámico de combate con cartas decide las conquistas y derrotas. Los territorios se generan proceduralmente desde datos GeoJSON",
+    "role": "Solo developer - Proyecto de final de máster",
+    "development": "- Diseño e implementación de un event bus para comunicar los diferentes sistemas del juego\n- Desarrollo de un sistema de IA para los jugadores enemigos\n- Implementación de un patrón Command para las diferentes acciones que pueden realizar los jugadores\n- Aprendizaje del uso de VContainer como inyector de dependencias"
   },
   "details": {
     "year": 2025,
