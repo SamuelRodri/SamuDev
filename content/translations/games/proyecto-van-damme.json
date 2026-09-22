@@ -3,7 +3,7 @@
   "english": {
     "summary": "A strategy and card-combat game where countries can be merged and divided to reshape the map.",
     "caseStudyTitle": "Reshaping geography through systems-driven strategy.",
-    "description": "Strategy drives every decision: players reshape geography by merging and dividing countries, while a dynamic card-combat system determines conquests and defeats. Territories are generated procedurally from GeoJSON data. The codebase uses the Command pattern for player actions, an Event Bus for communication between systems and VContainer for dependency injection.",
+    "description": "Strategy guides every decision: the player can reshape geography by merging and splitting countries, while a dynamic card-based combat system determines conquests and defeats. Territories are procedurally generated from GeoJSON data.",
     "role": "Solo developer"
   }
 }
