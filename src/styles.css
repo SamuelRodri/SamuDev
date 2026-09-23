@@ -1179,7 +1179,7 @@ p {
   grid-template-columns: 54% 46%;
   width: 100%;
   max-width: 1440px;
-  margin: clamp(36px, 6vw, 68px) auto 0;
+  margin: clamp(18px, 3vw, 32px) auto 0;
   border: 1px solid rgba(255, 255, 255, 0.12);
   background: rgba(255,255,255,.025);
 }
