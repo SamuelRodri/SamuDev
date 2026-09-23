@@ -1176,23 +1176,37 @@ p {
 }
 .project-overview {
   display: grid;
-  grid-template-columns: minmax(0, 1.12fr) minmax(360px, .88fr);
-  width: min(1120px, 100%);
+  grid-template-columns: 60% 40%;
+  width: 100%;
+  max-width: 1120px;
   margin: clamp(36px, 6vw, 68px) auto 0;
   border: 1px solid rgba(255, 255, 255, 0.12);
   background: rgba(255,255,255,.025);
 }
 .project-overview > .project-featured-media {
+  display: grid;
+  width: 100%;
+  max-width: 100%;
   min-width: 0;
-  min-height: 100%;
+  min-height: 0;
+  place-items: center;
   border: 0;
   border-right: 1px solid rgba(255,255,255,.12);
   background: #030609;
-  aspect-ratio: 16 / 10;
 }
 .project-overview > .project-featured-media iframe,
 .project-overview > .project-featured-media img,
-.project-overview > .project-featured-media video { display: block; width: 100%; height: 100%; border: 0; object-fit: contain; }
+.project-overview > .project-featured-media video {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  height: auto;
+  max-height: 100%;
+  border: 0;
+  object-fit: contain;
+  aspect-ratio: 16 / 9;
+}
 .project-overview-info {
   min-width: 0;
   padding: clamp(26px, 3.5vw, 42px);
