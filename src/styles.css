@@ -1077,7 +1077,7 @@ p {
 .project-rich-text a { color: var(--line); text-underline-offset: 3px; }
 .project-rich-text strong { color: rgba(238,247,255,.92); }
 .project-development {
-  width: min(1120px, 100%);
+  width: min(1320px, 100%);
   margin: 0 auto;
   padding: clamp(24px, 3vw, 34px);
   border: 1px solid rgba(255,255,255,.12);
@@ -1176,9 +1176,9 @@ p {
 }
 .project-overview {
   display: grid;
-  grid-template-columns: 60% 40%;
+  grid-template-columns: 54% 46%;
   width: 100%;
-  max-width: 1120px;
+  max-width: 1320px;
   margin: clamp(36px, 6vw, 68px) auto 0;
   border: 1px solid rgba(255, 255, 255, 0.12);
   background: rgba(255,255,255,.025);
@@ -1209,17 +1209,17 @@ p {
 }
 .project-overview-info {
   min-width: 0;
-  padding: clamp(26px, 3.5vw, 42px);
+  padding: clamp(24px, 2.8vw, 36px);
 }
 .project-overview-info .project-title-row { align-items: flex-start; }
-.project-overview-info h1 { margin: 22px 0 14px; font-size: clamp(2.4rem, 4.5vw, 4.5rem); line-height: .95; letter-spacing: -.055em; }
-.project-overview-info .project-lead { margin: 0; font-size: 1rem; line-height: 1.7; }
-.project-overview-info .project-actions { justify-content: flex-start; margin-top: 22px; }
-.project-overview-copy { margin-top: 30px; padding-top: 26px; border-top: 1px solid rgba(255,255,255,.12); }
+.project-overview-info h1 { margin: 18px 0 12px; font-size: clamp(2.25rem, 3.8vw, 3.75rem); line-height: .95; letter-spacing: -.05em; }
+.project-overview-info .project-lead { margin: 0; font-size: .96rem; line-height: 1.6; }
+.project-overview-info .project-actions { justify-content: flex-start; margin-top: 18px; }
+.project-overview-copy { margin-top: 24px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,.12); }
 .project-overview-copy .eyebrow { margin: 0 0 10px; }
-.project-overview-copy h2 { margin: 0; font-size: clamp(1.35rem, 2.3vw, 2rem); line-height: 1.15; }
-.project-overview-copy > p:not(.eyebrow) { margin: 14px 0 0; color: rgba(238,247,255,.74); line-height: 1.7; }
-.project-overview-copy h3 { margin: 24px 0 0; color: var(--line); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; }
+.project-overview-copy h2 { margin: 0; font-size: clamp(1.3rem, 2vw, 1.8rem); line-height: 1.12; }
+.project-overview-copy > p:not(.eyebrow) { margin: 12px 0 0; color: rgba(238,247,255,.74); font-size: .94rem; line-height: 1.6; }
+.project-overview-copy h3 { margin: 20px 0 0; color: var(--line); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; }
 .project-detail-page > .project-featured-media iframe,
 .project-detail-page > .project-featured-media img,
 .project-detail-page > .project-featured-media video {
@@ -1233,7 +1233,7 @@ p {
 .project-facts {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
-  width: min(1120px, 100%);
+  width: min(1320px, 100%);
   margin: 0 auto;
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-top: 0;
