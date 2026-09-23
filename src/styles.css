@@ -1197,6 +1197,8 @@ p {
 .project-overview > .project-featured-media iframe,
 .project-overview > .project-featured-media img,
 .project-overview > .project-featured-media video {
+  position: relative;
+  z-index: 1;
   display: block;
   width: 100%;
   max-width: 100%;
@@ -1206,6 +1208,22 @@ p {
   border: 0;
   object-fit: contain;
   aspect-ratio: 16 / 9;
+}
+.project-overview > .project-featured-media .project-media-backdrop {
+  position: absolute;
+  inset: -5%;
+  z-index: 0;
+  width: 110%;
+  max-width: none;
+  min-width: 0;
+  height: 110%;
+  max-height: none;
+  border: 0;
+  opacity: .38;
+  object-fit: cover;
+  aspect-ratio: auto;
+  filter: blur(22px) brightness(.55) saturate(.8);
+  transform: scale(1.04);
 }
 .project-overview-info {
   min-width: 0;

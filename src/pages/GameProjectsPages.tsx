@@ -219,6 +219,7 @@ function GameProjectDetail({ locale, project, navigate }: PageProps & { project:
       <BackButton locale={locale} navigate={navigate} />
       <div className="project-overview">
         <div className="project-featured-media">
+          {project.video && <img className="project-media-backdrop" src={project.image} alt="" aria-hidden="true" />}
           {videoId ? (
             <iframe
               src={`https://www.youtube-nocookie.com/embed/${videoId}?controls=1&playsinline=1&rel=0`}
